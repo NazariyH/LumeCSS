@@ -1,0 +1,44 @@
+@mixin btn($color: map-get($color-palette, 'dark')) {
+    // Define base styles for a button
+
+    cursor: pointer;
+    display: inline-block;
+    border: 0;
+    text-decoration: none;
+    padding: $base-padding $base-padding * 2;
+    border-radius: $base-border-radius;
+    background-color: $color;
+    color: get-contrast-color($color);
+    transition: all $base-transition-time ease-in-out;
+}
+
+
+.btn {
+    @include btn;
+}
+
+
+// Iterate over each key-val pair in the $color-palette map
+@each $key, $val in $color-palette {
+
+    // Create classes for classic buttons
+    .btn-#{$key} {
+        @include btn($val);
+
+        &:hover {
+            background-color: get-hover-color($val);
+        }
+    }
+
+    // Create classes for outlined buttons
+    .btn-outline-#{$key} {
+        @include btn(transparent);
+        border: $base-border-sickness solid $val;
+        color: $val;
+
+        &:hover {
+            background-color: $val;
+            color: get-contrast-color($val);
+        }
+    }
+}
