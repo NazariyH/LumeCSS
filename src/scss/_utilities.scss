@@ -6,192 +6,218 @@ $base-margin: 0.75rem !default;
 
 $utilities: (
     // Paddings
-        "padding": (
-                "prefix": "p",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding": (
+        "prefix": "p",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-left": (
-                "prefix": "pl",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-left": (
+        "prefix": "pl",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-right": (
-                "prefix": "pr",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-right": (
+        "prefix": "pr",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-top": (
-                "prefix": "pt",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-top": (
+        "prefix": "pt",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-bottom": (
-                "prefix": "pb",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-bottom": (
+        "prefix": "pb",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
     // Margin utilities
-        "margin": (
-                "prefix": "m",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin": (
+        "prefix": "m",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-left": (
-                "prefix": "ml",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-left": (
+        "prefix": "ml",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-right": (
-                "prefix": "mr",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-right": (
+        "prefix": "mr",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-top": (
-                "prefix": "mt",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-top": (
+        "prefix": "mt",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-bottom": (
-                "prefix": "mb",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-bottom": (
+        "prefix": "mb",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        // New padding-x (left and right) - combine pl and pr
-        "padding-x": (
-                "prefix": "px",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    // New padding-x (left and right) - combine pl and pr
+    "padding-x": (
+        "prefix": "px",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        // New padding-y (top and bottom) - combine pt and pb
-        "padding-y": (
-                "prefix": "py",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    // New padding-y (top and bottom) - combine pt and pb
+    "padding-y": (
+        "prefix": "py",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        // New margin-x (left and right) - combine ml and mr
-        "margin-x": (
-                "prefix": "mx",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    // New margin-x (left and right) - combine ml and mr
+    "margin-x": (
+        "prefix": "mx",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        // New margin-y (top and bottom) - combine mt and mb
-        "margin-y": (
-                "prefix": "my",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    // New margin-y (top and bottom) - combine mt and mb
+    "margin-y": (
+        "prefix": "my",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
+
+    // Opacity
+    "opacity": (
+        "prefix": 'o',
+        "values": (
+            "0": 0,
+            "10": 0.1,
+            "20": 0.2,
+            "30": 0.3,
+            "40": 0.4,
+            "50": 0.5,
+            "60": 0.6,
+            "70": 0.7,
+            "80": 0.8,
+            "90": 0.9,
+            "100": 1,
+        )
+    ),
 );
 
 
 // Helper function to handle shorthand properties (x, y) dynamically
 @function get-shorthand-property($property) {
-    @if $property == "padding-x" {
+    @if $property =="padding-x" {
         @return ("padding-left", "padding-right");
-    } @else if $property == "padding-y" {
+    }
+
+    @else if $property =="padding-y" {
         @return ("padding-top", "padding-bottom");
-    } @else if $property == "margin-x" {
+    }
+
+    @else if $property =="margin-x" {
         @return ("margin-left", "margin-right");
-    } @else if $property == "margin-y" {
+    }
+
+    @else if $property =="margin-y" {
         @return ("margin-top", "margin-bottom");
-    } @else {
+    }
+
+    @else {
         @return $property;
     }
 }
@@ -206,22 +232,27 @@ $utilities: (
     @each $key, $val in $values {
 
         // Check if the $key value is equal to 'default' to make the prefix shorter
-        @if $key == 'default' {
+        @if $key =='default' {
             .#{$prefix} {
                 #{$property}: #{$val};
             }
-        } @else {
+        }
+
+        @else {
+
             // Define a class for each property in the utilities map
             .#{$prefix}-#{$key} {
                 // Get the shorthand properties if it's one of the x/y shorthand types
                 $expanded-properties: get-shorthand-property($property);
 
                 // Apply the rule for expanded properties or the regular property
-                @if $expanded-properties != $property {
+                @if $expanded-properties !=$property {
                     @each $expanded-property in $expanded-properties {
                         #{$expanded-property}: #{$val};
                     }
-                } @else {
+                }
+
+                @else {
                     #{$property}: #{$val};
                 }
             }
