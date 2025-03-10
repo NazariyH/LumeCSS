@@ -1,0 +1,19 @@
+@function get-contrast-color($bg-color) {
+    /* This function takes $bg-color and returns either white or black color as
+    the beset contrast color for text, based on the lightness of the background color */
+
+    // Extract the lightness component
+    $lightness: lightness($bg-color);
+
+    // Check if the background color is lime-green or yellow and return dark color
+    @if $bg-color == map-get($color-palette, "lime-green") or $bg-color == map-get($color-palette, "yellow") {
+        @return map-get($color-palette, "dark");
+    }
+
+    // Check the brightness to return the best contrast color
+    @if $lightness < 55 {
+        @return map-get($color-palette, "light");
+    } @else {
+        @return map-get($color-palette, "dark");
+    }
+}
