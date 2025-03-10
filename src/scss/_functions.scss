@@ -17,3 +17,19 @@
         @return map-get($color-palette, "dark");
     }
 }
+
+
+@function get-hover-color($color) {
+    /* This function takes a color and returns either a lighter
+    or darker shade based on its brightness. */
+
+    // Extract the lightness component
+    $lightness: lightness($color);
+
+    // Check the brightness and return either a darker or lighter color
+    @if $lightness < 55 {
+        @return lighten($color, 10);
+    } @else {
+        @return darken($color, 10);
+    }
+}
