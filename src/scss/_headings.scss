@@ -1,0 +1,7 @@
+// Iterate over each key-val pair in the $headings map
+@each $key, $value in $headings {
+    // Define classes for each head
+    .#{$key} {
+        font-size: $value;
+    }
+}
