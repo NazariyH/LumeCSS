@@ -209,9 +209,19 @@ $utilities: (
             "lg": $base-border-radius * 4,
             "full": 50%
         )
+    ),
+
+    // Displays
+    "display": (
+        "prefix": "d",
+        "values": (
+            "none": none,
+            "block": block,
+            "flex": flex,
+            "inline": inline,
+            "inline-block": inline-block,
+        )
     )
-
-
 );
 
 
