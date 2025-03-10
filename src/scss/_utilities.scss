@@ -196,6 +196,22 @@ $utilities: (
             "100": 1,
         )
     ),
+
+    // Border-radius
+    "border-radius": (
+        "prefix": "br",
+        "values": (
+            "none": 0,
+            "default": $base-border-radius,
+            "xs": math.div($base-border-radius, 4),
+            "sm": math.div($base-border-radius, 2),
+            "md": $base-border-radius * 2,
+            "lg": $base-border-radius * 4,
+            "full": 50%
+        )
+    )
+
+
 );
 
 
