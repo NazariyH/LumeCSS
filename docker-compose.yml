@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build:
+      context: ./docs/frontend
+    volumes:
+      - ./docs/frontend:/app
+    ports:
+      - "8080:8080"
