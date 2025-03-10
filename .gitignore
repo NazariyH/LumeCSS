@@ -45,3 +45,6 @@ package-lock.json
 # Temporary files
 *.swp
 *.swo
+
+# Test index.html
+index.html
