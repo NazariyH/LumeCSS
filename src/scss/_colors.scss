@@ -1,0 +1,43 @@
+// Iterate over each key-value pair in the $color-palette map
+@each $key, $val in $color-palette {
+
+    /* Create a class for each color, where $key is the class name
+    and $val is the color value. */
+
+    // Generate a class for text colors
+    .text-#{$key} {
+        color: $val !important;
+    }
+
+    // Generate a class for background colors
+    .bg-#{$key} {
+        background-color: $val !important;
+        color: get-contrast-color($val);
+    }
+
+
+    @for $i from 1 through 9 {
+        // Light variation of the text color
+        .text-#{$key}-light-#{$i} {
+            color: mix(white, $val, $i * 10) !important;
+        }
+
+        // Dark variation of the text color
+        .text-#{$key}-dark-#{$i} {
+            color: mix(black, $val, $i * 10) !important;
+        }
+
+
+        // Light variation of the background color
+        .bg-#{$key}-light-#{$i} {
+            background-color: mix(white, $val, $i * 10) !important;
+            color: get-contrast-color(mix(white, $val, $i * 10));
+        }
+
+        // Dark variation of the background color
+        .bg-#{$key}-dark-#{$i} {
+            background-color: mix(black, $val, $i * 10) !important;
+            color: get-contrast-color(mix(black, $val, $i * 10));
+        }
+    }
+}
