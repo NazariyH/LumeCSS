@@ -1,0 +1,44 @@
+// Create a map of breakpoints (media)
+$breakpoints: (
+    "xs": 0px,
+    "sm": 480px,
+    "md": 720px,
+    "lg": 960px,
+    "xl": 1200px,
+);
+
+
+
+@mixin xs {
+    @media (min-width: map-get($breakpoints, 'xs')) {
+        @content;
+    }
+}
+@mixin sm {
+    @media (min-width: map-get($breakpoints, 'sm')) {
+        @content;
+    }
+}
+@mixin md {
+    @media (min-width: map-get($breakpoints, 'md')) {
+        @content;
+    }
+}
+@mixin lg {
+    @media (min-width: map-get($breakpoints, 'lg')) {
+        @content;
+    }
+}
+@mixin xl {
+    @media (min-width: map-get($breakpoints, 'xl')) {
+        @content;
+    }
+}
+
+
+// Create a mixin with a custom breakpoint
+@mixin breakpoint($bp) {
+    @media (min-width: $bp) {
+        @content;
+    }
+}
