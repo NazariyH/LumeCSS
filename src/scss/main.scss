@@ -1,18 +1,22 @@
-// Import Reset styles
+// Reset styles
 @import 'reset';
 
-// Import variables & functions
+// Variables & functions
 @import 'variables';
 @import 'functions';
 
-// Import colors
+// Base & layout
+@import 'breakpoints';
+
+// Colors
 @import 'colors';
 
-// Import headings (h1, h2, h3, etc)
+// Headings (h1, h2, h3, etc)
 @import 'headings';
 
-// Import components
+// Components
 @import './components/button';
 
-// Import utilities (e.g. paddings, margins, border-radius etc)
+// Utilities (e.g. paddings, margins, border-radius etc)
 @import 'utilities';
+
