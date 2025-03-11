@@ -1,0 +1,82 @@
+@use 'sass:math';
+
+// Default grid values
+$grid_columns: 12;
+$grid-gaps: (
+    "0": 0,
+    "1": 10px,
+    "2": 20px,
+    "3": 30px,
+);
+
+// Base layout classes
+.container {
+    width: 100%;
+    max-width: map-get($breakpoints, "xl");
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+
+// Generate grid gaps
+@each $key, $val in $grid_gaps {
+    .gap-#{$key} > * {
+        padding: $val;
+    }
+    .gap-#{$key} {
+        margin-left: -$val;
+        margin-right: -$val ;
+    }
+}
+
+
+// Create a mixin for calculating grid values
+@mixin grid-column($i) {
+    box-sizing: border-box;
+    flex-grow: 0;
+    width: math.div($i * 100, $grid_columns);
+}
+
+
+// col classes
+@include xs {
+    @for $i from 1 through $grid_columns {
+        .col-#{$i}-xs {
+            @include grid-column($i);
+        }
+    }
+}
+@include sm {
+    @for $i from 1 through $grid_columns {
+        .col-#{$i}-sm {
+            @include grid-column($i);
+        }
+    }
+}
+@include md {
+    @for $i from 1 through $grid_columns {
+        .col-#{$i}-md {
+            @include grid-column($i);
+        }
+    }
+}
+@include lg {
+    @for $i from 1 through $grid_columns {
+        .col-#{$i}-lg {
+            @include grid-column($i);
+        }
+    }
+}
+@include xl {
+    @for $i from 1 through $grid_columns {
+        .col-#{$i}-xl {
+            @include grid-column($i);
+        }
+    }
+}
