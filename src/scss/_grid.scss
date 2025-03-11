@@ -27,11 +27,11 @@ $grid-gaps: (
 // Generate grid gaps
 @each $key, $val in $grid_gaps {
     .gap-#{$key} > * {
-        padding: $val;
+        padding: $val !important;
     }
     .gap-#{$key} {
-        margin-left: -$val;
-        margin-right: -$val ;
+        margin-left: -$val !important;
+        margin-right: -$val !important;
     }
 }
 
@@ -40,7 +40,7 @@ $grid-gaps: (
 @mixin grid-column($i) {
     box-sizing: border-box;
     flex-grow: 0;
-    width: math.div($i * 100, $grid_columns);
+    width: math.div($i * 100% * 1px, $grid_columns);
 }
 
 
