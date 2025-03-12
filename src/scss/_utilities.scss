@@ -326,7 +326,7 @@ $utilities: (
 
     // Background position
     "background-position": (
-        "prefix": "bg-position",
+        "prefix": "bg",
         "values": (
             "top": top,
              "bottom": bottom,
@@ -336,7 +336,7 @@ $utilities: (
         )
     ),
 
-    // Background repeats
+    // Background repeat
     "background-repeat": (
         "prefix": "bg",
         "values": (
@@ -346,6 +346,15 @@ $utilities: (
             "space": space,
             "round": round,
             "no-repeat": no-repeat
+        )
+    ),
+
+    // Background size
+    "background-size": (
+        "prefix": "bg",
+        "values": (
+            "cover": cover,
+            "contain": contain
         )
     )
 );
