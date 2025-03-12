@@ -251,6 +251,26 @@ $utilities: (
         )
     ),
 
+    // Cursor
+    "cursor": (
+        "prefix": 'cursor',
+        "values": (
+            "auto": auto,
+            "default": default,
+            "pointer": pointer,
+            "wait": wait,
+            "text": text,
+            "move": move,
+            "help": help,
+            "none": none,
+            "cell": cell,
+            "crosshair": crosshair,
+            "alias": alias,
+            "copy": copy,
+            "grab": grab
+        )
+    ),
+
     // Justify content
     "justify-content": (
         "prefix": "justify",
