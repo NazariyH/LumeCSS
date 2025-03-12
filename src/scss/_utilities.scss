@@ -246,6 +246,37 @@ $utilities: (
             "between": space-between,
             "around": space-around
         )
+    ),
+
+    // Align items
+    "align-items": (
+        "prefix": "align",
+        "values": (
+            "center": center,
+            "start": start,
+            "end": end
+        )
+    ),
+
+    // Flex direction
+    "flex-direction": (
+        "prefix": 'flex',
+        "values": (
+            "row": row,
+            "row-reverse": row-reverse,
+            "column": column,
+            "column-reverse": column-reverse,
+        )
+    ),
+
+    // Flex wrap
+    "flex-wrap": (
+        "prefix": "flex",
+        "values": (
+            "nowrap": nowrap,
+            "wrap": wrap,
+            "wrap-reverse": wrap-reverse
+        )
     )
 );
 
