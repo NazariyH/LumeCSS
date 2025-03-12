@@ -6,38 +6,82 @@
 
     // Generate a class for text colors
     .text-#{$key} {
-        color: $val !important;
+        color: $val;
     }
 
     // Generate a class for background colors
     .bg-#{$key} {
-        background-color: $val !important;
+        background-color: $val;
         color: get-contrast-color($val);
+    }
+
+    // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+    @each $bp_key, $bp-val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Generate a class for text colors
+            .#{$bp_key}\:text-#{$key} {
+                color: $val !important;
+            }
+
+            // Generate a class for background colors
+            .#{$bp_key}\:bg-#{$key} {
+                background-color: $val !important;
+                color: get-contrast-color($val) !important;
+            }
+        }
     }
 
 
     @for $i from 1 through 9 {
         // Light variation of the text color
         .text-#{$key}-light-#{$i} {
-            color: mix(white, $val, $i * 10) !important;
+            color: mix(white, $val, $i * 10);
         }
 
         // Dark variation of the text color
         .text-#{$key}-dark-#{$i} {
-            color: mix(black, $val, $i * 10) !important;
+            color: mix(black, $val, $i * 10);
         }
 
 
         // Light variation of the background color
         .bg-#{$key}-light-#{$i} {
-            background-color: mix(white, $val, $i * 10) !important;
+            background-color: mix(white, $val, $i * 10);
             color: get-contrast-color(mix(white, $val, $i * 10));
         }
 
         // Dark variation of the background color
         .bg-#{$key}-dark-#{$i} {
-            background-color: mix(black, $val, $i * 10) !important;
+            background-color: mix(black, $val, $i * 10);
             color: get-contrast-color(mix(black, $val, $i * 10));
+        }
+
+        // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                // Light variation of the text color
+                .#{$bp_key}\:text-#{$key}-light-#{$i} {
+                    color: mix(white, $val, $i * 10) !important;
+                }
+
+                // Dark variation of the text color
+                .#{$bp_key}\:text-#{$key}-dark-#{$i} {
+                    color: mix(black, $val, $i * 10) !important;
+                }
+
+
+                // Light variation of the background color
+                .#{$bp_key}\:bg-#{$key}-light-#{$i} {
+                    background-color: mix(white, $val, $i * 10) !important;
+                    color: get-contrast-color(mix(white, $val, $i * 10)) !important;
+                }
+
+                // Dark variation of the background color
+                .#{$bp_key}\:bg-#{$key}-dark-#{$i} {
+                    background-color: mix(black, $val, $i * 10) !important;
+                    color: get-contrast-color(mix(black, $val, $i * 10)) !important;
+                }
+            }
         }
     }
 }
