@@ -6,235 +6,247 @@ $base-margin: 0.75rem !default;
 
 $utilities: (
     // Paddings
-        "padding": (
-                "prefix": "p",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding": (
+        "prefix": "p",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-left": (
-                "prefix": "pl",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-left": (
+        "prefix": "pl",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-right": (
-                "prefix": "pr",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-right": (
+        "prefix": "pr",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-top": (
-                "prefix": "pt",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-top": (
+        "prefix": "pt",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
-        "padding-bottom": (
-                "prefix": "pb",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-bottom": (
+        "prefix": "pb",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
     // Margin utilities
-        "margin": (
-                "prefix": "m",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin": (
+        "prefix": "m",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-left": (
-                "prefix": "ml",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-left": (
+        "prefix": "ml",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-right": (
-                "prefix": "mr",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-right": (
+        "prefix": "mr",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-top": (
-                "prefix": "mt",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-top": (
+        "prefix": "mt",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
-        "margin-bottom": (
-                "prefix": "mb",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-bottom": (
+        "prefix": "mb",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
     // New padding-x (left and right) - combine pl and pr
-        "padding-x": (
-                "prefix": "px",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-x": (
+        "prefix": "px",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
     // New padding-y (top and bottom) - combine pt and pb
-        "padding-y": (
-                "prefix": "py",
-                "values": (
-                        "0": 0,
-                        "1": $base-padding,
-                        "2": $base-padding * 2,
-                        "3": $base-padding * 4,
-                        "4": $base-padding * 6,
-                        "5": $base-padding * 8,
-                )
-        ),
+    "padding-y": (
+        "prefix": "py",
+        "values": (
+            "0": 0,
+            "1": $base-padding,
+            "2": $base-padding * 2,
+            "3": $base-padding * 4,
+            "4": $base-padding * 6,
+            "5": $base-padding * 8,
+        )
+    ),
 
     // New margin-x (left and right) - combine ml and mr
-        "margin-x": (
-                "prefix": "mx",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-x": (
+        "prefix": "mx",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
     // New margin-y (top and bottom) - combine mt and mb
-        "margin-y": (
-                "prefix": "my",
-                "values": (
-                        "0": 0,
-                        "1": $base-margin,
-                        "2": $base-margin * 2,
-                        "3": $base-margin * 4,
-                        "4": $base-margin * 6,
-                        "5": $base-margin * 8,
-                )
-        ),
+    "margin-y": (
+        "prefix": "my",
+        "values": (
+            "0": 0,
+            "1": $base-margin,
+            "2": $base-margin * 2,
+            "3": $base-margin * 4,
+            "4": $base-margin * 6,
+            "5": $base-margin * 8,
+        )
+    ),
 
     // Opacity
-        "opacity": (
-                "prefix": 'o',
-                "values": (
-                        "0": 0,
-                        "10": 0.1,
-                        "20": 0.2,
-                        "30": 0.3,
-                        "40": 0.4,
-                        "50": 0.5,
-                        "60": 0.6,
-                        "70": 0.7,
-                        "80": 0.8,
-                        "90": 0.9,
-                        "100": 1,
-                )
-        ),
+    "opacity": (
+        "prefix": 'o',
+        "values": (
+            "0": 0,
+            "10": 0.1,
+            "20": 0.2,
+            "30": 0.3,
+            "40": 0.4,
+            "50": 0.5,
+            "60": 0.6,
+            "70": 0.7,
+            "80": 0.8,
+            "90": 0.9,
+            "100": 1,
+        )
+    ),
 
     // Border-radius
-        "border-radius": (
-                "prefix": "br",
-                "values": (
-                        "none": 0,
-                        "default": $base-border-radius,
-                        "xs": math.div($base-border-radius, 4),
-                        "sm": math.div($base-border-radius, 2),
-                        "md": $base-border-radius * 2,
-                        "lg": $base-border-radius * 4,
-                        "full": 50%
-                )
-        ),
+    "border-radius": (
+        "prefix": "br",
+        "values": (
+            "none": 0,
+            "default": $base-border-radius,
+            "xs": math.div($base-border-radius, 4),
+            "sm": math.div($base-border-radius, 2),
+            "md": $base-border-radius * 2,
+            "lg": $base-border-radius * 4,
+            "full": 50%
+        )
+    ),
 
     // Displays
-        "display": (
-                "prefix": "d",
-                "values": (
-                        "none": none,
-                        "block": block,
-                        "flex": flex,
-                        "inline": inline,
-                        "inline-block": inline-block,
-                )
-        ),
+    "display": (
+        "prefix": "d",
+        "values": (
+            "none": none,
+            "block": block,
+            "flex": flex,
+            "inline": inline,
+            "inline-block": inline-block,
+        )
+    ),
 
     // Font sizes
-        "font-size": (
-                "prefix": "fz",
-                "values": (
-                        "xs": $xs-font-size,
-                        "sm": $sm-font-size,
-                        "md": $base-font-size,
-                        "lg": $lg-font-size,
-                        "xl": $xl-font-size,
-                        "xxl": $xxl-font-size,
-                )
+    "font-size": (
+        "prefix": "fz",
+        "values": (
+            "xs": $xs-font-size,
+            "sm": $sm-font-size,
+            "md": $base-font-size,
+            "lg": $lg-font-size,
+            "xl": $xl-font-size,
+            "xxl": $xxl-font-size,
         )
+    ),
+
+    // Justify content
+    "justify-content": (
+        "prefix": "justify",
+        "values": (
+            "center": center,
+            "start": start,
+            "end": end,
+            "between": space-between,
+            "around": space-around
+        )
+    )
 );
 
 
