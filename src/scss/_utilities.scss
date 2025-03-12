@@ -312,7 +312,29 @@ $utilities: (
             "wrap": wrap,
             "wrap-reverse": wrap-reverse
         )
-    )
+    ),
+
+    // Background attachment
+    "background-attachment": (
+        "prefix": "attachment",
+        "values": (
+            "scroll": scroll,
+            "fixed": fixed,
+            "local": local
+        )
+    ),
+
+    // Background position
+    "background-position": (
+        "prefix": "bg-position",
+        "values": (
+            "top": top,
+             "bottom": bottom,
+             "left": left,
+             "right": right,
+             "center": center
+        )
+    ),
 );
 
 
