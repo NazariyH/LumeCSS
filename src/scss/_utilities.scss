@@ -341,10 +341,6 @@ $utilities: (
 );
 
 
-// Define the state selectors (e.g. hover, active, focus, disabled)
-$state-selectors: hover, active, focus, disabled;
-
-
 // Helper function to handle shorthand properties (x, y) dynamically
 @function get-shorthand-property($property) {
     @if $property =="padding-x" {
