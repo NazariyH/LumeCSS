@@ -87,9 +87,33 @@ $utilities: (
         "values": map-merge($dimensions-values, ("screen": 100vw))
     ),
 
+    // Max width
+    "max-width": (
+        "prefix": "max-w",
+        "values": map-merge($dimensions-values, ("screen": 100vw))
+    ),
+
+    // Min width
+    "min-width": (
+        "prefix": "min-w",
+        "values": map-merge($dimensions-values, ("screen": 100vw))
+    ),
+
     // Height
     "height": (
         "prefix": "h",
+        "values":  map-merge($dimensions-values, ("screen": 100vh))
+    ),
+
+    // Max height
+    "max-height": (
+        "prefix": "max-h",
+        "values":  map-merge($dimensions-values, ("screen": 100vh))
+    ),
+
+    // Min height
+    "min-height": (
+        "prefix": "min-h",
         "values":  map-merge($dimensions-values, ("screen": 100vh))
     ),
 
