@@ -4,118 +4,139 @@ $utilities: (
     // Paddings
     "padding": (
         "prefix": "p",
+        "states": true,
         "values": $spacing-values
     ),
 
     "padding-left": (
         "prefix": "pl",
+        "states": true,
         "values": $spacing-values
     ),
 
     "padding-right": (
         "prefix": "pr",
+        "states": true,
         "values": $spacing-values
     ),
 
     "padding-top": (
         "prefix": "pt",
+        "states": true,
         "values": $spacing-values
     ),
 
     "padding-bottom": (
         "prefix": "pb",
+        "states": true,
         "values": $spacing-values
     ),
 
     // Margin utilities
     "margin": (
         "prefix": "m",
+        "states": true,
         "values": $spacing-values
     ),
 
     "margin-left": (
         "prefix": "ml",
+        "states": true,
         "values": $spacing-values
     ),
 
     "margin-right": (
         "prefix": "mr",
+        "states": true,
         "values": $spacing-values
     ),
 
     "margin-top": (
         "prefix": "mt",
+        "states": true,
         "values": $spacing-values
     ),
 
     "margin-bottom": (
         "prefix": "mb",
+        "states": true,
         "values": $spacing-values
     ),
 
     // New padding-x (left and right) - combine pl and pr
     "padding-x": (
         "prefix": "px",
+        "states": true,
         "values": $spacing-values
     ),
 
     // New padding-y (top and bottom) - combine pt and pb
     "padding-y": (
         "prefix": "py",
+        "states": true,
         "values": $spacing-values
     ),
 
     // New margin-x (left and right) - combine ml and mr
     "margin-x": (
         "prefix": "mx",
+        "states": true,
         "values": $spacing-values
     ),
 
     // New margin-y (top and bottom) - combine mt and mb
     "margin-y": (
         "prefix": "my",
+        "states": true,
         "values": $spacing-values
     ),
 
     // Width
     "width": (
         "prefix": "w",
+        "states": true,
         "values": map-merge($dimensions-values, ("screen": 100vw))
     ),
 
     // Max width
     "max-width": (
         "prefix": "max-w",
+        "states": true,
         "values": map-merge($dimensions-values, ("screen": 100vw))
     ),
 
     // Min width
     "min-width": (
         "prefix": "min-w",
+        "states": true,
         "values": map-merge($dimensions-values, ("screen": 100vw))
     ),
 
     // Height
     "height": (
         "prefix": "h",
+        "states": true,
         "values":  map-merge($dimensions-values, ("screen": 100vh))
     ),
 
     // Max height
     "max-height": (
         "prefix": "max-h",
+        "states": true,
         "values":  map-merge($dimensions-values, ("screen": 100vh))
     ),
 
     // Min height
     "min-height": (
         "prefix": "min-h",
+        "states": true,
         "values":  map-merge($dimensions-values, ("screen": 100vh))
     ),
 
     // Opacity
     "opacity": (
         "prefix": 'o',
+        "states": true,
         "values": (
             "0": 0,
             "10": 0.1,
@@ -134,6 +155,7 @@ $utilities: (
     // Border-radius
     "border-radius": (
         "prefix": "br",
+        "states": true,
         "values": (
             "none": 0,
             "default": $base-border-radius,
@@ -148,6 +170,7 @@ $utilities: (
     // Font sizes
     "font-size": (
         "prefix": "fz",
+        "states": true,
         "values": (
             "xs": $xs-font-size,
             "sm": $sm-font-size,
@@ -161,6 +184,7 @@ $utilities: (
     // Font weight
     'font-weight': (
         "prefix": 'font',
+        "states": true,
         "values": (
             "thin": 100,
             "extralight": 200,
@@ -176,6 +200,7 @@ $utilities: (
     // Font style
     "font-style": (
         "prefix": "font-style",
+        "states": true,
         "values": (
             "normal": normal,
             "italic": italic,
@@ -186,6 +211,7 @@ $utilities: (
     // Letter spacing
     "letter-spacing": (
         "prefix": "ls",
+        "states": true,
         "values": (
             "0": $letter-spacing-0,
             "1": $letter-spacing-1,
@@ -200,6 +226,7 @@ $utilities: (
     // Cursor
     "cursor": (
         "prefix": 'cursor',
+        "states": false,
         "values": (
             "auto": auto,
             "default": default,
@@ -220,6 +247,7 @@ $utilities: (
     // Justify content
     "justify-content": (
         "prefix": "justify",
+        "states": false,
         "values": (
             "center": center,
             "start": start,
@@ -232,6 +260,7 @@ $utilities: (
     // Align items
     "align-items": (
         "prefix": "align",
+        "states": false,
         "values": (
             "center": center,
             "start": start,
@@ -242,6 +271,7 @@ $utilities: (
     // Flex direction
     "flex-direction": (
         "prefix": 'flex',
+        "states": false,
         "values": (
             "row": row,
             "row-reverse": row-reverse,
@@ -253,6 +283,7 @@ $utilities: (
     // Flex wrap
     "flex-wrap": (
         "prefix": "flex",
+        "states": false,
         "values": (
             "nowrap": nowrap,
             "wrap": wrap,
@@ -263,6 +294,7 @@ $utilities: (
     // Background attachment
     "background-attachment": (
         "prefix": "attachment",
+        "states": false,
         "values": (
             "scroll": scroll,
             "fixed": fixed,
@@ -273,6 +305,7 @@ $utilities: (
     // Background position
     "background-position": (
         "prefix": "bg",
+        "states": false,
         "values": (
             "top": top,
             "bottom": bottom,
@@ -285,6 +318,7 @@ $utilities: (
     // Background repeat
     "background-repeat": (
         "prefix": "bg",
+        "states": false,
         "values": (
             "repeat": repeat,
             "repeat-x": repeat-x,
@@ -298,12 +332,17 @@ $utilities: (
     // Background size
     "background-size": (
         "prefix": "bg",
+        "states": false,
         "values": (
             "cover": cover,
             "contain": contain
         )
     ),
 );
+
+
+// Define the state selectors (e.g. hover, active, focus, disabled)
+$state-selectors: hover, active, focus, disabled;
 
 
 // Helper function to handle shorthand properties (x, y) dynamically
@@ -333,6 +372,7 @@ $utilities: (
 // Iterate over each property-map pair in the $utilities map
 @each $property, $map in $utilities {
     $prefix: map-get($map, "prefix"); // Define prefix variable
+    $states: map-get($map, "states"); // Define state variable
     $values: map-get($map, "values"); // Define a values variable with a map of values
 
     // Iterate over each key-val pair in the $values map
@@ -344,11 +384,35 @@ $utilities: (
                 #{$property}: #{$val};
             }
 
+
+            // Check if the property can have states
+            @if $states {
+                // Iterate over each state value to generate states for each property
+                @each $state in $state-selectors {
+                    // Create special classes for each state
+                    .#{$state}\:#{$prefix}:#{$state} {
+                        #{$property}: #{$val} !important;
+                    }
+                }
+            }
+
+
             // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
             @each $bp_key, $bp-val in $breakpoints {
                 @media (min-width: $bp_val) {
                     .#{$bp_key}\:#{$prefix} {
                         #{$property}: #{$val} !important;
+                    }
+
+                    // Check if the property can have states
+                    @if $states {
+                        // Iterate over each state value to generate states for each property
+                        @each $state in $state-selectors {
+                            // Create special classes for each state
+                            .#{$bp_key}\:#{$state}\:#{$prefix}:#{$state} {
+                                #{$property}: #{$val} !important;
+                            }
+                        }
                     }
                 }
             }
@@ -372,6 +436,31 @@ $utilities: (
                 }
             }
 
+
+            // Check if the property can have states
+            @if $states {
+                // Iterate over each state value to generate states for each property
+                @each $state in $state-selectors {
+                    // Create special classes for each state
+                    .#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                        // Get the shorthand properties if it's one of the x/y shorthand types
+                        $expanded-properties: get-shorthand-property($property);
+
+                        // Apply the rule for expanded properties or the regular property
+                        @if $expanded-properties !=$property {
+                            @each $expanded-property in $expanded-properties {
+                                #{$expanded-property}: #{$val};
+                            }
+                        }
+
+                        @else {
+                            #{$property}: #{$val};
+                        }
+                    }
+                }
+            }
+
+
             // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
             @each $bp_key, $bp-val in $breakpoints {
                 @media (min-width: $bp_val) {
@@ -388,6 +477,30 @@ $utilities: (
 
                         @else {
                             #{$property}: #{$val} !important;
+                        }
+                    }
+
+
+                    // Check if the property can have states
+                    @if $states {
+                        // Iterate over each state value to generate states for each property
+                        @each $state in $state-selectors {
+                            // Create special classes for each state
+                            .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                                // Get the shorthand properties if it's one of the x/y shorthand types
+                                $expanded-properties: get-shorthand-property($property);
+
+                                // Apply the rule for expanded properties or the regular property
+                                @if $expanded-properties !=$property {
+                                    @each $expanded-property in $expanded-properties {
+                                        #{$expanded-property}: #{$val} !important;
+                                    }
+                                }
+
+                                @else {
+                                    #{$property}: #{$val} !important;
+                                }
+                            }
                         }
                     }
                 }
