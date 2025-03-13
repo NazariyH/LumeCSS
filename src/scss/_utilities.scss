@@ -322,6 +322,34 @@ $utilities: (
             "contain": contain
         )
     ),
+
+    // Top
+    "top": (
+        "prefix": "top",
+        "states": false,
+        "values": $positioning-spacing-map
+    ),
+
+    // Bottom
+    "bottom": (
+        "prefix": "bottom",
+        "states": false,
+        "values": $positioning-spacing-map
+    ),
+
+    // Left
+    "left": (
+        "prefix": "left",
+        "states": false,
+        "values": $positioning-spacing-map
+    ),
+
+    // Right
+    "right": (
+        "prefix": "right",
+        "states": false,
+        "values": $positioning-spacing-map
+    ),
 );
 
 
