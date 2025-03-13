@@ -8,175 +8,77 @@ $utilities: (
     // Paddings
     "padding": (
         "prefix": "p",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     "padding-left": (
         "prefix": "pl",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     "padding-right": (
         "prefix": "pr",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     "padding-top": (
         "prefix": "pt",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     "padding-bottom": (
         "prefix": "pb",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     // Margin utilities
     "margin": (
         "prefix": "m",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     "margin-left": (
         "prefix": "ml",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     "margin-right": (
         "prefix": "mr",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     "margin-top": (
         "prefix": "mt",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     "margin-bottom": (
         "prefix": "mb",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     // New padding-x (left and right) - combine pl and pr
     "padding-x": (
         "prefix": "px",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     // New padding-y (top and bottom) - combine pt and pb
     "padding-y": (
         "prefix": "py",
-        "values": (
-            "0": 0,
-            "1": $base-padding,
-            "2": $base-padding * 2,
-            "3": $base-padding * 4,
-            "4": $base-padding * 6,
-            "5": $base-padding * 8,
-        )
+        "values": $spacing-values
     ),
 
     // New margin-x (left and right) - combine ml and mr
     "margin-x": (
         "prefix": "mx",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     // New margin-y (top and bottom) - combine mt and mb
     "margin-y": (
         "prefix": "my",
-        "values": (
-            "0": 0,
-            "1": $base-margin,
-            "2": $base-margin * 2,
-            "3": $base-margin * 4,
-            "4": $base-margin * 6,
-            "5": $base-margin * 8,
-        )
+        "values": $spacing-values
     ),
 
     "width": (
