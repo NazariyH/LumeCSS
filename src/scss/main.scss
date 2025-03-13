@@ -7,13 +7,14 @@
 
 // Base & layout
 @import 'breakpoints';
+@import 'layout';
 @import 'grid';
 
 // Colors
 @import 'colors';
 
 // Headings (h1, h2, h3, etc)
-@import 'headings';
+@import 'components/headings';
 
 // Components
 @import './components/button';
