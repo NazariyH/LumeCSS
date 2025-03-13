@@ -1,0 +1,10 @@
+$layout-positions: static, relative, absolute, fixed, sticky;
+
+
+// Iterate over each position property in the $layout-positions
+@each $val in $layout-positions {
+    // Create classes for each CSS positioning property
+    .#{$val} {
+        position: $val !important;
+    }
+}
