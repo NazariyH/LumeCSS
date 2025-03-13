@@ -154,17 +154,9 @@ $utilities: (
 
     // Border-radius
     "border-radius": (
-        "prefix": "br",
+        "prefix": "rounded",
         "states": true,
-        "values": (
-            "none": 0,
-            "default": $base-border-radius,
-            "xs": math.div($base-border-radius, 4),
-            "sm": math.div($base-border-radius, 2),
-            "md": $base-border-radius * 2,
-            "lg": $base-border-radius * 4,
-            "full": 50%
-        )
+        "values": $border-radius-values
     ),
 
     // Font sizes
