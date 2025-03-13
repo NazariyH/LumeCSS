@@ -1,10 +1,19 @@
 $layout-positions: static, relative, absolute, fixed, sticky;
-
+$layout-displays: none, block, flex, inline, inline-block;
 
 // Iterate over each position property in the $layout-positions
 @each $val in $layout-positions {
     // Create classes for each CSS positioning property
     .#{$val} {
         position: $val !important;
+    }
+}
+
+
+// Iterate over each display property in the $layout-displays
+@each $val in $layout-displays {
+    // Create classes for each CSS display property
+    .#{$val} {
+        display: $val !important;
     }
 }
