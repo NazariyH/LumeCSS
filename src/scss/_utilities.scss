@@ -452,6 +452,10 @@ $utilities: (
 // Define a list of text decoration values
 $text-decoration-values: underline, overline, line-through, no-underline;
 
+// Define a list of text transform values
+$text-transform-values: uppercase, lowercase, capitalize, normal-case;
+
+
 
 // Iterate over each text-decoration value in $text-decoration-values
 @each $key in $text-decoration-values {
@@ -517,6 +521,70 @@ $text-decoration-values: underline, overline, line-through, no-underline;
     }
 }
 
+
+// Iterate over each text-transform value in $text-transform-values
+@each $key in $text-transform-values {
+    // Generate class for each value
+    @if $key == "normal-case" {
+        // Check if the $ket value is normal-case
+        .#{$key} {
+            text-transform: none;
+        }
+    } @else {
+        .#{$key} {
+            text-transform: $key;
+        }
+    }
+
+
+    // Iterate over each state value to generate states for each property
+    @each $state in $state-selectors {
+        @if $key == "normal-case" {
+            // Check if the $ket value is normal-case
+            .#{$state}\:#{$key}:#{$state} {
+                text-transform: none !important;
+            }
+        } @else {
+            .#{$state}\:#{$key}:#{$state} {
+                text-transform: $key !important;
+            }
+        }
+    }
+
+
+    // Iterate over each bp_key-bp_val pair to generate classes for each breakpoint
+    @each $bp_key, $bp-val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Generate class for each value
+            @if $key == "normal-case" {
+                // Check if the $ket value is normal-case
+                .#{$bp_key}\:#{$key} {
+                    text-transform: none;
+                }
+            } @else {
+                .#{$bp_key}\:#{$key} {
+                    text-transform: $key;
+                }
+            }
+
+
+            // Iterate over each state value to generate states for each property
+            @each $state in $state-selectors {
+                // Create special classes for each state
+                @if $key == "normal-case" {
+                    // Check if the $ket value is normal-case
+                    .#{$bp_key}\:#{$state}\:#{$key}:#{$state} {
+                        text-transform: none !important;
+                    }
+                } @else {
+                    .#{$bp_key}\:#{$state}\:#{$key}:#{$state} {
+                        text-transform: $key !important;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 // Helper function to handle shorthand properties (x, y) dynamically
