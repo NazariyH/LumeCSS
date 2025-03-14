@@ -350,6 +350,19 @@ $utilities: (
         "states": false,
         "values": $positioning-spacing-map
     ),
+
+    // Object-fit
+    "object-fit": (
+        "prefix": "object",
+        "states": false,
+        "values": (
+            "contain": contain,
+            "cover": cover,
+            "fill": fill,
+            "none": none,
+            "scale-down": scale-down
+        )
+    )
 );
 
 
