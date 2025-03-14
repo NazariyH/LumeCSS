@@ -449,6 +449,76 @@ $utilities: (
 );
 
 
+// Define a list of text decoration values
+$text-decoration-values: underline, overline, line-through, no-underline;
+
+
+// Iterate over each text-decoration value in $text-decoration-values
+@each $key in $text-decoration-values {
+    // Generate class for each value
+    @if $key == "no-underline" {
+        // Check if the $ket value is no-underline
+        .#{$key} {
+            text-decoration: none;
+        }
+    } @else {
+        .#{$key} {
+            text-decoration: $key;
+        }
+    }
+
+
+    // Iterate over each state value to generate states for each property
+    @each $state in $state-selectors {
+        @if $key == "no-underline" {
+            // Check if the $ket value is no-underline
+            .#{$state}\:#{$key}:#{$state} {
+                text-decoration: none !important;
+            }
+        } @else {
+            .#{$state}\:#{$key}:#{$state} {
+                text-decoration: $key !important;
+            }
+        }
+    }
+
+
+    // Iterate over each bp_key-bp_val pair to generate classes for each breakpoint
+    @each $bp_key, $bp-val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Generate class for each value
+            @if $key == "no-underline" {
+                // Check if the $ket value is no-underline
+                .#{$bp_key}\:#{$key} {
+                    text-decoration: none;
+                }
+            } @else {
+                .#{$bp_key}\:#{$key} {
+                    text-decoration: $key;
+                }
+            }
+
+
+            // Iterate over each state value to generate states for each property
+            @each $state in $state-selectors {
+                // Create special classes for each state
+                @if $key == "no-underline" {
+                    // Check if the $ket value is no-underline
+                    .#{$bp_key}\:#{$state}\:#{$key}:#{$state} {
+                        text-decoration: none !important;
+                    }
+                } @else {
+                    .#{$bp_key}\:#{$state}\:#{$key}:#{$state} {
+                        text-decoration: $key !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 // Helper function to handle shorthand properties (x, y) dynamically
 @function get-shorthand-property($property) {
     @if $property =="padding-x" {
@@ -501,7 +571,7 @@ $utilities: (
             }
 
 
-            // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+            // Iterate over each bp_key-bp_val pair to generate classes for each breakpoint
             @each $bp_key, $bp-val in $breakpoints {
                 @media (min-width: $bp_val) {
                     .#{$bp_key}\:#{$prefix} {
@@ -565,7 +635,7 @@ $utilities: (
             }
 
 
-            // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+            // Iterate over each bp_key-bp_val pair to generate classes for each breakpoint
             @each $bp_key, $bp-val in $breakpoints {
                 @media (min-width: $bp_val) {
                     .#{$bp_key}\:#{$prefix}-#{$key} {
