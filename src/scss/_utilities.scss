@@ -438,6 +438,7 @@ $utilities: (
     // Top
     "top": (
         "prefix": "top",
+        "negative_values": true,
         "states": false,
         "values": $positioning-spacing-map
     ),
@@ -445,6 +446,7 @@ $utilities: (
     // Bottom
     "bottom": (
         "prefix": "bottom",
+        "negative_values": true,
         "states": false,
         "values": $positioning-spacing-map
     ),
@@ -452,6 +454,7 @@ $utilities: (
     // Left
     "left": (
         "prefix": "left",
+        "negative_values": true,
         "states": false,
         "values": $positioning-spacing-map
     ),
@@ -459,6 +462,7 @@ $utilities: (
     // Right
     "right": (
         "prefix": "right",
+        "negative_values": true,
         "states": false,
         "values": $positioning-spacing-map
     ),
@@ -467,8 +471,8 @@ $utilities: (
     "z-index": (
         "prefix": "z",
         "states": false,
+        "negative_values": true,
         "values": (
-            "auto": auto,
             "1": 1,
             "2": 2,
             "3": 3,
@@ -479,16 +483,6 @@ $utilities: (
             "8": 8,
             "9": 9,
             "10": 10,
-            "-1": -1,
-            "-2": -2,
-            "-3": -3,
-            "-4": -4,
-            "-5": -5,
-            "-6": -6,
-            "-7": -7,
-            "-8": -8,
-            "-9": -9,
-            "-10": -10
         )
     ),
 
@@ -727,7 +721,8 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
 @each $property, $map in $utilities {
     $prefix: map-get($map, "prefix"); // Define prefix variable
     $states: map-get($map, "states"); // Define state variable
-    $values: map-get($map, "values"); // Define a values variable with a map of values
+    $values: map-get($map, "values"); // Define values variable with a map of values
+    $negative_values: map-get($map, "negative_values"); // Define negative variable
 
     // Iterate over each key-val pair in the $values map
     @each $key, $val in $values {
@@ -737,7 +732,6 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
             .#{$prefix} {
                 #{$property}: #{$val};
             }
-
 
             // Check if the property can have states
             @if $states {
@@ -790,6 +784,25 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
                 }
             }
 
+            // Check if the property has negative values
+            @if ($negative_values && $val != "auto" && $val is number) {
+                .-#{$prefix}-#{$key} {
+                    // Get the shorthand properties if it's one of the x/y shorthand types
+                    $expanded-properties: get-shorthand-property($property);
+
+                    // Apply the rule for expanded properties or the regular property
+                    @if $expanded-properties !=$property {
+                        @each $expanded-property in $expanded-properties {
+                            #{$expanded-property}: -#{$val};
+                        }
+                    }
+
+                    @else {
+                        #{$property}: -#{$val};
+                    }
+                }
+            }
+
 
             // Check if the property can have states
             @if $states {
@@ -809,6 +822,26 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
 
                         @else {
                             #{$property}: #{$val};
+                        }
+                    }
+
+                    // Check if the property has negative values
+                    @if ($negative_values && $val != "auto" && $val is number) {
+                        // Create special classes for each state
+                        .#{$state}\:-#{$prefix}-#{$key}:#{$state} {
+                            // Get the shorthand properties if it's one of the x/y shorthand types
+                            $expanded-properties: get-shorthand-property($property);
+
+                            // Apply the rule for expanded properties or the regular property
+                            @if $expanded-properties !=$property {
+                                @each $expanded-property in $expanded-properties {
+                                    #{$expanded-property}: -#{$val};
+                                }
+                            }
+
+                            @else {
+                                #{$property}: -#{$val};
+                            }
                         }
                     }
                 }
@@ -835,6 +868,26 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
                     }
 
 
+                    // Check if the property has negative values
+                    @if ($negative_values && $val != "auto" && $val is number) {
+                        .#{$bp_key}\:-#{$prefix}-#{$key} {
+                            // Get the shorthand properties if it's one of the x/y shorthand types
+                            $expanded-properties: get-shorthand-property($property);
+
+                            // Apply the rule for expanded properties or the regular property
+                            @if $expanded-properties !=$property {
+                                @each $expanded-property in $expanded-properties {
+                                    #{$expanded-property}: -#{$val} !important;
+                                }
+                            }
+
+                            @else {
+                                #{$property}: -#{$val} !important;
+                            }
+                        }
+                    }
+
+
                     // Check if the property can have states
                     @if $states {
                         // Iterate over each state value to generate states for each property
@@ -853,6 +906,26 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
 
                                 @else {
                                     #{$property}: #{$val} !important;
+                                }
+                            }
+
+                            // Check if the property has negative values
+                            @if ($negative_values && $val != "auto" && $val is number) {
+                                // Create special classes for each state
+                                .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
+                                    // Get the shorthand properties if it's one of the x/y shorthand types
+                                    $expanded-properties: get-shorthand-property($property);
+
+                                    // Apply the rule for expanded properties or the regular property
+                                    @if $expanded-properties !=$property {
+                                        @each $expanded-property in $expanded-properties {
+                                            #{$expanded-property}: -#{$val} !important;
+                                        }
+                                    }
+
+                                    @else {
+                                        #{$property}: -#{$val} !important;
+                                    }
                                 }
                             }
                         }
