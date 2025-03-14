@@ -380,6 +380,43 @@ $utilities: (
             "right-bottom": right bottom,
         )
     ),
+
+    // Overflow, overflow-x overflow-y
+    "overflow": (
+        "prefix": "overflow",
+        "states": false,
+        "values": (
+            "auto": auto,
+            "hidden": hidden,
+            "clip": clip,
+            "visible": visible,
+            "scroll": scroll,
+        )
+    ),
+
+    "overflow-x": (
+        "prefix": "overflow-x",
+        "states": false,
+        "values": (
+            "auto": auto,
+            "hidden": hidden,
+            "clip": clip,
+            "visible": visible,
+            "scroll": scroll,
+        )
+    ),
+
+    "overflow-y": (
+        "prefix": "overflow-y",
+        "states": false,
+        "values": (
+            "auto": auto,
+            "hidden": hidden,
+            "clip": clip,
+            "visible": visible,
+            "scroll": scroll,
+        )
+    ),
 );
 
 
