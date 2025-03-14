@@ -1,171 +1,187 @@
-// Iterate over each key-value pair in the $color-palette map
-@each $key, $val in $color-palette {
+/* Base colors */
 
-    /* Create a class for each color, where $key is the class name
-    and $val is the color value. */
+// Iterate over each key-val pair in the $base-color-palette
+@each $key, $val in $base-color-palette {
 
-    // Generate a class for text colors
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+        .text-#{$key}-#{$i * 100} {
+            color: $shade;
+        }
+
+        .bg-#{$key}-#{$i * 100} {
+            background-color: $shade;
+            color: get-contrast-color($shade);
+        }
+
+        .border-#{$key}-#{$i * 100} {
+            border-color: $shade;
+        }
+
+        .outline-#{$key}-#{$i * 100} {
+            outline-color: $shade;
+        }
+
+
+        // Iterate over each $state in the $state-selectors
+        @each $state in $state-selectors {
+            // Generate classes for each state value
+            .#{$state}\:text-#{$key}-#{$i * 100}:#{$state} {
+                color: $shade;
+            }
+
+            .#{$state}\:bg-#{$key}-#{$i * 100}:#{$state} {
+                background-color: $shade;
+                color: get-contrast-color($shade);
+            }
+
+            .#{$state}\:border-#{$key}-#{$i * 100}:#{$state} {
+                border-color: $shade;
+            }
+
+            .#{$state}\:outline-#{$key}-#{$i * 100}:#{$state} {
+                outline-color: $shade;
+            }
+        }
+
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media(min-width: $bp_val) {
+                .#{$bp_key}\:text-#{$key}-#{$i * 100} {
+                    color: $shade;
+                }
+
+                .#{$bp_key}\:bg-#{$key}-#{$i * 100} {
+                    background-color: $shade;
+                    color: get-contrast-color($shade);
+                }
+
+                .#{$bp_key}\:border-#{$key}-#{$i * 100} {
+                    border-color: $shade;
+                }
+
+                .#{$bp_key}\:outline-#{$key}-#{$i * 100} {
+                    outline-color: $shade;
+                }
+
+
+                // Iterate over each $state in the $state-selectors
+                @each $state in $state-selectors {
+                    // Generate classes for each state value
+                    .#{$bp_key}\:#{$state}\:text-#{$key}-#{$i * 100}:#{$state} {
+                        color: $shade;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:bg-#{$key}-#{$i * 100}:#{$state} {
+                        background-color: $shade;
+                        color: get-contrast-color($shade);
+                    }
+
+                    .#{$bp_key}\:#{$state}\:border-#{$key}-#{$i * 100}:#{$state} {
+                        border-color: $shade;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:outline-#{$key}-#{$i * 100}:#{$state} {
+                        outline-color: $shade;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+/* Theme colors */
+
+// Iterate over each key-val pair in the $theme-color-palette
+@each $key, $val in $theme-color-palette {
+    // Generate classes for each theme color
     .text-#{$key} {
         color: $val;
     }
 
-    // Generate a class for background colors
     .bg-#{$key} {
         background-color: $val;
         color: get-contrast-color($val);
     }
 
+    .border-#{$key} {
+        border-color: $val;
+    }
 
-    // Iterate over each state value to generate states for each property
+    .outline-#{$key} {
+        outline-color: $val;
+    }
+
+
+    // Iterate over each state in the $state-selectors
     @each $state in $state-selectors {
-        // Generate a class for text colors
+        // Generate theme color classes for each state
         .#{$state}\:text-#{$key}:#{$state} {
             color: $val;
         }
 
-        // Generate a class for background colors
         .#{$state}\:bg-#{$key}:#{$state} {
             background-color: $val;
             color: get-contrast-color($val);
         }
+
+        .#{$state}\:border-#{$key}:#{$state} {
+            border-color: $val;
+        }
+
+        .#{$state}\:outline-#{$key}:#{$state} {
+            outline-color: $val;
+        }
     }
 
 
-    // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
-    @each $bp_key, $bp-val in $breakpoints {
-        @media (min-width: $bp_val) {
-            // Generate a class for text colors
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media(min-width: $bp_val) {
+            // Generate classes for each theme color
             .#{$bp_key}\:text-#{$key} {
-                color: $val !important;
+                color: $val;
             }
 
-            // Generate a class for background colors
             .#{$bp_key}\:bg-#{$key} {
-                background-color: $val !important;
-                color: get-contrast-color($val) !important;
+                background-color: $val;
+                color: get-contrast-color($val);
+            }
+
+            .#{$bp_key}\:border-#{$key} {
+                border-color: $val;
+            }
+
+            .#{$bp_key}\:outline-#{$key} {
+                outline-color: $val;
             }
 
 
-            // Iterate over each state value to generate states for each property
+            // Iterate over each state in the $state-selectors
             @each $state in $state-selectors {
-                // Generate a class for text colors
+                // Generate theme color classes for each state
                 .#{$bp_key}\:#{$state}\:text-#{$key}:#{$state} {
-                    color: $val !important;
+                    color: $val;
                 }
 
-                // Generate a class for background colors
                 .#{$bp_key}\:#{$state}\:bg-#{$key}:#{$state} {
-                    background-color: $val !important;
-                    color: get-contrast-color($val) !important;
-                }
-            }
-        }
-    }
-
-
-    @for $i from 1 through 9 {
-        // Light variation of the text color
-        .text-#{$key}-light-#{$i} {
-            color: mix(white, $val, $i * 10);
-        }
-
-        // Dark variation of the text color
-        .text-#{$key}-dark-#{$i} {
-            color: mix(black, $val, $i * 10);
-        }
-
-
-        // Light variation of the background color
-        .bg-#{$key}-light-#{$i} {
-            background-color: mix(white, $val, $i * 10);
-            color: get-contrast-color(mix(white, $val, $i * 10));
-        }
-
-        // Dark variation of the background color
-        .bg-#{$key}-dark-#{$i} {
-            background-color: mix(black, $val, $i * 10);
-            color: get-contrast-color(mix(black, $val, $i * 10));
-        }
-
-
-        // Iterate over each state value to generate states for each property
-        @each $state in $state-selectors {
-            // Light variation of the text color
-            .#{$state}\:text-#{$key}-light-#{$i}:#{$state} {
-                color: mix(white, $val, $i * 10);
-            }
-
-            // Dark variation of the text color
-            .#{$state}\:text-#{$key}-dark-#{$i}:#{$state} {
-                color: mix(black, $val, $i * 10);
-            }
-
-
-            // Light variation of the background color
-            .#{$state}\:bg-#{$key}-light-#{$i}:#{$state} {
-                background-color: mix(white, $val, $i * 10);
-                color: get-contrast-color(mix(white, $val, $i * 10));
-            }
-
-            // Dark variation of the background color
-            .#{$state}\:bg-#{$key}-dark-#{$i}:#{$state} {
-                background-color: mix(black, $val, $i * 10);
-                color: get-contrast-color(mix(black, $val, $i * 10));
-            }
-        }
-
-
-        // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
-        @each $bp_key, $bp_val in $breakpoints {
-            @media (min-width: $bp_val) {
-                // Light variation of the text color
-                .#{$bp_key}\:text-#{$key}-light-#{$i} {
-                    color: mix(white, $val, $i * 10) !important;
+                    background-color: $val;
+                    color: get-contrast-color($val);
                 }
 
-                // Dark variation of the text color
-                .#{$bp_key}\:text-#{$key}-dark-#{$i} {
-                    color: mix(black, $val, $i * 10) !important;
+                .#{$bp_key}\:#{$state}\:border-#{$key}:#{$state} {
+                    border-color: $val;
                 }
 
-
-                // Light variation of the background color
-                .#{$bp_key}\:bg-#{$key}-light-#{$i} {
-                    background-color: mix(white, $val, $i * 10) !important;
-                    color: get-contrast-color(mix(white, $val, $i * 10)) !important;
-                }
-
-                // Dark variation of the background color
-                .#{$bp_key}\:bg-#{$key}-dark-#{$i} {
-                    background-color: mix(black, $val, $i * 10) !important;
-                    color: get-contrast-color(mix(black, $val, $i * 10)) !important;
-                }
-
-
-                // Iterate over each state value to generate states for each property
-                @each $state in $state-selectors {
-                    // Light variation of the text color
-                    .#{$bp_key}\:#{$state}\:text-#{$key}-light-#{$i}:#{$state} {
-                        color: mix(white, $val, $i * 10) !important;
-                    }
-
-                    // Dark variation of the text color
-                    .#{$bp_key}\:#{$state}\:text-#{$key}-dark-#{$i}:#{$state} {
-                        color: mix(black, $val, $i * 10) !important;
-                    }
-
-
-                    // Light variation of the background color
-                    .#{$bp_key}\:#{$state}\:bg-#{$key}-light-#{$i}:#{$state} {
-                        background-color: mix(white, $val, $i * 10) !important;
-                        color: get-contrast-color(mix(white, $val, $i * 10)) !important;
-                    }
-
-                    // Dark variation of the background color
-                    .#{$bp_key}\:#{$state}\:bg-#{$key}-dark-#{$i}:#{$state} {
-                        background-color: mix(black, $val, $i * 10) !important;
-                        color: get-contrast-color(mix(black, $val, $i * 10)) !important;
-                    }
+                .#{$bp_key}\:#{$state}\:outline-#{$key}:#{$state} {
+                    outline-color: $val;
                 }
             }
         }
