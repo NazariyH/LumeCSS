@@ -6,15 +6,15 @@
     $lightness: lightness($bg-color);
 
     // Check if the background color is lime-green or yellow and return dark color
-    @if $bg-color == map-get($color-palette, "lime-green") or $bg-color == map-get($color-palette, "yellow") {
-        @return map-get($color-palette, "dark");
+    @if $bg-color == map-get($theme-color-palette, "lime-green") or $bg-color == map-get($theme-color-palette, "yellow") {
+        @return map-get($theme-color-palette, "dark");
     }
 
     // Check the brightness to return the best contrast color
     @if $lightness < 55 {
-        @return map-get($color-palette, "light");
+        @return map-get($theme-color-palette, "light");
     } @else {
-        @return map-get($color-palette, "dark");
+        @return map-get($theme-color-palette, "dark");
     }
 }
 
@@ -31,5 +31,25 @@
         @return lighten($color, 10);
     } @else {
         @return darken($color, 10);
+    }
+}
+
+
+@function generate-shade($color, $percentage, $direction) {
+    // Function to generate lightened or darkened shade based on parameters
+
+    // Check if the direction is 'lighten', apply the lighten function
+    @if $direction == 'lighten' {
+        @return mix(white, $color, $percentage);
+    }
+
+    // Check if the direction is 'darken', apply the darken function
+    @else if $direction == 'darken' {
+        @return mix(black, $color, $percentage);
+    }
+
+    // Error handling if an invalid direction is provided
+    @else {
+        @error "Invalid direction! Use 'lighten' or 'darken'.";
     }
 }
