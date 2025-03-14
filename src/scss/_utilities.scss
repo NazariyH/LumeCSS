@@ -275,6 +275,118 @@ $utilities: (
         )
     ),
 
+    // Border-width
+    "border-width": (
+        "prefix": "border",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-inline-width
+    "border-inline-width": (
+        "prefix": "border-x",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-block-width
+    "border-block-width": (
+        "prefix": "border-y",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-top-width
+    "border-top-width": (
+        "prefix": "border-t",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-bottom-width
+    "border-bottom-width": (
+        "prefix": "border-b",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-left-width
+    "border-left-width": (
+        "prefix": "border-l",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-right-width
+    "border-right-width": (
+        "prefix": "border-r",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Border-style
+    "border-style": (
+        "prefix": "border",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Border-inline-style
+    "border-inline-style": (
+        "prefix": "border-x",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Border-block-style
+    "border-block-style": (
+        "prefix": "border-y",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Border-top-style
+    "border-top-style": (
+        "prefix": "border-t",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Border-bottom-style
+    "border-bottom-style": (
+        "prefix": "border-b",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Border-left-style
+    "border-left-style": (
+        "prefix": "border-l",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Border-right-style
+    "border-right-style": (
+        "prefix": "border-r",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
+    // Outline-width
+    "outline-width": (
+        "prefix": "outline",
+        "states": true,
+        "values": $border-outline-widths
+    ),
+
+    // Outline-styles
+    "outline-style": (
+        "prefix": "outline",
+        "states": true,
+        "values": $border-outline-styles
+    ),
+
     // Background attachment
     "background-attachment": (
         "prefix": "attachment",
