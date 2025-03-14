@@ -362,7 +362,24 @@ $utilities: (
             "none": none,
             "scale-down": scale-down
         )
-    )
+    ),
+
+    // Object-position
+    "object-position": (
+        "prefix": "object",
+        "states": false,
+        "values": (
+            "top": top,
+            "bottom": bottom,
+            "left": left,
+            "right": right,
+            "center": center,
+            "left-top": left top,
+            "left-bottom": left bottom,
+            "right-top": right top,
+            "right-bottom": right bottom,
+        )
+    ),
 );
 
 
