@@ -1,4 +1,4 @@
-@mixin btn($color: map-get($color-palette, 'dark')) {
+@mixin btn($color: map-get($theme-color-palette, 'dark')) {
     // Define base styles for a button
 
     cursor: pointer;
@@ -18,10 +18,9 @@
 }
 
 
-// Iterate over each key-val pair in the $color-palette map
-@each $key, $val in $color-palette {
-
-    // Create classes for classic buttons
+// Iterate over each key-val pair in the $theme-color-palette map
+@each $key, $val in $theme-color-palette {
+    // Create classes for theme buttons
     .btn-#{$key} {
         @include btn($val);
 
@@ -41,6 +40,7 @@
             color: get-contrast-color($val);
         }
     }
+
 
     // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
     @each $bp_key, $bp_val in $breakpoints {
@@ -63,6 +63,67 @@
                 &:hover {
                     background-color: $val !important;
                     color: get-contrast-color($val) !important;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// Iterate over each key-val pair in the $base-color-palette map
+@each $key, $val in $base-color-palette {
+
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+
+        // Create classes for classic buttons
+        .btn-#{$key}-#{$i*100} {
+            @include btn($shade);
+
+            &:hover {
+                background-color: get-hover-color($shade);
+            }
+        }
+
+        // Create classes for outlined buttons
+        .btn-outline-#{$key}-#{$i*100} {
+            @include btn(transparent);
+            border: $base-border-sickness solid $shade;
+            color: $val;
+
+            &:hover {
+                background-color: $shade;
+                color: get-contrast-color($shade);
+            }
+        }
+
+        // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                // Create classes for classic buttons
+                .#{$bp_key}\:btn-#{$key}-#{$i*100} {
+                    @include btn($shade);
+
+                    &:hover {
+                        background-color: get-hover-color($shade) !important;
+                    }
+                }
+
+                // Create classes for outlined buttons
+                .#{$bp_key}\:btn-outline-#{$key}-#{$i*100} {
+                    @include btn(transparent);
+                    border: $base-border-sickness solid $shade !important;
+                    color: $shade !important;
+
+                    &:hover {
+                        background-color: $shade !important;
+                        color: get-contrast-color($shade) !important;
+                    }
                 }
             }
         }
