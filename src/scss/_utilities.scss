@@ -163,14 +163,7 @@ $utilities: (
     "font-size": (
         "prefix": "text",
         "states": true,
-        "values": (
-            "xs": $xs-font-size,
-            "sm": $sm-font-size,
-            "md": $base-font-size,
-            "lg": $lg-font-size,
-            "xl": $xl-font-size,
-            "xxl": $xxl-font-size,
-        )
+        "values": $font-size-values
     ),
 
     // Font weight
@@ -243,7 +236,7 @@ $utilities: (
 
     // Align items
     "align-items": (
-        "prefix": "align",
+        "prefix": "items",
         "states": false,
         "values": (
             "center": center,
