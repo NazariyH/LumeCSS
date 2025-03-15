@@ -680,6 +680,18 @@ $utilities: (
         "states": false,
         "breakpoints": false,
         "values": $transition-delays
+    ),
+
+    // Word breake
+    "word-break": (
+        "prefix": "break",
+        "states": false,
+        "breakpoints": false,
+        "values": (
+            "all": "break-all",
+            "keep": "keep-all",
+            "normal": normal
+        )
     )
 );
 
