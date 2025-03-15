@@ -1,0 +1,84 @@
+// Create a map of the CSS transform properties
+$transform-utils: (
+    // Transform translate X
+    "translateX": (
+        "prefix": "translate-x",
+        "values": $positioning-spacing-map
+    ),
+
+    // Transform translate Y
+    "translateY": (
+        "prefix": "translate-y",
+        "values": $positioning-spacing-map
+    ),
+
+    // Transform translate Z
+    "translateZ": (
+        "prefix": "translate-z",
+        "values": $positioning-spacing-map
+    ),
+
+);
+
+
+// Iterate over each property-map pair in the $transform-utils
+@each $property, $map in $transform-utils {
+    $prefix: map-get($map, "prefix"); // Extract the property prefix name
+    $values: map-get($map, "values"); // Extract the property values
+
+    // Iterate over each key-val pair in the $values map
+    @each $key, $val in $values {
+        // Generate classes for each property
+        .#{$prefix}-#{$key} {
+            transform: #{$property}(#{$val});
+        }
+
+        // Generate classes for each property with negative value
+        .-#{$prefix}-#{$key} {
+            transform: #{$property}(-#{$val});
+        }
+
+        // Iterate over each state in $states
+        @each $state in $state-selectors {
+            // Generate classes for each state
+            .#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                transform: #{$property}(#{$val});
+            }
+
+            .-#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                transform: #{$property}(-#{$val});
+            }
+        }
+
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            // Generate media queries for screens with a minimum screen of $bp_val
+            @media (min-width: $bp_val) {
+                // Generate classes for each breakpoint value
+
+                // Generate classes for each property
+                .#{$bp_key}\:#{$prefix}-#{$key} {
+                    transform: #{$property}(#{$val});
+                }
+
+                // Generate classes for each property with negative value
+                .#{$bp_key}\:-#{$prefix}-#{$key} {
+                    transform: #{$property}(-#{$val});
+                }
+
+                // Iterate over each state in $states
+                @each $state in $state-selectors {
+                    // Generate classes for each state
+                    .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                        transform: #{$property}(#{$val});
+                    }
+
+                    .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
+                        transform: #{$property}(-#{$val});
+                    }
+                }
+            }
+        }
+    }
+}
