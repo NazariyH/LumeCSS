@@ -64,8 +64,59 @@ $transform-utils: (
     "skewY": (
         "prefix": "skew-y",
         "values": $skew-values
-    )
+    ),
 );
+
+
+
+// Define a list of transform-origin values
+$transform-origin-positions: (
+    "top-left": top left,
+    "top": top,
+    "top-right": top right,
+    "right": right,
+    "bottom-right": bottom right,
+    "bottom": bottom,
+    "bottom-left": bottom left,
+    "left": left,
+    "center": center
+);
+
+// Iterate over each $val in $ $transform-origin-positions
+@each $key, $val in $transform-origin-positions {
+    // Generate classes for each element of the $transform-origin-positions list
+    .origin-#{$key} {
+        transform-origin: $val;
+    }
+
+    // Iterate over each state in the $state-selectors
+    @each $state in $state-selectors {
+        // Generate classes for each state
+        .#{$state}\:origin-#{$key}:#{$state} {
+            transform-origin: $val;
+        }
+    }
+
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        // Generate media queries for screen with a minimum screen of $bp_val
+        @media (min-width: $bp_val) {
+            // Generate classes for each element of the $transform-origin-positions list
+            .#{$bp_key}\:origin-#{$key} {
+                transform-origin: $val;
+            }
+
+            // Iterate over each state in the $state-selectors
+            @each $state in $state-selectors {
+                // Generate classes for each state
+                .#{$bp_key}\:#{$state}\:origin-#{$key}:#{$state} {
+                    transform-origin: $val;
+                }
+            }
+        }
+    }
+}
+
 
 
 // Iterate over each property-map pair in the $transform-utils
