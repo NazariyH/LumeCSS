@@ -3,21 +3,32 @@ $transform-utils: (
     // Transform translate X
     "translateX": (
         "prefix": "translate-x",
-        "values": $positioning-spacing-map
+        "values": $translate-spacing-map
     ),
 
     // Transform translate Y
     "translateY": (
         "prefix": "translate-y",
-        "values": $positioning-spacing-map
+        "values": $translate-spacing-map
     ),
 
     // Transform translate Z
     "translateZ": (
         "prefix": "translate-z",
-        "values": $positioning-spacing-map
+        "values": $translate-spacing-map
     ),
 
+    // Transform rotate
+    "rotate": (
+        "prefix": "rotate",
+        "values": $rotate-degrees
+    ),
+
+    // Transform scale
+    "scale": (
+        "prefix": "scale",
+        "values": $scale-values
+    ),
 );
 
 
