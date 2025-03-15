@@ -643,6 +643,19 @@ $utilities: (
             "auto": auto,
             "smooth": smooth,
         )
+    ),
+
+    // Resize
+    "resize": (
+        "prefix": "resize",
+        "states": false,
+        "brakepoints": false,
+        "values": (
+            "none": none,
+            "both": both,
+            "vertical": vertical,
+            "horizontal": horizontal,
+        )
     )
 );
 
