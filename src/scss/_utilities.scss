@@ -631,6 +631,18 @@ $utilities: (
             "all": all,
             "auto": auto
         )
+    ),
+
+    // Scroll behavior
+    "scroll-behavior": (
+        "prefix": "scroll",
+        "states": false,
+        "brakepoints": false,
+        "negative_values": false,
+        "values": (
+            "auto": auto,
+            "smooth": smooth,
+        )
     )
 );
 
@@ -803,7 +815,7 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
     $states: map-get($map, "states"); // Define state variable
     $values: map-get($map, "values"); // Define values variable with a map of values
     $negative_values: map-get($map, "negative_values"); // Define negative variable
-    $allow-breakpoints: map-get($map, "allow-breakpoints"); // Define allow_breakpoint variable
+    $allow-breakpoints: map-get($map, "breakpoints"); // Define allow_breakpoint variable
 
     // Iterate over each key-val pair in the $values map
     @each $key, $val in $values {
@@ -869,7 +881,7 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
             }
 
             // Check if the property has negative values
-            @if ($negative_values && $val != "auto" && $val is number) {
+            @if $negative_values {
                 .-#{$prefix}-#{$key} {
                     // Get the shorthand properties if it's one of the x/y shorthand types
                     $expanded-properties: get-shorthand-property($property);
@@ -910,7 +922,7 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
                     }
 
                     // Check if the property has negative values
-                    @if ($negative_values && $val != "auto" && $val is number) {
+                    @if $negative_values {
                         // Create special classes for each state
                         .#{$state}\:-#{$prefix}-#{$key}:#{$state} {
                             // Get the shorthand properties if it's one of the x/y shorthand types
@@ -953,7 +965,7 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
 
 
                         // Check if the property has negative values
-                        @if ($negative_values && $val != "auto" && $val is number) {
+                        @if $negative_values {
                             .#{$bp_key}\:-#{$prefix}-#{$key} {
                                 // Get the shorthand properties if it's one of the x/y shorthand types
                                 $expanded-properties: get-shorthand-property($property);
@@ -994,7 +1006,7 @@ $text-transform-values: uppercase, lowercase, capitalize, normal-case;
                                 }
 
                                 // Check if the property has negative values
-                                @if ($negative_values && $val != "auto" && $val is number) {
+                                @if $negative_values {
                                     // Create special classes for each state
                                     .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
                                         // Get the shorthand properties if it's one of the x/y shorthand types
