@@ -47,6 +47,24 @@ $transform-utils: (
         "prefix": "scale",
         "values": $scale-values
     ),
+
+    // Transform skew
+    "skew": (
+        "prefix": "skew",
+        "values": $skew-values
+    ),
+
+    // Transform skewX
+    "skewX": (
+        "prefix": "skew-x",
+        "values": $skew-values
+    ),
+
+    // Transform skewY
+    "skewY": (
+        "prefix": "skew-y",
+        "values": $skew-values
+    )
 );
 
 
