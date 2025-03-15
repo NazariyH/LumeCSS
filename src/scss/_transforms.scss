@@ -24,6 +24,24 @@ $transform-utils: (
         "values": $rotate-degrees
     ),
 
+    // Transform rotateX
+    "rotateX": (
+        "prefix": "rotate-x",
+        "values": $rotate-degrees
+    ),
+
+    // Transform rotateY
+    "rotateY": (
+        "prefix": "rotate-y",
+        "values": $rotate-degrees
+    ),
+
+    // Transform rotateY
+    "rotateZ": (
+        "prefix": "rotate-z",
+        "values": $rotate-degrees
+    ),
+
     // Transform scale
     "scale": (
         "prefix": "scale",
