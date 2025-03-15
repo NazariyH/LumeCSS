@@ -664,6 +664,14 @@ $utilities: (
         "states": false,
         "brakepoints": false,
         "values": $transition-durations
+    ),
+
+    // Transition delay
+    "transition-delay": (
+        "prefix": "delay",
+        "states": false,
+        "brakepoints": false,
+        "values": $transition-delays
     )
 );
 
