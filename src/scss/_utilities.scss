@@ -656,6 +656,14 @@ $utilities: (
             "vertical": vertical,
             "horizontal": horizontal,
         )
+    ),
+
+    // Transition duration
+    "transition-duration": (
+        "prefix": "duration",
+        "states": false,
+        "brakepoints": false,
+        "values": $transition-durations
     )
 );
 
@@ -666,6 +674,16 @@ $text-decoration-values: underline, overline, line-through, no-underline;
 // Define a list of text transform values
 $text-transform-values: uppercase, lowercase, capitalize, normal-case;
 
+// Define a list of transition timing function values
+$transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease;
+
+
+// iterate over each value in the $transition-timing-function_values
+@each $val in $transition-timing-function_values {
+    .#{$val} {
+        transition-timing-function: $val;
+    }
+}
 
 
 // Iterate over each text-decoration value in $text-decoration-values
