@@ -1,7 +1,7 @@
 // Create a map of the CSS transform properties
 $transform-utils: (
     // Transform translate X
-    "translateX": (
+    "translate": (
         "prefix": "translate-x",
         "values": $translate-spacing-map
     ),
@@ -12,33 +12,9 @@ $transform-utils: (
         "values": $translate-spacing-map
     ),
 
-    // Transform translate Z
-    "translateZ": (
-        "prefix": "translate-z",
-        "values": $translate-spacing-map
-    ),
-
     // Transform rotate
     "rotate": (
         "prefix": "rotate",
-        "values": $rotate-degrees
-    ),
-
-    // Transform rotateX
-    "rotateX": (
-        "prefix": "rotate-x",
-        "values": $rotate-degrees
-    ),
-
-    // Transform rotateY
-    "rotateY": (
-        "prefix": "rotate-y",
-        "values": $rotate-degrees
-    ),
-
-    // Transform rotateY
-    "rotateZ": (
-        "prefix": "rotate-z",
         "values": $rotate-degrees
     ),
 
@@ -51,18 +27,6 @@ $transform-utils: (
     // Transform skew
     "skew": (
         "prefix": "skew",
-        "values": $skew-values
-    ),
-
-    // Transform skewX
-    "skewX": (
-        "prefix": "skew-x",
-        "values": $skew-values
-    ),
-
-    // Transform skewY
-    "skewY": (
-        "prefix": "skew-y",
         "values": $skew-values
     ),
 );
@@ -126,54 +90,113 @@ $transform-origin-positions: (
 
     // Iterate over each key-val pair in the $values map
     @each $key, $val in $values {
-        // Generate classes for each property
-        .#{$prefix}-#{$key} {
-            transform: #{$property}(#{$val});
-        }
 
-        // Generate classes for each property with negative value
-        .-#{$prefix}-#{$key} {
-            transform: #{$property}(-#{$val});
-        }
+        /* Check if the value is not equal to the translateY, skew, because
+        they would be generated separately */
+        @if ($property != "translateY" and $property != "skew") {
 
-        // Iterate over each state in $states
-        @each $state in $state-selectors {
-            // Generate classes for each state
-            .#{$state}\:#{$prefix}-#{$key}:#{$state} {
+            // Generate classes for each property
+            .#{$prefix}-#{$key} {
+                #{$property}: $val;
+            }
+
+            // Generate classes for each property with negative value
+            .-#{$prefix}-#{$key} {
+                #{$property}: #{$val};
+            }
+
+            // Iterate over each state in $states
+            @each $state in $state-selectors {
+                // Generate classes for each state
+                .#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                    #{$property}: $val !important;
+                }
+
+                .-#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                    #{$property}: -#{$val} !important;
+                }
+            }
+
+
+            // Iterate over each bp_key-bp_val pair in the $breakpoints
+            @each $bp_key, $bp_val in $breakpoints {
+                // Generate media queries for screens with a minimum screen of $bp_val
+                @media (min-width: $bp_val) {
+                    // Generate classes for each breakpoint value
+
+                    // Generate classes for each property
+                    .#{$bp_key}\:#{$prefix}-#{$key} {
+                        #{$property}: $val;
+                    }
+
+                    // Generate classes for each property with negative value
+                    .#{$bp_key}\:-#{$prefix}-#{$key} {
+                        #{$property}: -#{$val};
+                    }
+
+                    // Iterate over each state in $states
+                    @each $state in $state-selectors {
+                        // Generate classes for each state
+                        .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                            #{$property}: $val !important;
+                        }
+
+                        .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
+                            #{$property}: -#{$val} !important;
+                        }
+                    }
+                }
+            }
+        } @else if ($property == "translateY" or $property == "skew") {
+            // Generate classes for each property
+            .#{$prefix}-#{$key} {
                 transform: #{$property}(#{$val});
             }
 
-            .-#{$state}\:#{$prefix}-#{$key}:#{$state} {
-                transform: #{$property}(-#{$val});
+            // Generate classes for each property with negative value
+            .-#{$prefix}-#{$key} {
+                transform: #{$property}(#{$val});
             }
-        }
 
-
-        // Iterate over each bp_key-bp_val pair in the $breakpoints
-        @each $bp_key, $bp_val in $breakpoints {
-            // Generate media queries for screens with a minimum screen of $bp_val
-            @media (min-width: $bp_val) {
-                // Generate classes for each breakpoint value
-
-                // Generate classes for each property
-                .#{$bp_key}\:#{$prefix}-#{$key} {
-                    transform: #{$property}(#{$val});
+            // Iterate over each state in $states
+            @each $state in $state-selectors {
+                // Generate classes for each state
+                .#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                    transform: #{$property}(#{$val}) !important;
                 }
 
-                // Generate classes for each property with negative value
-                .#{$bp_key}\:-#{$prefix}-#{$key} {
-                    transform: #{$property}(-#{$val});
+                .-#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                    transform: #{$property}(#{$val}) !important;
                 }
+            }
 
-                // Iterate over each state in $states
-                @each $state in $state-selectors {
-                    // Generate classes for each state
-                    .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+
+            // Iterate over each bp_key-bp_val pair in the $breakpoints
+            @each $bp_key, $bp_val in $breakpoints {
+                // Generate media queries for screens with a minimum screen of $bp_val
+                @media (min-width: $bp_val) {
+                    // Generate classes for each breakpoint value
+
+                    // Generate classes for each property
+                    .#{$bp_key}\:#{$prefix}-#{$key} {
                         transform: #{$property}(#{$val});
                     }
 
-                    .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
-                        transform: #{$property}(-#{$val});
+                    // Generate classes for each property with negative value
+                    .#{$bp_key}\:-#{$prefix}-#{$key} {
+                        transform: #{$property}(#{$val});
+                    }
+
+                    // Iterate over each state in $states
+                    @each $state in $state-selectors {
+                        // Generate classes for each state
+                        .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                            transform: #{$property}(#{$val}) !important;
+                        }
+
+                        .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
+                            transform: #{$property}(#{$val}) !important;
+                        }
                     }
                 }
             }
