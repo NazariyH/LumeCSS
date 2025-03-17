@@ -13,13 +13,12 @@
 // Colors
 @import 'colors';
 
-// Headings (h1, h2, h3, etc)
-@import 'components/headings';
-
 // Components
 @import './components/button';
 @import './components/spinner';
+@import './components/headings';
 
 // Utilities (e.g. paddings, margins, border-radius etc)
 @import 'utilities';
 @import 'transforms';
+@import 'box-shadow';
