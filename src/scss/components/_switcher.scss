@@ -1,0 +1,153 @@
+// Mixin to define the switcher size and circle size
+@mixin switcher-size($switch-width, $switch-height, $circle-size) {
+    label {
+        width: $switch-width !important;
+        height: $switch-height !important;
+        border-radius: $switch-height !important;
+    }
+
+    // Adjust the circle size based on the switcher's size
+    label::after {
+        width: $circle-size !important;
+        height: $circle-size !important;
+        left: 5%;
+    }
+
+    input[type="checkbox"]:checked + label::after {
+        left: calc(100% - #{$circle-size} - 5%);
+    }
+}
+
+
+.switcher {
+    label {
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+
+        border-style: solid;
+        border-width: $base-border-sickness / 2;
+        border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+
+        // Static color for the switcher
+        background-color: map-get($theme-color-palette, "light");
+
+        transition: $base-transition-time;
+
+        // Pseudo-element representing the "circle"
+        &::after {
+            content: "";
+
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            transition: all 80ms linear;
+
+
+            border-radius: 50% !important;
+            background-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+        }
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    // When the checkbox is checked, move the circle to the right
+    input[type="checkbox"]:checked + label {
+        background-color: map-get($theme-color-palette, "primary");
+    }
+
+    input[type="checkbox"]:checked + label::after {
+        background-color: map-get($theme-color-palette, "light");
+    }
+
+    // Apply the size mixin for dynamic resizing
+    @include switcher-size(45px, 20px, 15px); // Default size for switcher
+}
+
+
+// Iterate over each size-dimensions pair in the $switcher-dimension-map
+@each $size, $dimensions in $switcher-dimension-map {
+    .switcher-#{$size} {
+        @extend .switcher;
+        @include switcher-size(nth($dimensions, 1), nth($dimensions, 2), calc(nth($dimensions, 3)));
+    }
+}
+
+
+// Iterate over each key-val pair in the $base-color-palette
+@each $key, $val in $base-color-palette {
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+        // Generate classes for each color
+        .switcher-#{$key}-#{$i*100} input[type="checkbox"]:checked + label {
+            background-color: $shade;
+        }
+
+        // Iterate over each $state in the $state-selectors
+        @each $state in $state-selectors {
+            .#{$state}\:switcher-#{$key}-#{$i*100} input[type="checkbox"]:checked + label:#{$state} {
+                background-color: $shade !important;
+            }
+        }
+
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+
+                // Generate classes for each color
+                .#{$bp_key}\:switcher-#{$key}-#{$i*100} input[type="checkbox"]:checked + label {
+                    background-color: $shade;
+                }
+
+                // Iterate over each $state in the $state-selectors
+                @each $state in $state-selectors {
+                    .#{$bp_key}\:#{$state}\:switcher-#{$key}-#{$i*100} input[type="checkbox"]:checked + label:#{$state} {
+                        background-color: $shade !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Iterate over each key-val pair in the $theme-color-palette
+@each $key, $val in $theme-color-palette {
+
+    // Generate classes for each color
+    .switcher-#{$key} input[type="checkbox"]:checked + label {
+        background-color: $val;
+    }
+
+    // Iterate over each $state in the $state-selectors
+    @each $state in $state-selectors {
+        .#{$state}\:switcher-#{$key} input[type="checkbox"]:checked + label:#{$state} {
+            background-color: $val !important;
+        }
+    }
+
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+
+            // Generate classes for each color
+            .#{$bp_key}\:switcher-#{$key} input[type="checkbox"]:checked + label {
+                background-color: $val;
+            }
+
+            // Iterate over each $state in the $state-selectors
+            @each $state in $state-selectors {
+                .#{$bp_key}\:#{$state}\:switcher-#{$key} input[type="checkbox"]:checked + label:#{$state} {
+                    background-color: $val !important;
+                }
+            }
+        }
+    }
+}
