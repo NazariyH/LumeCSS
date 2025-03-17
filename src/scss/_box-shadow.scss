@@ -1,0 +1,90 @@
+// Mixin for generating box-shadow
+@mixin box-shadow($x: 0, $y: 0, $blur: 5px, $color: rgba(0, 0, 0, 0.1)) {
+    -webkit-box-shadow: $x $y $blur $color;
+    -moz-box-shadow: $x $y $blur $color;
+    box-shadow: $x $y $blur $color;
+}
+
+
+
+// Iterate over each key-val pair in the $box-shadow-offsets
+@each $key, $val in $box-shadow-offsets {
+    // Iterate over color_key-color_val pair in the $base-color-palette
+    @each $color_key, $color_val in $base-color-palette {
+        // Generate color classes for all shades
+        @for $i from 1 through 9 {
+            // Define color shade
+            $shade: if($i <= 4, generate-shade($color_val, 100-$i*10, 'lighten'), generate-shade($color_val, $i*10-40, 'darken'));
+
+            // Generate box-shadow classes
+            .shadow-#{$key}-#{$color_key}-#{$i * 100} {
+                @include box-shadow($val, $val, $val * 2, $shade)
+            }
+
+            // Iterate over each $state in $state-selectors
+            @each $state in $state-selectors {
+                // Generate box-shadow classes for each state
+                .#{$state}\:shadow-#{$key}-#{$color_key}-#{$i * 100}:#{$state} {
+                    @include box-shadow($val, $val, $val * 2, $shade)
+                }
+            }
+
+
+            // Iterate over each bp_key-bp_val in $breakpoints
+            @each $bp_key, $bp_val in $breakpoints {
+                @media (min-width: $bp_val) {
+                    // Generate classes for each breakpoint
+
+                    // Generate box-shadow classes
+                    .#{$bp_key}\:shadow-#{$key}-#{$color_key}-#{$i * 100} {
+                        @include box-shadow($val, $val, $val * 2, $shade)
+                    }
+
+                    // Iterate over each $state in $state-selectors
+                    @each $state in $state-selectors {
+                        // Generate box-shadow classes for each state
+                        .#{$bp_key}\:#{$state}\:shadow-#{$key}-#{$color_key}-#{$i * 100}:#{$state} {
+                            @include box-shadow($val, $val, $val * 2, $shade)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Iterate over color_key-color_val pair in the $theme-color-palette
+    @each $color_key, $color_val in $theme-color-palette {
+        // Generate box-shadow classes
+        .shadow-#{$key}-#{$color_key} {
+            @include box-shadow($val, $val, $val * 2, $color_val)
+        }
+
+        // Iterate over each $state in $state-selectors
+        @each $state in $state-selectors {
+            // Generate box-shadow classes for each state
+            .#{$state}\:shadow-#{$key}-#{$color_key}:#{$state} {
+                @include box-shadow($val, $val, $val * 2, $color_val)
+            }
+        }
+
+        // Iterate over each bp_key-bp_val in $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                // Generate classes for each breakpoint
+
+                // Generate box-shadow classes
+                .#{$bp_key}\:shadow-#{$key}-#{$color_key} {
+                    @include box-shadow($val, $val, $val * 2, $color_val)
+                }
+
+                // Iterate over each $state in $state-selectors
+                @each $state in $state-selectors {
+                    // Generate box-shadow classes for each state
+                    .#{$bp_key}\:#{$state}\:shadow-#{$key}-#{$color_key}:#{$state} {
+                        @include box-shadow($val, $val, $val * 2, $color_val)
+                    }
+                }
+            }
+        }
+    }
+}
