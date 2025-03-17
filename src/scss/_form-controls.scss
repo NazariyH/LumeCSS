@@ -1,0 +1,304 @@
+@use 'sass:math';
+
+// Mixin to style the thumb color
+@mixin thumb-color($thumb-color) {
+    // Style the thumb (the handle)
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        background-color: $thumb-color !important;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+        background-color: $thumb-color;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }
+
+    &::-ms-thumb {
+        background-color: $thumb-color;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+// Mixin to style the track color
+@mixin track-color($track-color) {
+    // Style the track (the background)
+    &::-webkit-slider-runnable-track {
+        background-color: $track-color !important;
+        display: flex;
+        align-items: center;
+        height: 8px;
+        border-radius: 5px;
+    }
+
+    &::-moz-range-track {
+        background-color: $track-color;
+        display: flex;
+        align-items: center;
+        height: 8px;
+        border-radius: 5px;
+    }
+
+    &::-ms-track {
+        background-color: $track-color;
+        display: flex;
+        align-items: center;
+        height: 8px;
+        border-radius: 5px;
+        border: none;
+    }
+}
+
+// Mixin to style the box-shadow
+@mixin form-box-shadow($x: 0, $y: 0, $blur: 0, $spread: 0.25rem, $color) {
+    box-shadow: $x $y $blur $spread $color !important;
+}
+
+$input-border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+
+// Base styles for radio button
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: map-get($theme-color-palette, "light");
+
+    border-style: solid;
+    border-width: $base-border-sickness/2;
+    border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+}
+input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: map-get($theme-color-palette, "light");
+}
+/* Change color when the radio button is checked */
+input[type="radio"]:checked {
+    background-color: map-get($theme-color-palette, "primary");
+}
+
+// Base input style
+input[type="text"], input[type="email"], input[type="password"],
+input[type="tel"], input[type="search"], input[type="url"],
+input[type="number"], input[type="date"], input[type="datetime-local"],
+input[type="month"], input[type="week"], input[type="time"], select,
+textarea {
+    background-color: map-get($theme-color-palette, "light");
+    color: map-get($theme-color-palette, "dark");
+    padding: $base-padding/1.5 $base-padding;
+    border-radius: $base-border-radius;
+
+    border: $base-border-sickness/2 solid $input-border-color;
+
+    &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        caret-color: rgba(13, 110, 253, 0.25);
+    }
+}
+
+
+// Iterate over each $key-val in $base-color-palette
+@each $key, $val in $base-color-palette {
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Generate spinner classes for each color shade
+
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+
+        .form-control-#{$key}-#{$i * 100}:focus {
+            @include form-box-shadow($color: $shade);
+            caret-color: $shade !important;
+        }
+
+        .accent-#{$key}-#{$i * 100} {
+            accent-color: $shade !important;
+        }
+
+        .radio-#{$key}-#{$i * 100}:checked {
+            background-color: $shade !important;
+        }
+
+        .track-#{$key}-#{$i * 100} {
+            @include track-color($shade);
+        }
+
+        .thumb-#{$key}-#{$i * 100} {
+            @include thumb-color($shade);
+        }
+
+        // Iterate over each $state in $state-selectors
+        @each $state in $state-selectors {
+            .#{$state}\:accent-#{$key}-#{$i * 100}:#{$state} {
+                accent-color: $shade !important;
+            }
+
+            .#{$state}\:track-#{$key}-#{$i * 100}:#{$state} {
+                @include track-color($shade);
+            }
+
+            .#{$state}\:thumb-#{$key}-#{$i * 100}:#{$state} {
+                @include thumb-color($shade);
+            }
+        }
+
+        // Iterate over each bp_key-bp_val in the $breakpoints map
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                .#{$bp_key}\:form-control-#{$key}-#{$i * 100}:focus {
+                    @include form-box-shadow($color: $shade);
+                    caret-color: $shade !important;
+                }
+
+                .#{$bp_key}\:accent-#{$key}-#{$i * 100} {
+                    accent-color: $shade !important;
+                }
+
+                .#{$bp_key}\:radio-#{$key}-#{$i * 100}:checked {
+                    background-color: $shade !important;
+                }
+
+                .#{$bp_key}\:track-#{$key}-#{$i * 100} {
+                    @include track-color($shade);
+                }
+
+                .#{$bp_key}\:thumb-#{$key}-#{$i * 100} {
+                    @include thumb-color($shade);
+                }
+
+                // Iterate over each $state in $state-selectors
+                @each $state in $state-selectors {
+                    .#{$bp_key}\:#{$state}\:accent-#{$key}-#{$i * 100}:#{$state} {
+                        accent-color: $shade !important;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:track-#{$key}-#{$i * 100}:#{$state} {
+                        @include track-color($shade);
+                    }
+
+                    .#{$bp_key}\:#{$state}\:thumb-#{$key}-#{$i * 100}:#{$state} {
+                        @include thumb-color($shade);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Iterate over each $key-val in $theme-color-palette
+@each $key, $val in $theme-color-palette {
+    .form-control-#{$key}:focus {
+        @include form-box-shadow($color: $val);
+        caret-color: $val !important;
+    }
+
+    .accent-#{$key} {
+        accent-color: $val !important;
+    }
+
+    .radio-#{$key}:checked {
+        background-color: $val !important;
+    }
+
+    .track-#{$key} {
+        @include track-color($val);
+    }
+
+    .thumb-#{$key} {
+        @include thumb-color($val);
+    }
+
+    // Iterate over each $state in $state-selectors
+    @each $state in $state-selectors {
+        .#{$state}\:accent-#{$key}:#{$state} {
+            accent-color: $val !important;
+        }
+
+        .#{$state}\:track-#{$key}:#{$state} {
+            @include track-color($val);
+        }
+
+        .#{$state}\:thumb-#{$key}:#{$state} {
+            @include thumb-color($val);
+        }
+    }
+
+    // Iterate over each bp_key-bp_val in the $breakpoints map
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+            .#{$bp_key}\:form-control-#{$key}:focus {
+                @include form-box-shadow($color: $val);
+                caret-color: $val !important;
+            }
+
+            .#{$bp_key}\:accent-#{$key} {
+                accent-color: $val !important;
+            }
+
+            .#{$bp_key}\:radio-#{$key}:checked {
+                background-color: $val !important;
+            }
+
+            .#{$bp_key}\:track-#{$key} {
+                @include track-color($val);
+            }
+
+            .#{$bp_key}\:thumb-#{$key} {
+                @include thumb-color($val);
+            }
+
+            // Iterate over each $state in $state-selectors
+            @each $state in $state-selectors {
+                .#{$bp_key}\:#{$state}\:accent-#{$key}:#{$state} {
+                    accent-color: $val !important;
+                }
+
+                .#{$bp_key}\:#{$state}\:track-#{$key}:#{$state} {
+                    @include track-color($val);
+                }
+
+                .#{$bp_key}\:#{$state}\:thumb-#{$key}:#{$state} {
+                    @include thumb-color($val);
+                }
+            }
+        }
+    }
+}
+
+
+
+.appearance-none {
+    appearance: none;
+}
+
+.appearance-auto {
+    appearance: auto;
+}
+
+
+
+
+
+
