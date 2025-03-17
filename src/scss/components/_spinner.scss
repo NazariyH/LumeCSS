@@ -18,6 +18,7 @@
     border-style: $mode;
     border-color: white;
     border-bottom: $size $mode transparent;
+    border-radius: 50%;
 
     @include spinner-animation();
 }
