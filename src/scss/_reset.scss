@@ -51,6 +51,8 @@ input, textarea, button, select {
     font-size: inherit;
     color: inherit;
     background-color: transparent;
+    border: none;
+    outline: none;
 }
 
 input::-ms-clear {
@@ -81,4 +83,9 @@ label {
 
 legend {
     display: block;
+}
+
+input[type="range"] {
+    /* To hide ordinary range input */
+    -webkit-appearance: none;
 }
