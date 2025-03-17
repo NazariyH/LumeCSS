@@ -1,0 +1,242 @@
+
+.spinner {
+    border-width: $base-border-sickness * 6;
+    border-style: solid;
+    border-color: white;
+    border-bottom: $base-border-sickness * 6 solid transparent;
+}
+
+
+
+
+// Iterate over each key-val pair in the $base-color-palette
+@each $key, $val in $base-color-palette {
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Generate spinner classes for each color shade
+
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+
+        .spinner-#{$key}-#{$i * 100} {
+            border-top-color: $shade;
+            border-left-color: $shade;
+            border-right-color: $shade;
+            border-bottom-color: transparent;
+        }
+
+        .spinner-t-#{$key}-#{$i * 100} {
+            border-top-color: $shade;
+        }
+
+        .spinner-b-#{$key}-#{$i * 100} {
+            border-bottom-color: $shade;
+        }
+
+        .spinner-r-#{$key}-#{$i * 100} {
+            border-right-color: $shade;
+        }
+
+        .spinner-l-#{$key}-#{$i * 100} {
+            border-left-color: $shade;
+        }
+
+        // Iterate over each $state in $state-selectors
+        @each $state in $state-selectors {
+            // Generate classes for each state
+
+            .#{$state}\:spinner-#{$key}-#{$i * 100}:#{$state} {
+                border-top-color: $shade;
+                border-left-color: $shade;
+                border-right-color: $shade;
+                border-bottom-color: transparent;
+            }
+
+            .#{$state}\:spinner-t-#{$key}-#{$i * 100}:#{$state} {
+                border-top-color: $shade;
+            }
+
+            .#{$state}\:spinner-b-#{$key}-#{$i * 100}:#{$state} {
+                border-bottom-color: $shade;
+            }
+
+            .#{$state}\:spinner-r-#{$key}-#{$i * 100}:#{$state} {
+                border-right-color: $shade;
+            }
+
+            .#{$state}\:spinner-l-#{$key}-#{$i * 100}:#{$state} {
+                border-left-color: $shade;
+            }
+        }
+
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                .#{$bp_key}\:spinner-#{$key}-#{$i * 100} {
+                    border-top-color: $shade;
+                    border-left-color: $shade;
+                    border-right-color: $shade;
+                    border-bottom-color: transparent;
+                }
+
+                .#{$bp_key}\:spinner-t-#{$key}-#{$i * 100} {
+                    border-top-color: $shade;
+                }
+
+                .#{$bp_key}\:spinner-b-#{$key}-#{$i * 100} {
+                    border-bottom-color: $shade;
+                }
+
+                .#{$bp_key}\:spinner-r-#{$key}-#{$i * 100} {
+                    border-right-color: $shade;
+                }
+
+                .#{$bp_key}\:spinner-l-#{$key}-#{$i * 100} {
+                    border-left-color: $shade;
+                }
+
+                // Iterate over each $state in $state-selectors
+                @each $state in $state-selectors {
+                    // Generate classes for each state
+
+                    .#{$bp_key}\:#{$state}\:spinner-#{$key}-#{$i * 100}:#{$state} {
+                        border-top-color: $shade;
+                        border-left-color: $shade;
+                        border-right-color: $shade;
+                        border-bottom-color: transparent;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:spinner-t-#{$key}-#{$i * 100}:#{$state} {
+                        border-top-color: $shade;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:spinner-b-#{$key}-#{$i * 100}:#{$state} {
+                        border-bottom-color: $shade;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:spinner-r-#{$key}-#{$i * 100}:#{$state} {
+                        border-right-color: $shade;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:spinner-l-#{$key}-#{$i * 100}:#{$state} {
+                        border-left-color: $shade;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Iterate over each key-val pair in the $theme-color-palette
+@each $key, $val in $theme-color-palette {
+    // Generate spinner classes for each theme color
+    .spinner-#{$key} {
+        border-top-color: $val;
+        border-left-color: $val;
+        border-right-color: $val;
+        border-bottom-color: transparent;
+    }
+
+    .spinner-t-#{$key} {
+        border-top-color: $val;
+    }
+
+    .spinner-b-#{$key} {
+        border-bottom-color: $val;
+    }
+
+    .spinner-r-#{$key} {
+        border-right-color: $val;
+    }
+
+    .spinner-l-#{$key} {
+        border-left-color: $val;
+    }
+
+    // Iterate over each $state in $state-selectors
+    @each $state in $state-selectors {
+        // Generate spinner classes for each state
+        .#{$state}\:spinner-#{$key}:#{$state} {
+            border-top-color: $val;
+            border-left-color: $val;
+            border-right-color: $val;
+            border-bottom-color: transparent;
+        }
+
+        .#{$state}\:spinner-t-#{$key}:#{$state} {
+            border-top-color: $val;
+        }
+
+        .#{$state}\:spinner-b-#{$key}:#{$state} {
+            border-bottom-color: $val;
+        }
+
+        .#{$state}\:spinner-r-#{$key}:#{$state} {
+            border-right-color: $val;
+        }
+
+        .#{$state}\:spinner-l-#{$key}:#{$state} {
+            border-left-color: $val;
+        }
+    }
+
+
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Generate spinner classes for each theme color
+            .#{$bp_key}\:spinner-#{$key} {
+                border-top-color: $val;
+                border-left-color: $val;
+                border-right-color: $val;
+                border-bottom-color: transparent;
+            }
+
+            .#{$bp_key}\:spinner-t-#{$key} {
+                border-top-color: $val;
+            }
+
+            .#{$bp_key}\:spinner-b-#{$key} {
+                border-bottom-color: $val;
+            }
+
+            .#{$bp_key}\:spinner-r-#{$key} {
+                border-right-color: $val;
+            }
+
+            .#{$bp_key}\:spinner-l-#{$key} {
+                border-left-color: $val;
+            }
+
+            // Iterate over each $state in $state-selectors
+            @each $state in $state-selectors {
+                // Generate spinner classes for each state
+                .#{$bp_key}\:#{$state}\:spinner-#{$key}:#{$state} {
+                    border-top-color: $val;
+                    border-left-color: $val;
+                    border-right-color: $val;
+                    border-bottom-color: transparent;
+                }
+
+                .#{$bp_key}\:#{$state}\:spinner-t-#{$key}:#{$state} {
+                    border-top-color: $val;
+                }
+
+                .#{$bp_key}\:#{$state}\:spinner-b-#{$key}:#{$state} {
+                    border-bottom-color: $val;
+                }
+
+                .#{$bp_key}\:#{$state}\:spinner-r-#{$key}:#{$state} {
+                    border-right-color: $val;
+                }
+
+                .#{$bp_key}\:#{$state}\:spinner-l-#{$key}:#{$state} {
+                    border-left-color: $val;
+                }
+            }
+        }
+    }
+}
