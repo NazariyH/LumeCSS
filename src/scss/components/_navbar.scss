@@ -1,0 +1,85 @@
+.navbar {
+    position: relative;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: $base-padding $base-padding*4;
+    background-color: map-get($theme-color-palette, 'light');
+
+    .navbar-brand {
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: color $base-transition-time ease;
+        color: map-get($theme-color-palette, "dark");
+
+        &:hover {
+            color: generate-shade(map-get($base-color-palette, "gray"), 20, "darken");
+        }
+    }
+
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        margin-left: $base-margin;
+
+        .nav-item {
+            margin: 0 $base-margin;
+
+            .nav-link {
+                color: map-get($theme-color-palette, "dark");
+                transition: color $base-transition-time ease;
+
+                &:hover {
+                    color: generate-shade(map-get($base-color-palette, "gray"), 20, "darken");
+                }
+            }
+        }
+    }
+
+    div {
+        display: flex;
+    }
+}
+
+
+.disabled {
+    cursor: default !important;
+
+    color: generate-shade(map-get($base-color-palette, "gray"), 20, "lighten") !important;
+    &:hover {
+        color: generate-shade(map-get($base-color-palette, "gray"), 20, "lighten") !important;
+    }
+}
+
+
+.navbar[data-bs-theme="dark"] {
+    background-color: map-get($theme-color-palette, 'dark');
+    .navbar-brand {
+        color: map-get($theme-color-palette, "light");
+        &:hover {
+            color: generate-shade(map-get($base-color-palette, "gray"), 60, "lighten");
+        }
+    }
+
+    .nav-item {
+        .nav-link {
+            color: map-get($theme-color-palette, "light");
+
+            &:hover {
+                color: generate-shade(map-get($base-color-palette, "gray"), 60, "lighten");
+            }
+        }
+    }
+
+    .disabled {
+        color: generate-shade(map-get($base-color-palette, "gray"), 10, "darken") !important;
+        &:hover {
+            color: generate-shade(map-get($base-color-palette, "gray"), 10, "darken") !important;
+        }
+    }
+}
+
