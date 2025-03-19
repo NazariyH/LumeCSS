@@ -1,14 +1,18 @@
-@mixin btn($color: map-get($theme-color-palette, 'dark')) {
+@mixin btn(
+    $btn-size: nth(map-get($btn-sizes, 'md'), 1),
+    $font-size: 14px
+) {
     // Define base styles for a button
 
     cursor: pointer;
     display: inline-block;
     border: 0;
     text-decoration: none;
-    padding: $base-padding $base-padding * 2;
+    font-size: $font-size;
+    padding: $btn-size $btn-size * 2;
     border-radius: $base-border-radius;
-    background-color: $color;
-    color: get-contrast-color($color);
+    background-color: map-get($theme-color-palette, 'dark');
+    color: get-contrast-color(map-get($theme-color-palette, 'dark'));
     transition: all $base-transition-time ease-in-out;
 }
 
@@ -17,12 +21,20 @@
     @include btn;
 }
 
+// Iterate over each key-val pair in the $btn-sizes
+@each $key, $val in $btn-sizes {
+    // Generate classes for each btn size
+    .btn-#{$key} {
+        @include btn(nth($val, 1), nth($val, 2));
+    }
+}
 
 // Iterate over each key-val pair in the $theme-color-palette map
 @each $key, $val in $theme-color-palette {
     // Create classes for theme buttons
     .btn-#{$key} {
-        @include btn($val);
+        background: $val;
+        color: get-contrast-color($val);
 
         &:hover {
             background-color: get-hover-color($val);
@@ -31,7 +43,7 @@
 
     // Create classes for outlined buttons
     .btn-outline-#{$key} {
-        @include btn(transparent);
+        background-color: transparent;
         border: $base-border-sickness solid $val;
         color: $val;
 
@@ -47,7 +59,8 @@
         @media (min-width: $bp_val) {
             // Create classes for classic buttons
             .#{$bp_key}\:btn-#{$key} {
-                @include btn($val);
+                background: $val;
+                color: get-contrast-color($val);
 
                 &:hover {
                     background-color: get-hover-color($val) !important;
@@ -56,7 +69,7 @@
 
             // Create classes for outlined buttons
             .#{$bp_key}\:btn-outline-#{$key} {
-                @include btn(transparent);
+                background-color: transparent;
                 border: $base-border-sickness solid $val !important;
                 color: $val !important;
 
@@ -70,8 +83,6 @@
 }
 
 
-
-
 // Iterate over each key-val pair in the $base-color-palette map
 @each $key, $val in $base-color-palette {
 
@@ -83,7 +94,8 @@
 
         // Create classes for classic buttons
         .btn-#{$key}-#{$i*100} {
-            @include btn($shade);
+            background: $shade;
+            color: get-contrast-color($shade);
 
             &:hover {
                 background-color: get-hover-color($shade);
@@ -92,7 +104,7 @@
 
         // Create classes for outlined buttons
         .btn-outline-#{$key}-#{$i*100} {
-            @include btn(transparent);
+            background-color: transparent;
             border: $base-border-sickness solid $shade;
             color: $val;
 
@@ -107,7 +119,8 @@
             @media (min-width: $bp_val) {
                 // Create classes for classic buttons
                 .#{$bp_key}\:btn-#{$key}-#{$i*100} {
-                    @include btn($shade);
+                    background: $shade;
+                    color: get-contrast-color($shade);
 
                     &:hover {
                         background-color: get-hover-color($shade) !important;
@@ -116,7 +129,7 @@
 
                 // Create classes for outlined buttons
                 .#{$bp_key}\:btn-outline-#{$key}-#{$i*100} {
-                    @include btn(transparent);
+                    background-color: transparent;
                     border: $base-border-sickness solid $shade !important;
                     color: $shade !important;
 
