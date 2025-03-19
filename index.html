@@ -12,17 +12,47 @@
 
 
     <style>
+        .image {
+            background-image: url("https://i.pinimg.com/736x/c8/fb/d9/c8fbd9f8e240be49465781c734219789.jpg");
+        }
 
-
+        .aaa {
+        }
     </style>
 </head>
 <body>
-    <div class="w-screen h-screen bg-gray-600 relative">
-        <div class="absolute top-half -left-10 w-10 h-10 bg-danger rounded-full"></div>
-    </div>
+    <nav class="navbar" data-bs-theme="dark">
+        <div>
+            <a href="#" class="navbar-brand">Lume<span class="text-warning">CSS</span></a>
+            
+            <ul class="navbar-menu">
+                <li class="nav-item"><a href="#" class="nav-link">Lorem</a></li>
+                <li class="nav-item disabled"><a href="#" class="nav-link">Lorem</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Lorem</a></li>
+                <li class="nav-item dropdown arrow" data-trigger="click">
+                    <a href="#" class="nav-link">Lorem</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="#">Lorem</a></li>
+                        <li class="dropdown-item dropdown-divider"><hr></li>
+                        <li class="dropdown-item"><a href="#">Lorem</a></li>
+                        <li class="dropdown-item"><a href="#">Lorem ipsum dollar</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div>
+            <input type="search" class="form-control-warning rounded-none w-10" placeholder="Search">
+            <button class="btn btn-warning">Search</button>
+        </div>
+    </nav>
 
 
     <!-- Include the compiled JavaScript file -->
     <script src="dist/lume.js"></script>
+
+    <script>
+
+    </script>
 </body>
 </html>
