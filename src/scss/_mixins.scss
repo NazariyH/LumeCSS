@@ -1,0 +1,22 @@
+// Shaking animation
+@mixin shake($duration: 0.5s, $intensity: 10px) {
+    @keyframes shake {
+        0% {
+            transform: translateX(0);
+        }
+        25% {
+            transform: translateX(-$intensity);
+        }
+        50% {
+            transform: translateX($intensity);
+        }
+        75% {
+            transform: translateX(-$intensity);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+    animation: shake $duration ease-in-out;
+}
