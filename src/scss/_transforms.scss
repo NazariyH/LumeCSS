@@ -102,7 +102,7 @@ $transform-origin-positions: (
 
             // Generate classes for each property with negative value
             .-#{$prefix}-#{$key} {
-                #{$property}: #{$val};
+                #{$property}: -#{$val};
             }
 
             // Iterate over each state in $states
