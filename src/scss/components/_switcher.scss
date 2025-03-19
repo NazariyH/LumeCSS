@@ -21,7 +21,9 @@
 
 .switcher {
     label {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+
         position: relative;
         cursor: pointer;
 
