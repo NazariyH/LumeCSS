@@ -94,12 +94,6 @@
 
             @extend .light-theme-modal;
 
-            .modal-divider {
-                width: 100%;
-                height: 1px;
-                background-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
-            }
-
             // Modal header's styles
             .modal-header {
                 padding: $base-padding;
