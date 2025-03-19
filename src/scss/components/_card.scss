@@ -1,0 +1,61 @@
+// Base card styles
+.card {
+    position: relative;
+    overflow: hidden;
+    border-radius: $base-border-radius;
+
+    border-style: solid;
+    border-width: $base-border-sickness / 2;
+    border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+
+    // Card content wrap
+    .card-content {
+        padding: $base-padding 0;
+
+        // Divider
+        .card-divider {
+            @extend .divider;
+            margin-bottom: $base-padding;
+        }
+
+        // Card header
+        .card-header {
+            padding: 0 $base-padding;
+            padding-bottom: $base-padding;
+
+            // Card title
+            .card-title {
+                font-size: 20px;
+            }
+        }
+
+        // Card body
+        .card-body {
+            padding: 0 $base-padding;
+            padding-bottom: $base-padding;
+        }
+
+        // Card footer
+        .card-footer {
+            padding: 0 $base-padding;
+        }
+
+        &.card-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+        }
+    }
+
+    //&.card-horizontal {
+    //    display: flex;
+    //
+    //    // Card image
+    //    .card-img {
+    //        width: 20px;
+    //    }
+    //}
+}
