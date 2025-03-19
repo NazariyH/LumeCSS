@@ -17,9 +17,44 @@
 }
 
 
+// Default button styles
 .btn {
     @include btn;
 }
+
+
+// Close button
+.btn-close {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    transition: all $base-transition-time / 3 ease-in-out;
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: center;
+
+        width: 1.5rem;
+        height: 0.1rem;
+        background-color: generate-shade(map-get($theme-color-palette, 'dark'), 40, 'lighten');
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:hover {
+        scale: 1.2;
+    }
+}
+
 
 // Iterate over each key-val pair in the $btn-sizes
 @each $key, $val in $btn-sizes {
