@@ -1,4 +1,4 @@
-// Shaking animation
+// Mixin for the shaking animation
 @mixin shake($duration: 0.5s, $intensity: 10px) {
     @keyframes shake {
         0% {
@@ -19,4 +19,30 @@
     }
 
     animation: shake $duration ease-in-out;
+}
+
+// Mixin for the bounce animation
+@mixin bounce($duration: 2s, $offset: 1rem, $repetition-amount: infinite) {
+    @keyframes bounce {
+        0% {
+            transform: translateY(-100%);
+        }
+        20% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-#{$offset});
+        }
+        60% {
+            transform: translateY(0);
+        }
+        80% {
+            transform: translateY(-#{$offset/2});
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    animation: bounce $duration ease $repetition-amount;
 }
