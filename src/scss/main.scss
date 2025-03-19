@@ -1,9 +1,10 @@
 // Reset styles
 @import 'reset';
 
-// Variables & functions
+// Variables, mixins & functions
 @import 'variables';
 @import 'functions';
+@import 'mixins';
 
 // Base & layout
 @import 'base';
