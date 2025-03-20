@@ -1,4 +1,55 @@
 // Base form group styles
-.form-group {
-    
+.input-group {
+    display: flex;
+
+    & > * {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        border-radius: 0 !important; /* Remove border-radius for all elements */
+    }
+
+    & > *:first-child {
+        border-top-left-radius: $base-border-radius !important;
+        border-bottom-left-radius: $base-border-radius !important;
+    }
+
+    & > *:last-child {
+        border-top-right-radius: $base-border-radius !important;
+        border-bottom-right-radius: $base-border-radius !important;
+    }
+
+    // Input group text styles
+    .input-group-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: generate-shade(map-get($theme-color-palette, "light"), 10, 'darken');
+        border-radius: $base-border-radius;
+        padding: $base-padding;
+
+        border-style: solid;
+        border-width: $base-border-sickness / 2;
+        border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+    }
+}
+
+// Vertical form group styles
+.input-group-vertical {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+        margin: 0 !important;
+        border-radius: 0 !important; /* Remove border-radius for all elements */
+    }
+
+    & > *:first-child {
+        border-top-left-radius: $base-border-radius !important;
+        border-top-right-radius: $base-border-radius !important;
+    }
+
+    & > *:last-child {
+        border-bottom-left-radius: $base-border-radius !important;
+        border-bottom-right-radius: $base-border-radius !important;
+    }
 }
