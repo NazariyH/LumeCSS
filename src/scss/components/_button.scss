@@ -55,6 +55,7 @@
     }
 }
 
+// Arrow button
 .btn-arrow {
     position: relative;
     width: 1.1rem;
@@ -97,6 +98,8 @@
         rotate: 45deg;
     }
 }
+
+
 
 // Iterate over each key-val pair in the $btn-sizes
 @each $key, $val in $btn-sizes {
