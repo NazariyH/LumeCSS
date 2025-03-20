@@ -1,17 +1,3 @@
-@mixin spinner-animation($duration: 1s, $timing: linear) {
-    // Create animation for spinner
-    animation: spin $duration $timing infinite;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 @mixin spinner($size, $mode: solid) {
     // Base spinner layout
     border-width: $size;
@@ -19,8 +5,6 @@
     border-color: white;
     border-bottom: $size $mode transparent;
     border-radius: 50%;
-
-    @include spinner-animation();
 }
 
 
@@ -40,12 +24,14 @@ $spinner-styles: dashed, dotted, double;
     @each $style in $spinner-styles {
         // Generate spinner classes for each border-sickness value
         .spinner-#{$key} {
-            @include spinner($val)
+            @include spinner($val);
+            @include spinner-animation();
         }
 
         // Generate spinner classes for each spinner style
         .spinner-#{$key}-#{$style} {
-            @include spinner($val, $style)
+            @include spinner($val, $style);
+            @include spinner-animation();
         }
 
         // Iterate over each bp_key-bp_val pair in the $breakpoints
@@ -53,11 +39,13 @@ $spinner-styles: dashed, dotted, double;
             // Generate classes for each breakpoint
             @media (min-width: $bp_val) {
                 .#{$bp_key}\:spinner-#{$key} {
-                    @include spinner($val)
+                    @include spinner($val);
+                    @include spinner-animation();
                 }
 
                 .#{$bp_key}\:spinner-#{$key}-#{$style} {
-                    @include spinner($val, $style)
+                    @include spinner($val, $style);
+                    @include spinner-animation();
                 }
             }
         }

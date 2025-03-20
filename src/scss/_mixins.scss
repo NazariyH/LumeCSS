@@ -46,3 +46,18 @@
 
     animation: bounce $duration ease $repetition-amount;
 }
+
+// Mixin for the spin animation
+@mixin spinner-animation($duration: 1s, $timing: linear) {
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    // Create animation for spinner
+    animation: spin $duration $timing infinite;
+}
