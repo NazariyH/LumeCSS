@@ -1,5 +1,5 @@
 // Mixin for the shaking animation
-@mixin shake($duration: 0.5s, $intensity: 10px) {
+@mixin shake-animation($duration: 0.5s, $intensity: 10px, $repetition-amount: infinite) {
     @keyframes shake {
         0% {
             transform: translateX(0);
@@ -18,11 +18,11 @@
         }
     }
 
-    animation: shake $duration ease-in-out;
+    animation: shake $duration ease-in-out $repetition-amount;
 }
 
 // Mixin for the bounce animation
-@mixin bounce($duration: 2s, $offset: 1rem, $repetition-amount: infinite) {
+@mixin bounce-animation($duration: 2s, $offset: 1rem, $repetition-amount: infinite) {
     @keyframes bounce {
         0% {
             transform: translateY(-100%);
@@ -48,7 +48,7 @@
 }
 
 // Mixin for the spin animation
-@mixin spinner-animation($duration: 1s, $timing: linear) {
+@mixin spinner-animation($duration: 1s, $timing: linear, $repetition-amount: infinite) {
     @keyframes spin {
         0% {
             transform: rotate(0deg);
@@ -59,5 +59,5 @@
     }
 
     // Create animation for spinner
-    animation: spin $duration $timing infinite;
+    animation: spin $duration $timing $repetition-amount;
 }
