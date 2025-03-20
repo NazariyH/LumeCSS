@@ -1,0 +1,91 @@
+// base badge styles
+.badge {
+    padding: $base-padding/2 $base-padding;
+    border-radius: $base-border-radius;
+    background-color: map-get($theme-color-palette, 'dark');
+    color: get-contrast-color(map-get($theme-color-palette, 'dark'));
+}
+
+
+// Iterate over each key-val pair in the $base-color-palette
+@each $key, $val in $base-color-palette {
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+        // Generate badge styles for different colors
+        .badge-#{$key}-#{$i*100} {
+            background-color: $shade;
+            color: get-contrast-color($shade);
+        }
+
+        // Iterate over each $state in the $state-selectors
+        @each $state in $state-selectors {
+            // Generate badge classes for each state
+            .#{$state}\:badge-#{$key}-#{$i*100}:#{$state} {
+                background-color: $shade;
+                color: get-contrast-color($shade);
+            }
+        }
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                // Generate badge classes for each breakpoint
+                .#{$bp_key}\:badge-#{$key}-#{$i*100} {
+                    background-color: $shade !important;
+                    color: get-contrast-color($shade) !important;
+                }
+
+                // Iterate over each $state in the $state-selectors
+                @each $state in $state-selectors {
+                    // Generate badge classes for each state
+                    .#{$bp_key}\:#{$state}\:badge-#{$key}-#{$i*100}:#{$state} {
+                        background-color: $shade !important;
+                        color: get-contrast-color($shade) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// Iterate over each key-val pair in the $theme-color-palette
+@each $key, $val in $theme-color-palette {
+    // Generate badge styles for different colors
+    .badge-#{$key}{
+        background-color: $val;
+        color: get-contrast-color($val);
+    }
+
+    // Iterate over each $state in the $state-selectors
+    @each $state in $state-selectors {
+        // Generate badge classes for each state
+        .#{$state}\:badge-#{$key}:#{$state} {
+            background-color: $val;
+            color: get-contrast-color($val);
+        }
+    }
+
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Generate badge classes for each breakpoint
+            .#{$bp_key}\:badge-#{$key} {
+                background-color: $val !important;
+                color: get-contrast-color($val) !important;
+            }
+
+            // Iterate over each $state in the $state-selectors
+            @each $state in $state-selectors {
+                // Generate badge classes for each state
+                .#{$bp_key}\:#{$state}\:badge-#{$key}:#{$state} {
+                    background-color: $val !important;
+                    color: get-contrast-color($val) !important;
+                }
+            }
+        }
+    }
+}
