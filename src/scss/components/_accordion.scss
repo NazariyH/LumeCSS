@@ -1,0 +1,91 @@
+// Accordion styles for dark theme
+.dark-theme-accordion {
+    background-color: map-get($theme-color-palette, "dark");
+    color: map-get($theme-color-palette, "light");
+
+    .btn-arrow::after,
+    .btn-arrow::before {
+        background-color: map-get($theme-color-palette, "light") !important;
+    }
+}
+
+// Accordion styles for light theme
+.light-theme-accordion {
+    background-color: map-get($theme-color-palette, "light");
+    color: map-get($theme-color-palette, "dark");
+
+    .btn-arrow::after,
+    .btn-arrow::before {
+        background-color: map-get($theme-color-palette, "dark") !important;
+    }
+}
+
+// Base accordion styles
+.accordion {
+    overflow: hidden;
+    position: relative;
+    border-radius: $base-border-radius;
+
+    border-style: solid;
+    border-width: $base-border-sickness / 2;
+    border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+
+    // Base accordion item styles
+    .accordion-item {
+        border-style: solid;
+        border-width: 0 0 $base-border-sickness/2 0;
+        border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+
+        // Disable the border styles for the last accordion item
+        &:nth-last-child(1) {
+            border-width: 0 !important;
+        }
+
+        // Extend light theme styles by default
+        @extend .light-theme-accordion;
+
+        // Accordion header styles
+        .accordion-header {
+            padding: $base-padding;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            // Accordion title styles
+            .accordion-title {
+                font-size: 20px;
+            }
+        }
+
+        // Accordion collapse styles
+        .accordion-collapse {
+            overflow: hidden;
+            transition: all $base-transition-time ease;
+
+            // Hide it by default
+            height: 0;
+
+            // Accordion body styles
+            .accordion-body {
+                padding: $base-padding;
+            }
+        }
+
+
+        // Styles for the active accordion status
+        &.collapsed {
+            .accordion-header {
+                background-color: generate-shade(map-get($theme-color-palette, "primary"), 50, 'lighten');
+            }
+        }
+    }
+}
+
+
+// Accordion styles for the dark theme
+.accordion[data-bs-theme="dark"] {
+    .accordion-item {
+        @extend .dark-theme-accordion;
+    }
+}
