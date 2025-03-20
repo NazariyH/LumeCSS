@@ -1,4 +1,14 @@
-// For users who want to create their custom spinner
+// Spin animation
 .spin {
     @include spinner-animation();
+}
+
+// Bounce animation
+.bounce {
+    @include bounce-animation();
+}
+
+// Shake animation
+.shake {
+    @include shake-animation();
 }
