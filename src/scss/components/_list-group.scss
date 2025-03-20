@@ -1,0 +1,87 @@
+// List group styles for dark theme
+.dark-theme-list-group {
+    background-color: map-get($theme-color-palette, "dark");
+    color: map-get($theme-color-palette, "light");
+
+    // List action item styles
+    .list-group-item-action:hover {
+        background-color: generate-shade(map-get($theme-color-palette, "dark"), 10, "lighten");
+    }
+}
+
+// List group styles for light theme
+.light-theme-list-group {
+    background-color: map-get($theme-color-palette, "light");
+    color: map-get($theme-color-palette, "dark");
+
+    // List action item styles
+    .list-group-item-action:hover {
+        background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+    }
+}
+
+
+// Base list-group styles
+.list-group {
+    display: inline-block;
+    overflow: hidden;
+
+    @extend .light-theme-list-group;
+    @include base-border-style();
+
+    // List group item styles
+    .list-group-item {
+        padding: $base-padding/2 $base-padding;
+
+        @include base-border-style();
+        border-radius: 0;
+        border-left: none !important;
+        border-right: none !important;
+
+        &:first-child {
+            border-top: none;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        // Action list item styles
+        &.list-group-item-action {
+            cursor: pointer;
+            transition: background-color $base-transition-time ease-in-out;
+        }
+
+        // Active list group item styles
+        &.active {
+            @include active-object-color();
+        }
+    }
+
+    // List-group-form styles
+    &.list-group-form {
+        .list-group-item {
+            padding: 0 !important;
+
+            label {
+                display: block;
+                padding: $base-padding/2 $base-padding;
+            }
+
+            input {
+                display: none;
+            }
+
+            // Change the color when the checkbox is checked
+            input[type="checkbox"]:checked + label,
+            input[type="radio"]:checked + label {
+                @include active-object-color();
+            }
+        }
+    }
+}
+
+
+.list-group[data-bs-theme="dark"] {
+    @extend .dark-theme-list-group;
+}
