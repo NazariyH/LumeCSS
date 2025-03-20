@@ -69,3 +69,11 @@
     border-width: $base-border-sickness / 2;
     border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
 }
+
+// It is used for active accordion, list-group-item etc
+@mixin active-object-color() {
+    $color: generate-shade(map-get($theme-color-palette, "primary"), 50, 'lighten');
+
+    background-color: $color;
+    color: get-contrast-color($color);
+}
