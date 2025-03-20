@@ -76,7 +76,7 @@
         // Styles for the active accordion status
         &.collapsed {
             .accordion-header {
-                background-color: generate-shade(map-get($theme-color-palette, "primary"), 50, 'lighten');
+                @include active-object-color();
             }
         }
     }
