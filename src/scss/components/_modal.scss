@@ -50,13 +50,13 @@
                 transform: translateY(0);
                 opacity: 1;
 
-                @include bounce($duration: 1s, $offset: 2rem, $repetition-amount: 1);
+                @include bounce-animation($duration: 1s, $offset: 2rem, $repetition-amount: 1);
             }
         }
 
         // Shaking animation
         &.shaking .modal-dialog .modal-content.active {
-            @include shake();
+            @include shake-animation($repetition-amount: 1);
         }
     }
 
