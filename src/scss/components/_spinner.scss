@@ -12,12 +12,6 @@
 $spinner-styles: dashed, dotted, double;
 
 
-// For users who want to create their custom spinner
-.spin {
-    @include spinner-animation();
-}
-
-
 // Iterate over each key-val pair in the $spinner-border-sizes
 @each $key, $val in $spinner-border-sizes {
     // Iterate over each $style in $spinner_styles

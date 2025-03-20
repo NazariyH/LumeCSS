@@ -1,0 +1,4 @@
+// For users who want to create their custom spinner
+.spin {
+    @include spinner-animation();
+}
