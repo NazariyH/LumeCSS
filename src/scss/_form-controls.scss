@@ -298,7 +298,9 @@ textarea {
 }
 
 
-
+.form-control-none {
+    @include form-box-shadow($color: transparent);
+}
 
 
 
