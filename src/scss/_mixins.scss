@@ -61,3 +61,11 @@
     // Create animation for spinner
     animation: spin $duration $timing $repetition-amount;
 }
+
+// Base border style
+@mixin base-border-style() {
+    border-radius: $base-border-radius;
+    border-style: solid;
+    border-width: $base-border-sickness / 2;
+    border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+}
