@@ -17,6 +17,25 @@
         border-top-right-radius: $base-border-radius;
         border-bottom-right-radius: $base-border-radius;
     }
+
+    // Apply the button-group styles to the dropdown buttons
+    .dropdown {
+        & > .dropdown-toggle {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            border-radius: 0; /* Remove border-radius for all elements */
+        }
+
+        &:first-child > .dropdown-toggle {
+            border-top-left-radius: $base-border-radius;
+            border-bottom-left-radius: $base-border-radius;
+        }
+
+        &:last-child > .dropdown-toggle {
+            border-top-right-radius: $base-border-radius;
+            border-bottom-right-radius: $base-border-radius;
+        }
+    }
 }
 
 // Button vertical group styles
@@ -37,5 +56,23 @@
     & > *:last-child {
         border-bottom-left-radius: $base-border-radius;
         border-bottom-right-radius: $base-border-radius;
+    }
+
+    // Apply the button-group-vertical styles to the dropdown buttons
+    .dropdown {
+        & > .dropdown-toggle {
+            margin: 0 !important;
+            border-radius: 0; /* Remove border-radius for all elements */
+        }
+
+        &:first-child > .dropdown-toggle {
+            border-top-left-radius: $base-border-radius;
+            border-top-right-radius: $base-border-radius;
+        }
+
+        &:last-child > .dropdown-toggle {
+            border-bottom-left-radius: $base-border-radius;
+            border-bottom-right-radius: $base-border-radius;
+        }
     }
 }
