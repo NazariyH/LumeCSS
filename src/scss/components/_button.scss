@@ -98,6 +98,12 @@
         background-color: map-get($theme-color-palette, "dark");
     }
 
+    &.btn-arrow-light {
+        &::after, &::before {
+            background-color: map-get($theme-color-palette, "light");
+        }
+    }
+
     &::before {
         left: 0;
         rotate: 45deg;
