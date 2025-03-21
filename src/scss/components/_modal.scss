@@ -82,9 +82,9 @@
     .modal-dialog {
         // Modal block
         .modal-content {
-            width: 30rem;
+            width: auto;
             border-radius: $base-border-radius;
-            margin-top: $base-margin * 2;
+            margin: $base-margin * 2 $base-margin $base-margin $base-margin;
 
             transition: all $base-transition-time ease-out;
 
