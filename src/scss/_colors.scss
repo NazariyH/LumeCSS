@@ -9,20 +9,20 @@
         $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
 
         .text-#{$key}-#{$i * 100} {
-            color: $shade;
+            color: $shade !important;
         }
 
         .bg-#{$key}-#{$i * 100} {
-            background-color: $shade;
-            color: get-contrast-color($shade);
+            background-color: $shade !important;
+            color: get-contrast-color($shade) !important;
         }
 
         .border-#{$key}-#{$i * 100} {
-            border-color: $shade;
+            border-color: $shade !important;
         }
 
         .outline-#{$key}-#{$i * 100} {
-            outline-color: $shade;
+            outline-color: $shade !important;
         }
 
 
@@ -30,20 +30,20 @@
         @each $state in $state-selectors {
             // Generate classes for each state value
             .#{$state}\:text-#{$key}-#{$i * 100}:#{$state} {
-                color: $shade;
+                color: $shade !important;
             }
 
             .#{$state}\:bg-#{$key}-#{$i * 100}:#{$state} {
-                background-color: $shade;
-                color: get-contrast-color($shade);
+                background-color: $shade !important;
+                color: get-contrast-color($shade) !important;
             }
 
             .#{$state}\:border-#{$key}-#{$i * 100}:#{$state} {
-                border-color: $shade;
+                border-color: $shade !important;
             }
 
             .#{$state}\:outline-#{$key}-#{$i * 100}:#{$state} {
-                outline-color: $shade;
+                outline-color: $shade !important;
             }
         }
 
@@ -52,20 +52,20 @@
         @each $bp_key, $bp_val in $breakpoints {
             @media(min-width: $bp_val) {
                 .#{$bp_key}\:text-#{$key}-#{$i * 100} {
-                    color: $shade;
+                    color: $shade !important;
                 }
 
                 .#{$bp_key}\:bg-#{$key}-#{$i * 100} {
-                    background-color: $shade;
-                    color: get-contrast-color($shade);
+                    background-color: $shade !important;
+                    color: get-contrast-color($shade) !important;
                 }
 
                 .#{$bp_key}\:border-#{$key}-#{$i * 100} {
-                    border-color: $shade;
+                    border-color: $shade !important;
                 }
 
                 .#{$bp_key}\:outline-#{$key}-#{$i * 100} {
-                    outline-color: $shade;
+                    outline-color: $shade !important;
                 }
 
 
@@ -73,20 +73,20 @@
                 @each $state in $state-selectors {
                     // Generate classes for each state value
                     .#{$bp_key}\:#{$state}\:text-#{$key}-#{$i * 100}:#{$state} {
-                        color: $shade;
+                        color: $shade !important;
                     }
 
                     .#{$bp_key}\:#{$state}\:bg-#{$key}-#{$i * 100}:#{$state} {
-                        background-color: $shade;
-                        color: get-contrast-color($shade);
+                        background-color: $shade !important;
+                        color: get-contrast-color($shade) !important;
                     }
 
                     .#{$bp_key}\:#{$state}\:border-#{$key}-#{$i * 100}:#{$state} {
-                        border-color: $shade;
+                        border-color: $shade !important;
                     }
 
                     .#{$bp_key}\:#{$state}\:outline-#{$key}-#{$i * 100}:#{$state} {
-                        outline-color: $shade;
+                        outline-color: $shade !important;
                     }
                 }
             }
@@ -103,20 +103,20 @@
 @each $key, $val in $theme-color-palette {
     // Generate classes for each theme color
     .text-#{$key} {
-        color: $val;
+        color: $val !important;
     }
 
     .bg-#{$key} {
-        background-color: $val;
-        color: get-contrast-color($val);
+        background-color: $val !important;
+        color: get-contrast-color($val) !important;
     }
 
     .border-#{$key} {
-        border-color: $val;
+        border-color: $val !important;
     }
 
     .outline-#{$key} {
-        outline-color: $val;
+        outline-color: $val !important;
     }
 
 
@@ -124,20 +124,20 @@
     @each $state in $state-selectors {
         // Generate theme color classes for each state
         .#{$state}\:text-#{$key}:#{$state} {
-            color: $val;
+            color: $val !important;
         }
 
         .#{$state}\:bg-#{$key}:#{$state} {
-            background-color: $val;
-            color: get-contrast-color($val);
+            background-color: $val !important;
+            color: get-contrast-color($val) !important;
         }
 
         .#{$state}\:border-#{$key}:#{$state} {
-            border-color: $val;
+            border-color: $val !important;
         }
 
         .#{$state}\:outline-#{$key}:#{$state} {
-            outline-color: $val;
+            outline-color: $val !important;
         }
     }
 
@@ -147,20 +147,20 @@
         @media(min-width: $bp_val) {
             // Generate classes for each theme color
             .#{$bp_key}\:text-#{$key} {
-                color: $val;
+                color: $val !important;
             }
 
             .#{$bp_key}\:bg-#{$key} {
-                background-color: $val;
-                color: get-contrast-color($val);
+                background-color: $val !important;
+                color: get-contrast-color($val) !important;
             }
 
             .#{$bp_key}\:border-#{$key} {
-                border-color: $val;
+                border-color: $val !important;
             }
 
             .#{$bp_key}\:outline-#{$key} {
-                outline-color: $val;
+                outline-color: $val !important;
             }
 
 
@@ -168,20 +168,20 @@
             @each $state in $state-selectors {
                 // Generate theme color classes for each state
                 .#{$bp_key}\:#{$state}\:text-#{$key}:#{$state} {
-                    color: $val;
+                    color: $val !important;
                 }
 
                 .#{$bp_key}\:#{$state}\:bg-#{$key}:#{$state} {
-                    background-color: $val;
-                    color: get-contrast-color($val);
+                    background-color: $val !important;
+                    color: get-contrast-color($val) !important;
                 }
 
                 .#{$bp_key}\:#{$state}\:border-#{$key}:#{$state} {
-                    border-color: $val;
+                    border-color: $val !important;
                 }
 
                 .#{$bp_key}\:#{$state}\:outline-#{$key}:#{$state} {
-                    outline-color: $val;
+                    outline-color: $val !important;
                 }
             }
         }
