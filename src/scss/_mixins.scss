@@ -72,7 +72,7 @@
 
 // It is used for active accordion, list-group-item etc
 @mixin active-object-color() {
-    $color: generate-shade(map-get($theme-color-palette, "primary"), 50, 'lighten');
+    $color: map-get($theme-color-palette, "primary");
 
     background-color: $color;
     color: get-contrast-color($color);
