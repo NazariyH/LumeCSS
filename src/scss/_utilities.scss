@@ -181,6 +181,62 @@ $utilities: (
         "values": $border-radius-values
     ),
 
+    "border-start-start-radius": (
+        "prefix": "rounded-ss",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-start-end-radius": (
+        "prefix": "rounded-se",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-end-start-radius": (
+        "prefix": "rounded-es",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-end-end-radius": (
+        "prefix": "rounded-ee",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-top-radius": (
+        "prefix": "rounded-t",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-bottom-radius": (
+        "prefix": "rounded-b",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-left-radius": (
+        "prefix": "rounded-l",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
+    "border-right-radius": (
+        "prefix": "rounded-r",
+        "states": true,
+        "breakpoints": true,
+        "values": $border-radius-values
+    ),
+
     // Font sizes
     "font-size": (
         "prefix": "text",
@@ -846,20 +902,36 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
 
 // Helper function to handle shorthand properties (x, y) dynamically
 @function get-shorthand-property($property) {
-    @if $property =="padding-x" {
+    @if $property == "padding-x" {
         @return ("padding-left", "padding-right");
     }
 
-    @else if $property =="padding-y" {
+    @else if $property == "padding-y" {
         @return ("padding-top", "padding-bottom");
     }
 
-    @else if $property =="margin-x" {
+    @else if $property == "margin-x" {
         @return ("margin-left", "margin-right");
     }
 
-    @else if $property =="margin-y" {
+    @else if $property == "margin-y" {
         @return ("margin-top", "margin-bottom");
+    }
+
+    @else if $property == "border-top-radius" {
+        @return ("border-start-start-radius", "border-start-end-radius");
+    }
+
+    @else if $property == "border-bottom-radius" {
+        @return ("border-end-start-radius", "border-end-end-radius");
+    }
+
+    @else if $property == "border-left-radius" {
+        @return ("border-start-start-radius", "border-end-start-radius");
+    }
+
+    @else if $property == "border-right-radius" {
+        @return ("border-end-start-radius", "border-end-end-radius");
     }
 
     @else {
