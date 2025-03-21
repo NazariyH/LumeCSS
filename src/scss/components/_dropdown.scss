@@ -1,0 +1,136 @@
+// Dropdown styles for dark theme
+.dark-theme-dropdown {
+    background-color: map-get($theme-color-palette, "dark");
+    color: map-get($theme-color-palette, "light");
+
+    a {
+        color: map-get($theme-color-palette, "light");
+    }
+
+    // Dropdown item hover
+    .dropdown-item.dropdown-item-action {
+        transition: background-color $base-transition-time ease;
+
+        &:hover {
+            background-color: generate-shade(map-get($theme-color-palette, "dark"), 10, "lighten");
+        }
+    }
+}
+
+// Dropdown styles for light theme
+.light-theme-dropdown {
+    background-color: map-get($theme-color-palette, "light");
+    color: map-get($theme-color-palette, "dark");
+
+    a {
+        color: map-get($theme-color-palette, "dark");
+    }
+
+    // Dropdown item hover
+    .dropdown-item.dropdown-item-action {
+        transition: background-color $base-transition-time ease;
+
+        &:hover {
+            background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+        }
+    }
+}
+
+
+// Base dropdown styles
+.dropdown {
+    display: inline-block;
+    position: relative;
+
+
+    // Show the dropdown menu when it is collapsed
+    &.collapsed {
+        .dropdown-menu {
+            visibility: visible;
+        }
+    }
+
+    // Dropdown up styles
+    &.dropdown-up {
+        .dropdown-toggle .btn-arrow {
+            rotate: 180deg;
+        }
+
+        .dropdown-menu {
+            top: auto !important;
+            bottom: calc(100% + $base-margin) !important;
+        }
+    }
+
+    // Dropdown left styles
+    &.dropdown-left {
+        .dropdown-toggle .btn-arrow {
+            rotate: 90deg;
+        }
+
+        .dropdown-menu {
+            top: 0 !important;
+            left: auto !important;
+            right: calc(100% + $base-margin) !important;
+        }
+    }
+
+    // Dropdown right styles
+    &.dropdown-right {
+        .dropdown-toggle .btn-arrow {
+            rotate: -90deg;
+        }
+
+        .dropdown-menu {
+            top: 0 !important;
+            right: auto !important;
+            left: calc(100% + $base-margin) !important;
+        }
+    }
+
+    // Dropdown button styles
+    .dropdown-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // Dropdown btn-arrow styles
+        .btn-arrow {
+            display: inline-block;
+            margin-left: $base-margin;
+        }
+    }
+
+    // Dropdown menu styles
+    .dropdown-menu {
+        position: absolute;
+        z-index: 2;
+        top: calc(100% + $base-margin);
+        left: 0;
+        overflow: hidden;
+        transition: all $base-transition-time ease;
+
+        // Hide it by default
+        visibility: hidden;
+
+        border-radius: $base-border-radius;
+        @extend .light-theme-dropdown;
+        @include base-border-style;
+
+        // Dropdown menu item styles
+        .dropdown-item {
+            padding: $base-padding;
+
+            // Give nowrap to the link
+            a {
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+
+.dropdown[data-bs-theme="dark"] {
+    .dropdown-menu {
+        @extend .dark-theme-dropdown;
+    }
+}
