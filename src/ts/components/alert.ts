@@ -11,7 +11,7 @@ alertElementsArray.forEach((alert: HTMLElement): void => {
 
     // Make sure the removal button exists (not null)
     if (!removalButton) return;
-    
+
     /* Declare the removeImmediately variable. It indicates whether
     the alert should be deleted immediately or after 300ms. */
     let removeImmediately: boolean = true;
