@@ -12,3 +12,8 @@
 .shake {
     @include shake-animation();
 }
+
+// Fade animation
+.fade {
+    @include fade-animation();
+}
