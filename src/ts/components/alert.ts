@@ -9,6 +9,9 @@ alertElementsArray.forEach((alert: HTMLElement): void => {
     // Retrieve the removal button or null if it does not exist
     const removalButton: HTMLElement | null = alert.querySelector('button[data-bs-remove="alert"]');
 
+    // Make sure the removal button exists (not null)
+    if (!removalButton) return;
+    
     /* Declare the removeImmediately variable. It indicates whether
     the alert should be deleted immediately or after 300ms. */
     let removeImmediately: boolean = true;
@@ -17,9 +20,6 @@ alertElementsArray.forEach((alert: HTMLElement): void => {
     if (alert.className.includes('@')) {
         removeImmediately = false;
     }
-
-    // Make sure the removal button exists (not null)
-    if (!removalButton) return;
 
     // Add an eventListener to the removal button
     removalButton.addEventListener('click', (e: MouseEvent): void => {
