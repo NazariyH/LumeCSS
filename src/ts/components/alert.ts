@@ -10,7 +10,7 @@ alertElementsArray.forEach((alert: HTMLElement): void => {
     const removalButton: HTMLElement | null = alert.querySelector('button[data-bs-remove="alert"]');
 
     /* Declare the removeImmediately variable. It indicates whether
-    the function should be deleted immediately or after 300ms. */
+    the alert should be deleted immediately or after 300ms. */
     let removeImmediately: boolean = true;
 
     // Check whether the class name contains the '@' symbol, which indicates that the object is animated
