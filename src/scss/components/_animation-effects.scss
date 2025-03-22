@@ -17,3 +17,50 @@
 .fade {
     @include fade-animation();
 }
+
+
+
+// Animation effects classes
+.\@slideInFadeRight {
+    @include slide-animation($direction: 'right');
+
+    &.removing {
+        translate: 100%;
+        opacity: 0;
+    }
+}
+
+.\@slideInFadeLeft {
+    @include slide-animation($direction: 'left');
+
+    &.removing {
+        translate: -100%;
+        opacity: 0;
+    }
+}
+
+.\@slideInFadeUp {
+    @include slide-animation($direction: 'up');
+
+    &.removing {
+        translate: 0 -100%;
+        opacity: 0;
+    }
+}
+
+.\@slideInFadeDown {
+    @include slide-animation($direction: 'down');
+
+    &.removing {
+        translate: 0 100%;
+        opacity: 0;
+    }
+}
+
+.\@fade {
+    @include slide-animation($direction: 'static');
+
+    &.removing {
+        opacity: 0;
+    }
+}

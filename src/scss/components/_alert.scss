@@ -28,7 +28,7 @@
     color: rgba(map-get($theme-color-palette, "dark"), 0.7);
     transition: all $base-transition-time ease-out;
     @include alert-color();
-    @include fade-animation($repetition-amount: 1);
+
     // Alert heading style
     .alert-heading {
         font-size: $base-heading-font-size;
@@ -42,73 +42,6 @@
     // Alert icon styles
     .icon {
         margin-right: $base-margin;
-    }
-
-    // SlideInFadeRight effect
-    &.\@slideInFadeRight {
-        &.removing {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-
-    // SlideInFadeLeft effect
-    &.\@slideInFadeLeft {
-        &.removing {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-    }
-
-    // SlideInFadeDown effect
-    &.\@slideInFadeDown {
-        &.removing {
-            transform: translateY(100%);
-            opacity: 0;
-        }
-    }
-
-    // SlideInFadeUp
-    &.\@slideInFadeUp {
-        &.removing {
-            transform: translateY(-100%);
-            opacity: 0;
-        }
-    }
-
-    // SlideRight effect
-    &.\@slideRight {
-        &.removing {
-            transform: translateX(100%);
-        }
-    }
-
-    // SlideLeft effect
-    &.\@slideLeft {
-        &.removing {
-            transform: translateX(-100%);
-        }
-    }
-
-    // SlideUp effect
-    &.\@slideUp {
-        &.removing {
-            transform: translateY(-100%);
-        }
-    }
-
-    // SlideDown effect
-    &.\@slideDown {
-        &.removing {
-            transform: translateY(100%);
-        }
-    }
-
-    // Fade effect
-    &.\@fade {
-        &.removing {
-            opacity: 0;
-        }
     }
 }
 
