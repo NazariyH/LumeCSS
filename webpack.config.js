@@ -30,6 +30,14 @@ module.exports = {
                     'sass-loader', // Converts SCSS to CSS
                 ],
             },
+            // SVG handling rule
+            {
+                test: /\.svg$/,
+                type: 'asset/resource', // For Webpack 5+ (this replaces file-loader)
+                generator: {
+                    filename: 'assets/icons/[name][hash][ext][query]', // Custom output path for SVGs
+                },
+            },
         ],
     },
     plugins: [
