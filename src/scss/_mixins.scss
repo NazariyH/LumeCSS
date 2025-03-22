@@ -76,6 +76,77 @@
     animation: fade $duration $timing $repetition-amount;
 }
 
+// Mixin for the slide effect
+@mixin slide-animation($duration: 300ms, $timing: ease-out, $direction: 'right') {
+    // Define the direction-specific keyframes
+    @keyframes slide-right {
+        from {
+            translate: 100%;
+            opacity: 0;
+        }
+        to {
+            translate: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-left {
+        from {
+            translate: -100%;
+            opacity: 0;
+        }
+        to {
+            translate: 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-up {
+        from {
+            translate: 0 -100%;
+            opacity: 0;
+        }
+        to {
+            translate: 0 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-down {
+        from {
+            translate: 0 100%;
+            opacity: 0;
+        }
+        to {
+            translate: 0 0;
+            opacity: 1;
+        }
+    }
+
+    @keyframes slide-static {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    // Apply the correct keyframe animation based on the direction
+    @if $direction == 'right' {
+        animation: slide-right $duration $timing 1;
+    } @else if $direction == 'left' {
+        animation: slide-left $duration $timing 1;
+    } @else if $direction == 'up' {
+        animation: slide-up $duration $timing 1;
+    } @else if $direction == 'down' {
+        animation: slide-down $duration $timing 1;
+    } @else if $direction == 'static' {
+        animation: slide-static $duration $timing 1;
+    }
+}
+
+
 // Base border style
 @mixin base-border-style() {
     border-radius: $base-border-radius;
