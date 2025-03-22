@@ -1,0 +1,65 @@
+// Base icon styles
+.icon {
+    display: inline-block;
+    width: 2.4em;
+    height: 2.4em;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+// White icon styles
+.icon-white {
+    @extend .icon;
+    filter: invert(1) brightness(2); // From black to white
+}
+
+
+// Iterate over key-path pair in the $icons map
+@each $key, $path in $icons {
+    // Create class for each icon
+    .icon-#{$key} {
+        background-image: url('#{$path}');
+    }
+}
+
+
+// Iterate over each key-val pair in the $icon-sizes
+@each $key, $val in $icon-sizes {
+    // Generate classes for each size
+    .icon-#{$key} {
+        width: $val;
+        height: $val;
+    }
+
+    // Iterate over each $state in the $state-selectors
+    @each $state in $state-selectors {
+        // Create icon classes for each state
+        .#{$state}\:icon-#{$key}:#{$state} {
+            width: $val;
+            height: $val;
+        }
+    }
+
+    // Iterate over each bp_key, bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Generate icon size classes for each breakpoint
+
+            // Generate classes for each size
+            .#{$bp_key}\:icon-#{$key} {
+                width: $val;
+                height: $val;
+            }
+
+            // Iterate over each $state in the $state-selectors
+            @each $state in $state-selectors {
+                // Create icon classes for each state
+                .#{$bp_key}\:#{$state}\:icon-#{$key}:#{$state} {
+                    width: $val;
+                    height: $val;
+                }
+            }
+        }
+    }
+}
