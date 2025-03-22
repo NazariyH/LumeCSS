@@ -62,6 +62,20 @@
     animation: spin $duration $timing $repetition-amount;
 }
 
+// Mixin for the fade animation
+@mixin fade-animation($duration: 1s, $timing: linear, $repetition-amount: infinite) {
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    animation: fade $duration $timing $repetition-amount;
+}
+
 // Base border style
 @mixin base-border-style() {
     border-radius: $base-border-radius;
