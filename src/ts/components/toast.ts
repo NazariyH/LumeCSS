@@ -21,6 +21,15 @@ toastElementsArray.forEach((toast: HTMLElement): void => {
         removeImmediately = false;
     }
 
+    // Check if the toast object needs to be removed after a certain period of time
+    const attr: string | null = toast.getAttribute('data-toast-duration');
+    const toastDuration: number | boolean = attr && !isNaN(+attr) ? +attr : false;
+
+    // Fire the removal timeout if the toastDuration is of type number
+    if (toastDuration) {
+        updateExpirationBar(toast, toastDuration, removeImmediately);
+    }
+
     // Give an event listener to the removal button
     toastRemovalBtn.addEventListener('click', (e: MouseEvent):void => {
         e.preventDefault();
@@ -50,4 +59,47 @@ function deleteToast(toast: HTMLElement, removeImmediately: boolean): void {
 
     // Remove the toast object after 300ms
     setTimeout(():void => toast.remove(), 300);
+}
+
+function updateExpirationBar(toast: HTMLElement, duration: number, removeImmediately: boolean): void {
+    /* This function updates the expiration bar every 10ms
+    * and fires the removal function when the time has elapsed.
+    *
+    * Attributes:
+    * - 'toast': The html object that supposed to be deleted
+    * - 'duration': The duration for which the toast is displayed
+    * - 'removeImmediately': It should be passed as an attribute to the removal function
+    */
+
+    // Get the toast expiration bar or null if it does not exist
+    const expirationBar: HTMLElement | null = toast.querySelector('.toast-expiry-bar');
+
+    // Declare the updateExpirationBarInterval
+    let updateExpirationBarInterval: NodeJS.Timeout | null = null;
+
+    // Set the updateExpirationBarInterval interval if the expirationBar exists (not null)
+    if (expirationBar) {
+        // Declare the elapsedTime variable
+        let elapsedTime: number = 0;
+
+        updateExpirationBarInterval = setInterval(():void => {
+            // Updated the elapsedTime
+            elapsedTime += 10;
+
+            // Change the expirationBar width
+            expirationBar.style.width = `${100 - (elapsedTime * 100 / duration)}%`;
+        }, 10);
+    }
+
+
+    // Remove the toast and clear the updateExpirationBarInterval if it is not null
+    setTimeout(():void => {
+        deleteToast(toast, removeImmediately); // Remove the toast object
+
+        // Remove the updateExpirationBarInterval if it is not null
+        if (updateExpirationBarInterval) {
+            clearInterval(updateExpirationBarInterval);
+        }
+
+    }, duration);
 }
