@@ -1,0 +1,85 @@
+// Pagination styles for dark theme
+.dark-theme-pagination {
+    background-color: map-get($theme-color-palette, "dark");
+
+    // Dropdown item hover
+    .page-item {
+        // Add hover for the page item
+        &:hover {
+            background-color: generate-shade(map-get($theme-color-palette, "dark"), 10, "lighten");
+        }
+
+        // Link styles for the dark theme mode
+        .page-link {
+            color: map-get($theme-color-palette, "light");
+        }
+    }
+}
+
+// Pagination styles for light theme
+.light-theme-pagination {
+    background-color: map-get($theme-color-palette, "light");
+
+    // Dropdown item hover
+    .page-item {
+        // Add hover for the page item
+        &:hover {
+            background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+        }
+    }
+}
+
+// Base pagination styles
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    @extend .light-theme-pagination;
+    @include base-border-style;
+
+    // Pagination item styles
+    .page-item {
+        cursor: pointer;
+        padding: $base-padding/2 $base-padding;
+        @include base-border-style;
+        border-top: none;
+        border-bottom: none;
+        border-left: none;
+        border-radius: 0;
+        transition: background-color $base-transition-time ease;
+
+        // Disabled page item styles
+        &.disabled {
+            cursor: default !important;
+            background-color: $disabled-color !important;
+            color: map-get($theme-color-palette, "dark") !important;
+
+            a, .page-link {
+                color: map-get($theme-color-palette, "dark") !important;
+            }
+
+
+            &:hover {
+                background-color: $disabled-color !important;
+            }
+        }
+
+        // Page active styles
+        &.active {
+            @include active-object-color();
+        }
+
+        // Disable border styles for the last page-item
+        &:last-child {
+            border-right: none;
+        }
+    }
+}
+
+
+// Apply styles for the dark mode
+.pagination[data-theme="dark"] {
+    @extend .dark-theme-pagination;
+}
