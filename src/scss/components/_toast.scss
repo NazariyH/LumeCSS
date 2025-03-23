@@ -1,0 +1,191 @@
+// Toast styles for dark theme
+.dark-theme-toast {
+    background-color: map-get($theme-color-palette, "dark");
+    color: map-get($theme-color-palette, "light");
+
+    // Toast header styles
+    .toast-header {
+        // Toast close button
+        .btn-close::after,
+        .btn-close::before {
+            background-color: map-get($theme-color-palette, "light") !important;
+        }
+
+        // Toast date text
+        .toast-date {
+            color: generate-shade(map-get($theme-color-palette, 'light'), 30, 'darken');
+        }
+    }
+
+}
+
+// Toast styles for light theme
+.light-theme-toast {
+    background-color: map-get($theme-color-palette, "light");
+    color: map-get($theme-color-palette, "dark");
+
+    // Toast header styles
+    .toast-header {
+        // Close button
+        .btn-close::after,
+        .btn-close::before {
+            background-color: map-get($theme-color-palette, "dark") !important;
+        }
+
+        // Toast date text
+        .toast-date {
+            color: generate-shade(map-get($theme-color-palette, 'dark'), 30, 'lighten');
+        }
+    }
+}
+
+
+// Base toast style
+.toast {
+    position: fixed;
+    z-index: 2;
+    right: $base-margin;
+    bottom: $base-margin;
+
+    display: inline-block;
+    border-radius: $base-border-radius;
+    transition: all $base-transition-time ease-out;
+    overflow: hidden;
+    margin: $base-margin;
+    min-width: 200px;
+    max-width: 400px;
+
+    @extend .light-theme-toast;
+    @include base-border-style();
+
+
+    // Toast header styles
+    .toast-header {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding: $base-padding;
+
+        // Toast image styles
+        .toast-img {
+            width: 20px;
+            height: 20px;
+            margin-right: $base-margin;
+            border-radius: $base-border-radius;
+            background-color: map-get($theme-color-palette, 'primary');
+        }
+
+        // Toast title styles
+        .toast-title {
+            font-size: $base-heading-font-size;
+            margin-right: auto !important;
+        }
+
+        // Toast date styles
+        .toast-date {
+            margin-left: auto !important;
+        }
+
+        // Toast close button styles
+        .btn-close {
+            margin-left: $base-margin !important;
+        }
+    }
+
+    // Toast body styles
+    .toast-body {
+        padding: $base-padding;
+    }
+
+
+    // Toast progress bar
+    .toast-expiry-bar {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 4px;
+
+        background-color: map-get($theme-color-palette, "primary");
+    }
+
+    // Toast's positions
+    &.toast-top-left {
+        top: $base-margin;
+        left: $base-margin;
+        right: auto;
+        bottom: auto;
+    }
+
+    &.toast-top-right {
+        top: $base-margin;
+        left: auto;
+        right: $base-margin;
+        bottom: auto;
+    }
+
+    &.toast-bottom-left {
+        top: auto;
+        left: $base-margin;
+        right: auto;
+        bottom: $base-margin;
+    }
+
+    &.toast-bottom-right {
+        top: auto;
+        left: auto;
+        right: $base-margin;
+        bottom: $base-margin;
+    }
+
+    &.toast-middle-left {
+        top: 50%;
+        left: $base-margin;
+        right: auto;
+        bottom: auto;
+
+        transform: translateY(-50%);
+    }
+
+    &.toast-middle-right {
+        top: 50%;
+        left: auto;
+        right: $base-margin;
+        bottom: auto;
+
+        transform: translateY(-50%);
+    }
+
+    &.toast-middle-top {
+        top: $base-margin;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+
+        transform: translateX(-50%);
+    }
+
+    &.toast-middle-bottom {
+        top: auto;
+        left: 50%;
+        right: auto;
+        bottom: $base-margin;
+
+        transform: translateX(-50%);
+    }
+
+    &.toast-center {
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+// Apply styles for the dark toast theme
+.toast[data-bs-theme="dark"] {
+    @extend .dark-theme-toast;
+}
