@@ -161,4 +161,8 @@
 
     background-color: $color;
     color: get-contrast-color($color);
+
+    a {
+        color: get-contrast-color($color);
+    }
 }
