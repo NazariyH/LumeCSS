@@ -1,0 +1,135 @@
+// Base tooltip styles
+*[data-tooltip="tooltip"] {
+    position: relative;
+
+    // Tooltip block styles
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+
+        border-radius: $base-border-radius;
+        padding: $base-padding;
+        font-size: 12px;
+
+        // Hidden by default
+        display: none;
+
+        // Default dimensions
+        max-width: 100%;
+        min-width: 200px;
+        width: auto;
+        height: auto;
+
+        // Default color
+        background: map-get($theme-color-palette, "dark");
+        color: map-get($theme-color-palette, "light");
+
+
+        // Default position
+        bottom: calc(100% + 14px);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    // Tooltip arrow
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+
+        width: 0;
+        height: 0;
+
+        // Hidden by default
+        display: none;
+
+        // Default color
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 14px solid map-get($theme-color-palette, "dark");
+
+        // Default position
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &:hover {
+        &::after {
+            display: block;
+        }
+        &::before {
+            display: block;
+        }
+    }
+
+    // tooltip positions
+    &[data-tooltip-placement="top"] {
+        &::after {
+            top: auto !important;
+            left: 50% !important;
+            bottom: calc(100% + 14px) !important;
+            right: auto !important;
+            transform: translate(-50%, 0) !important;
+        }
+        &::before {
+            top: auto !important;
+            left: 50% !important;
+            bottom: 100% !important;
+            right: auto !important;
+            transform: translate(-50%, 0) !important;
+        }
+    }
+
+    &[data-tooltip-placement="bottom"] {
+        &::after {
+            top: calc(100% + 14px) !important;
+            left: 50% !important;
+            bottom: auto !important;
+            right: auto !important;
+            transform: translate(-50%, 0) !important;
+        }
+        &::before {
+            top: 100% !important;
+            left: 50% !important;
+            bottom: auto !important;
+            right: auto !important;
+            transform: translate(-50%, 0) rotate(180deg) !important;
+        }
+    }
+
+    &[data-tooltip-placement="left"] {
+        &::after {
+            top: 50%;
+            left: auto !important;
+            bottom: auto !important;
+            right: calc(100% + 14px) !important;;
+            transform: translate(0, -50%) !important;
+        }
+        &::before {
+            top: 50% !important;
+            left: auto !important;
+            bottom: auto !important;
+            right: 100% !important;
+            transform: translate(0, -50%) rotate(-90deg) !important;
+        }
+    }
+
+    &[data-tooltip-placement="right"] {
+        &::after {
+            top: 50%;
+            left: calc(100% + 14px) !important;;
+            bottom: auto !important;
+            right: auto !important;
+            transform: translate(0, -50%) !important;
+        }
+        &::before {
+            top: 50% !important;
+            left: 100% !important;
+            bottom: auto !important;
+            right: auto !important;
+            transform: translate(0, -50%) rotate(90deg) !important;
+        }
+    }
+}
