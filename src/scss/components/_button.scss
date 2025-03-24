@@ -42,7 +42,7 @@
 // Default button styles
 .btn {
     @include btn;
-    @include btn-color(map-get($theme-color-palette, 'dark'));
+    @include btn-color($dark);
 }
 
 
@@ -63,7 +63,7 @@
 
         width: 1.5rem;
         height: 0.1rem;
-        background-color: generate-shade(map-get($theme-color-palette, 'dark'), 40, 'lighten');
+        background-color: generate-shade($dark, 40, 'lighten');
     }
 
     &::before {
@@ -96,12 +96,12 @@
         width: 10px;
         height: 2px;
 
-        background-color: map-get($theme-color-palette, "dark");
+        background-color: $dark;
     }
 
     &.btn-arrow-light {
         &::after, &::before {
-            background-color: map-get($theme-color-palette, "light");
+            background-color: $light;
         }
     }
 
@@ -134,7 +134,7 @@
     // Generate classes for each btn size
     .btn-#{$key} {
         @include btn(nth($val, 1), nth($val, 2));
-        @include btn-color(map-get($theme-color-palette, 'dark'));
+        @include btn-color($dark);
     }
 
     // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
@@ -143,7 +143,7 @@
             // Generate breakpoint classes for each btn size
             .#{$bp_key}\:btn-#{$key} {
                 @include btn(nth($val, 1), nth($val, 2));
-                @include btn-color(map-get($theme-color-palette, 'dark'));
+                @include btn-color($dark);
             }
         }
     }

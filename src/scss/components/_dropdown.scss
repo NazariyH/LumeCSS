@@ -1,10 +1,10 @@
 // Dropdown styles for dark theme
 .dark-theme-dropdown {
-    background-color: map-get($theme-color-palette, "dark");
-    color: map-get($theme-color-palette, "light");
+    background-color: $dark;
+    color: $light;
 
     a {
-        color: map-get($theme-color-palette, "light");
+        color: $light;
     }
 
     // Dropdown item hover
@@ -12,18 +12,18 @@
         transition: background-color $base-transition-time ease;
 
         &:hover {
-            background-color: generate-shade(map-get($theme-color-palette, "dark"), 10, "lighten");
+            background-color: generate-shade($dark, 10, "lighten");
         }
     }
 }
 
 // Dropdown styles for light theme
 .light-theme-dropdown {
-    background-color: map-get($theme-color-palette, "light");
-    color: map-get($theme-color-palette, "dark");
+    background-color: $light;
+    color: $dark;
 
     a {
-        color: map-get($theme-color-palette, "dark");
+        color: $dark;
     }
 
     // Dropdown item hover
@@ -31,7 +31,7 @@
         transition: background-color $base-transition-time ease;
 
         &:hover {
-            background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+            background-color: generate-shade($light, 10, "darken");
         }
     }
 }

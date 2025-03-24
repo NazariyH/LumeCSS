@@ -1,22 +1,22 @@
 // List group styles for dark theme
 .dark-theme-list-group {
-    background-color: map-get($theme-color-palette, "dark");
-    color: map-get($theme-color-palette, "light");
+    background-color: $dark;
+    color: $light;
 
     // List action item styles
     .list-group-item-action:hover {
-        background-color: generate-shade(map-get($theme-color-palette, "dark"), 10, "lighten");
+        background-color: generate-shade($dark, 10, "lighten");
     }
 }
 
 // List group styles for light theme
 .light-theme-list-group {
-    background-color: map-get($theme-color-palette, "light");
-    color: map-get($theme-color-palette, "dark");
+    background-color: $light;
+    color: $dark;
 
     // List action item styles
     .list-group-item-action:hover {
-        background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+        background-color: generate-shade($light, 10, "darken");
     }
 }
 

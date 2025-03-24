@@ -55,7 +55,7 @@
             // Active breadcrumb-item styles
             &.active {
                 a {
-                    color: map-get($theme-color-palette, 'dark');
+                    color: $dark;
                     text-decoration: none;
                 }
             }

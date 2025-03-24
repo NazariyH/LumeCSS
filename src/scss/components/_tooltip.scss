@@ -22,8 +22,8 @@
         height: auto;
 
         // Default color
-        background: map-get($theme-color-palette, "dark");
-        color: map-get($theme-color-palette, "light");
+        background: $dark;
+        color: $light;
 
 
         // Default position
@@ -47,7 +47,7 @@
         // Default color
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-top: 14px solid map-get($theme-color-palette, "dark");
+        border-top: 14px solid $dark;
 
         // Default position
         bottom: 100%;

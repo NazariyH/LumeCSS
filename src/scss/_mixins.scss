@@ -163,7 +163,7 @@
 
 // It is used for active accordion, list-group-item etc
 @mixin active-object-color() {
-    $color: map-get($theme-color-palette, "primary");
+    $color: $primary;
 
     background-color: $color;
     color: get-contrast-color($color);

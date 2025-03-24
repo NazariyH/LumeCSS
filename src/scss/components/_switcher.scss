@@ -32,7 +32,7 @@
         border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
 
         // Static color for the switcher
-        background-color: map-get($theme-color-palette, "light");
+        background-color: $light;
 
         transition: $base-transition-time;
 
@@ -58,11 +58,11 @@
 
     // When the checkbox is checked, move the circle to the right
     input[type="checkbox"]:checked + label {
-        background-color: map-get($theme-color-palette, "primary");
+        background-color: $primary;
     }
 
     input[type="checkbox"]:checked + label::after {
-        background-color: map-get($theme-color-palette, "light");
+        background-color: $light;
     }
 
     // Apply the size mixin for dynamic resizing

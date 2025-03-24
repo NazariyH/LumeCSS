@@ -1,22 +1,22 @@
 // Modal styles for dark theme
 .dark-theme-modal {
-    background-color: map-get($theme-color-palette, "dark");
-    color: map-get($theme-color-palette, "light");
+    background-color: $dark;
+    color: $light;
 
     .btn-close::after,
     .btn-close::before {
-        background-color: map-get($theme-color-palette, "light") !important;
+        background-color: $light !important;
     }
 }
 
 // Modal styles for light theme
 .light-theme-modal {
-    background-color: map-get($theme-color-palette, "light");
-    color: map-get($theme-color-palette, "dark");
+    background-color: $light;
+    color: $dark;
 
     .btn-close::after,
     .btn-close::before {
-        background-color: map-get($theme-color-palette, "dark") !important;
+        background-color: $dark !important;
     }
 }
 

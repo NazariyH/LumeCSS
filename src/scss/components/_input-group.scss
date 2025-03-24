@@ -23,7 +23,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: generate-shade(map-get($theme-color-palette, "light"), 10, 'darken');
+        background-color: generate-shade($light, 10, 'darken');
         border-radius: $base-border-radius;
         padding: $base-padding;
 

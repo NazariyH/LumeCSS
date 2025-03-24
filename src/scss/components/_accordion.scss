@@ -1,22 +1,22 @@
 // Accordion styles for dark theme
 .dark-theme-accordion {
-    background-color: map-get($theme-color-palette, "dark");
-    color: map-get($theme-color-palette, "light");
+    background-color: $dark;
+    color: $light;
 
     .btn-arrow::after,
     .btn-arrow::before {
-        background-color: map-get($theme-color-palette, "light") !important;
+        background-color: $light !important;
     }
 }
 
 // Accordion styles for light theme
 .light-theme-accordion {
-    background-color: map-get($theme-color-palette, "light");
-    color: map-get($theme-color-palette, "dark");
+    background-color: $light;
+    color: $dark;
 
     .btn-arrow::after,
     .btn-arrow::before {
-        background-color: map-get($theme-color-palette, "dark") !important;
+        background-color: $dark !important;
     }
 }
 

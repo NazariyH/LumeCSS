@@ -2,8 +2,8 @@
 .badge {
     padding: $base-padding/2 $base-padding;
     border-radius: $base-border-radius;
-    background-color: map-get($theme-color-palette, 'dark');
-    color: get-contrast-color(map-get($theme-color-palette, 'dark'));
+    background-color: $dark;
+    color: get-contrast-color($dark);
 }
 
 

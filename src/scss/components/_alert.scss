@@ -1,17 +1,17 @@
 // Mixin with alert color
-@mixin alert-color($color: map-get($theme-color-palette, 'primary')) {
+@mixin alert-color($color: $primary) {
     // Border style
     @include base-border-style();
     border-color: $color;
 
     // Check if the color is light
-    @if ($color == map-get($theme-color-palette, 'light')) {
+    @if ($color == $light) {
         border-color: generate-shade($color, 20, 'darken');
     }
 
     // Divider color
     .divider {
-        background-color: rgba(map-get($theme-color-palette, "dark"), 0.7)
+        background-color: rgba($dark, 0.7)
     }
 
     // Btn close, btn arrow colors
@@ -19,7 +19,7 @@
     .btn-close::before,
     .btn-arrow::after,
     .btn-arrow::before {
-        background-color: rgba(map-get($theme-color-palette, "dark"), 0.7)
+        background-color: rgba($dark, 0.7)
     }
 
     // Background color
@@ -30,7 +30,7 @@
 .alert {
     padding: $base-padding;
     margin: $base-margin 0;
-    color: rgba(map-get($theme-color-palette, "dark"), 0.7);
+    color: rgba($dark, 0.7);
     transition: all $base-transition-time ease-out;
     @include alert-color();
 

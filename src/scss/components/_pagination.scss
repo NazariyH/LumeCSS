@@ -1,17 +1,17 @@
 // Pagination styles for dark theme
 .dark-theme-pagination {
-    background-color: map-get($theme-color-palette, "dark");
+    background-color: $dark;
 
     // Dropdown item hover
     .page-item {
         // Add hover for the page item
         &:hover {
-            background-color: generate-shade(map-get($theme-color-palette, "dark"), 10, "lighten");
+            background-color: generate-shade($dark, 10, "lighten");
         }
 
         // Link styles for the dark theme mode
         .page-link {
-            color: map-get($theme-color-palette, "light");
+            color: $light;
         }
 
         // Disabled item page styles
@@ -19,10 +19,10 @@
             $disabled-color-dark-theme: generate-shade($disabled-color, 50, 'darken');
 
             background-color: $disabled-color-dark-theme !important;
-            color: map-get($theme-color-palette, "light") !important;
+            color: $light !important;
 
             a, .page-link {
-                color: map-get($theme-color-palette, "light") !important;
+                color: $light !important;
             }
 
 
@@ -35,22 +35,22 @@
 
 // Pagination styles for light theme
 .light-theme-pagination {
-    background-color: map-get($theme-color-palette, "light");
+    background-color: $light;
 
     // Dropdown item hover
     .page-item {
         // Add hover for the page item
         &:hover {
-            background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+            background-color: generate-shade($light, 10, "darken");
         }
 
         // Disabled item page styles
         &.disabled {
             background-color: $disabled-color !important;
-            color: map-get($theme-color-palette, "dark") !important;
+            color: $dark !important;
 
             a, .page-link {
-                color: map-get($theme-color-palette, "dark") !important;
+                color: $dark !important;
             }
 
 

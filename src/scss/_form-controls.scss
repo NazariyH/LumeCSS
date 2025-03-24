@@ -75,7 +75,7 @@ input[type="radio"] {
     height: 15px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: map-get($theme-color-palette, "light");
+    background-color: $light;
 
     border-style: solid;
     border-width: $base-border-sickness/2;
@@ -90,11 +90,11 @@ input[type="radio"]:checked::after {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background-color: map-get($theme-color-palette, "light");
+    background-color: $light;
 }
 /* Change color when the radio button is checked */
 input[type="radio"]:checked {
-    background-color: map-get($theme-color-palette, "primary");
+    background-color: $primary;
 }
 
 // Base input style
@@ -103,8 +103,8 @@ input[type="tel"], input[type="search"], input[type="url"],
 input[type="number"], input[type="date"], input[type="datetime-local"],
 input[type="month"], input[type="week"], input[type="time"], select,
 textarea {
-    background-color: map-get($theme-color-palette, "light");
-    color: map-get($theme-color-palette, "dark");
+    background-color: $light;
+    color: $dark;
     padding: $base-padding/1.5 $base-padding;
     border-radius: $base-border-radius;
 
