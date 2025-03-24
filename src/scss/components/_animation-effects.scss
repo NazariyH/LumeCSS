@@ -13,6 +13,11 @@
     @include shake-animation();
 }
 
+// Shaking animation with a single repetition
+.shaking {
+    @include shake-animation($repetition-amount: 1);
+}
+
 // Fade animation
 .fade {
     @include fade-animation();
@@ -63,4 +68,11 @@
     &.removing {
         opacity: 0;
     }
+}
+
+.\@bounce {
+    transform: translateY(0);
+    opacity: 1;
+
+    @include bounce-animation($duration: 1s, $offset: 2rem, $repetition-amount: 1);
 }
