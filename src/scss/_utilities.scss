@@ -282,6 +282,19 @@ $utilities: (
         "values": $letter-spacing-values
     ),
 
+    // Text align
+    "text-align": (
+        "prefix": 'text',
+        "states": false,
+        "breakpoints": true,
+        "values": (
+            "start": start,
+            "end": end,
+            "center": center,
+            "justify": justify
+        )
+    ),
+
     // Cursor
     "cursor": (
         "prefix": 'cursor',
