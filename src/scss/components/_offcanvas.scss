@@ -1,0 +1,146 @@
+// Offcanvas styles for dark theme
+.dark-theme-offcanvas {
+    background-color: map-get($theme-color-palette, "dark");
+    color: map-get($theme-color-palette, "light");
+
+    .btn-close::after,
+    .btn-close::before {
+        background-color: map-get($theme-color-palette, "light") !important;
+    }
+}
+
+// Offcanvas styles for light theme
+.light-theme-offcanvas {
+    background-color: map-get($theme-color-palette, "light");
+    color: map-get($theme-color-palette, "dark");
+
+    .btn-close::after,
+    .btn-close::before {
+        background-color: map-get($theme-color-palette, "dark") !important;
+    }
+}
+
+
+// Base offcanvs styles
+.offcanvas {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color $base-transition-time ease;
+
+    // Hidden by default
+    visibility: hidden;
+
+    // Offcanvas content styles
+    .offcanvas-content {
+        max-width: 400px;
+        min-width: 300px;
+        height: 100vh;
+        margin: 0 $base-margin 0 0;
+        transition: all $base-transition-time ease-out;
+
+        @extend .light-theme-offcanvas;
+
+        // Offcanvas header styles
+        .offcanvas-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+
+            padding: $base-padding;
+        }
+
+        // Offcanvas body styles
+        .offcanvas-body {
+            padding: $base-padding;
+        }
+    }
+
+    // Disable the background color if the object has data-scroll="true"
+    &[data-scroll="true"] {
+        background-color: transparent !important;
+        width: auto !important;
+        height: auto !important;
+    }
+
+    // Offcanvas content positioning styles
+    &.offcanvas-left {
+        display: flex;
+        justify-content: start;
+
+        // Offcavas content positioning styles
+        .offcanvas-content {
+            margin: 0 $base-margin 0 0 !important;
+            transform: translateX(-100%);
+        }
+    }
+
+    &.offcanvas-right {
+        display: flex;
+        justify-content: end;
+
+        // Offcavas content positioning styles
+        .offcanvas-content {
+            margin: 0 0 0 $base-margin;
+            transform: translateX(100%);
+        }
+    }
+
+    &.offcanvas-top {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+
+        // Offcavas content positioning styles
+        .offcanvas-content {
+            width: 100vw;
+            max-width: 100vw;
+            min-height: 300px;
+            max-height: 400px;
+            transform: translateY(-100%);
+
+            margin: 0 0 $base-margin 0;
+        }
+    }
+
+    &.offcanvas-bottom {
+        display: flex;
+        align-items: end;
+        justify-content: start;
+
+        // Offcavas content positioning styles
+        .offcanvas-content {
+            width: 100vw;
+            max-width: 100vw;
+            min-height: 300px;
+            max-height: 400px;
+            transform: translateY(100%);
+
+            margin: $base-margin 0 0 0;
+        }
+    }
+
+    // Styles for the shown offcanvas
+    &.show {
+        visibility: visible;
+        background-color: rgba(map-get($theme-color-palette, "dark"), 0.7);
+
+        .offcanvas-content.show {
+            transform: translate(0, 0) !important;
+            opacity: 1 !important;
+        }
+    }
+}
+
+
+// Apply styles for the dark theme mode
+.offcanvas[data-theme="dark"] {
+    .offcanvas-content {
+        @extend .dark-theme-offcanvas;
+    }
+}
