@@ -128,7 +128,7 @@
     // Styles for the shown offcanvas
     &.show {
         visibility: visible;
-        background-color: rgba(map-get($theme-color-palette, "dark"), 0.7);
+        background-color: $darken-screen-bg-color;
 
         .offcanvas-content.show {
             transform: translate(0, 0) !important;

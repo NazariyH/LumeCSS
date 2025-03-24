@@ -29,7 +29,7 @@
     width: 100vw;
     height: 100vh;
     z-index: 100;
-    background-color: rgba(map-get($theme-color-palette, "dark"), 0.8);
+    background-color: $darken-screen-bg-color;
 
     justify-content: center;
 
