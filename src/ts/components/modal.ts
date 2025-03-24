@@ -18,6 +18,9 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
             // Add an active class to the modalObject
             modalObject.classList.add('active');
 
+            // Disable the scrolling
+            document.body.classList.add('disabled-scrolling');
+
             // Check if the modalContent exists
             if (modalContent) {
                 // Add an active class to the modal content object after a 0.3 seconds
@@ -34,6 +37,9 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
 
         // Ensures the modal has active class
         if (modalObject.classList.contains('active')) {
+            // Enable the scrolling
+            document.body.classList.remove('disabled-scrolling');
+
             // Check if the modalContent exists
             if (modalContent) {
                 // Remove an active class to the modal content object
