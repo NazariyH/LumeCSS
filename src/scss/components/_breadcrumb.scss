@@ -1,0 +1,64 @@
+// Base breadcrumb styles
+.breadcrumb {
+    display: flex;
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    padding: $base-padding $base-padding * 2;
+
+    // Breadcrumb list styles
+    ol {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        list-style-type: none; /* Remove default numbers */
+        padding-left: 0; /* Remove indentation */
+
+        // Breadcrumb item styles
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            margin-right: $base-margin;
+
+            // Disable margin for the last element
+            &:last-child {
+                margin-right: 0;
+            }
+
+            // Custom symbol styles for the lists divider
+            &::before {
+                content: $breadcrumb-divider;
+                display: inline-block;
+                background-image: none;
+
+                width: 20px;
+                height: 20px;
+
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+
+            // Disable custom symbol styles for the first element
+            &:first-child::before {
+                content: "/";
+                margin-right: 0 !important;
+                display: none !important;
+            }
+
+            // Breadcrumb-item link styles
+            a {
+                text-decoration: underline;
+            }
+
+            // Active breadcrumb-item styles
+            &.active {
+                a {
+                    color: map-get($theme-color-palette, 'dark');
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
