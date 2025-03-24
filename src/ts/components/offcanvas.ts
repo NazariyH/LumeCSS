@@ -34,7 +34,7 @@ triggerOffcanvasButtonsArray.forEach((btn: HTMLElement):void => {
         // Check if the canvas object is already shown
         if (offcanvas.classList.contains('show')) {
             // Hide the offcanvas object
-            hideOffcanvas(offcanvas);
+            hideOffcanvas(offcanvas, allowScrolling);
         } else {
             // Show the offcanvas object
             showOffcanvas(offcanvas, allowScrolling);
@@ -51,7 +51,7 @@ triggerOffcanvasButtonsArray.forEach((btn: HTMLElement):void => {
             event.preventDefault();
 
             // Hide the offcanvas object
-            hideOffcanvas(offcanvas);
+            hideOffcanvas(offcanvas, allowScrolling);
         });
     });
 
@@ -68,7 +68,7 @@ triggerOffcanvasButtonsArray.forEach((btn: HTMLElement):void => {
 
                 // Check if the offcanvas has the 'show' class
                 if (offcanvas.classList.contains('show')) {
-                    hideOffcanvas(offcanvas); // Hide the offcanvas object
+                    hideOffcanvas(offcanvas, allowScrolling); // Hide the offcanvas object
                 }
             }
         });
@@ -77,6 +77,10 @@ triggerOffcanvasButtonsArray.forEach((btn: HTMLElement):void => {
 
 // Iterate over each offcanvas in the offcavasElementsArray and add en event listner for each one
 offcavasElementsArray.forEach((offcanvas: HTMLElement):void => {
+    /* Get the "data-scroll" attribute of the canvas element.
+       It indicates whether scrolling is allowed when the canvas is displayed. */
+    const allowScrolling: boolean = offcanvas.getAttribute('data-scroll') === 'true';
+
     // Add an event listener to the offcanvas
     offcanvas.addEventListener('click', (event: MouseEvent): void => {
         /* Check whether the offcanvas object is allowed to
@@ -85,7 +89,7 @@ offcavasElementsArray.forEach((offcanvas: HTMLElement):void => {
 
             // Check if the clicked target is outside the offcanvas element
             if (offcanvas === event.target as HTMLElement) {
-                hideOffcanvas(offcanvas); // Hide the offcanvas object
+                hideOffcanvas(offcanvas, allowScrolling); // Hide the offcanvas object
             }
         }
     });
@@ -120,7 +124,7 @@ function showOffcanvas(offcanvas: HTMLElement, allowScrolling: boolean):void {
     document.body.classList.add('disabled-scrolling');
 }
 
-function hideOffcanvas(offcanvas: HTMLElement):void {
+function hideOffcanvas(offcanvas: HTMLElement, allowScrolling: boolean):void {
     /* The function hides the offcanvas object by removing the 'show' class
     *
     * Attributes:
@@ -137,6 +141,9 @@ function hideOffcanvas(offcanvas: HTMLElement):void {
 
     // Hide the offcanvas object after 300ms
     setTimeout(():void => offcanvas.classList.remove('show'), 300);
+
+    // Check whether the user is allowed to scroll
+    if (allowScrolling) return;
 
     // Enable scrolling
     document.body.classList.remove('disabled-scrolling');
