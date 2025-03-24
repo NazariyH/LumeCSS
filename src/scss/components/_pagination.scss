@@ -13,6 +13,23 @@
         .page-link {
             color: map-get($theme-color-palette, "light");
         }
+
+        // Disabled item page styles
+        &.disabled {
+            $disabled-color-dark-theme: generate-shade($disabled-color, 50, 'darken');
+
+            background-color: $disabled-color-dark-theme !important;
+            color: map-get($theme-color-palette, "light") !important;
+
+            a, .page-link {
+                color: map-get($theme-color-palette, "light") !important;
+            }
+
+
+            &:hover {
+                background-color: $disabled-color-dark-theme !important;
+            }
+        }
     }
 }
 
@@ -25,6 +42,21 @@
         // Add hover for the page item
         &:hover {
             background-color: generate-shade(map-get($theme-color-palette, "light"), 10, "darken");
+        }
+
+        // Disabled item page styles
+        &.disabled {
+            background-color: $disabled-color !important;
+            color: map-get($theme-color-palette, "dark") !important;
+
+            a, .page-link {
+                color: map-get($theme-color-palette, "dark") !important;
+            }
+
+
+            &:hover {
+                background-color: $disabled-color !important;
+            }
         }
     }
 }
@@ -50,19 +82,12 @@
         border-radius: 0;
         transition: background-color $base-transition-time ease;
 
-        // Disabled page item styles
+        // Disabled item page styles
         &.disabled {
             cursor: default !important;
-            background-color: $disabled-color !important;
-            color: map-get($theme-color-palette, "dark") !important;
 
-            a, .page-link {
-                color: map-get($theme-color-palette, "dark") !important;
-            }
-
-
-            &:hover {
-                background-color: $disabled-color !important;
+            a {
+                cursor: default !important;
             }
         }
 
