@@ -66,7 +66,10 @@ triggerOffcanvasButtonsArray.forEach((btn: HTMLElement):void => {
             if (btn !== event.target as HTMLElement &&
                 !offcanvas.contains(event.target as HTMLElement)) {
 
-                hideOffcanvas(offcanvas); // Hide the offcanvas object
+                // Check if the offcanvas has the 'show' class
+                if (offcanvas.classList.contains('show')) {
+                    hideOffcanvas(offcanvas); // Hide the offcanvas object
+                }
             }
         });
     }
@@ -114,7 +117,7 @@ function showOffcanvas(offcanvas: HTMLElement, allowScrolling: boolean):void {
     if (allowScrolling) return;
 
     // Disable scrolling
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('disabled-scrolling');
 }
 
 function hideOffcanvas(offcanvas: HTMLElement):void {
@@ -136,5 +139,5 @@ function hideOffcanvas(offcanvas: HTMLElement):void {
     setTimeout(():void => offcanvas.classList.remove('show'), 300);
 
     // Enable scrolling
-    document.body.style.overflow = 'auto';
+    document.body.classList.remove('disabled-scrolling');
 }
