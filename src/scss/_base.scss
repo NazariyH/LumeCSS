@@ -17,3 +17,8 @@
     height: 1px;
     background-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
 }
+
+
+.disabled-scrolling {
+    overflow: hidden !important;
+}
