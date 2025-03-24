@@ -39,25 +39,6 @@
     // Show it when the 'active' class is given
     &.active {
         display: flex;
-
-        // Add styles for different animations
-        .modal-dialog .modal-content.active {
-            &.\@slideInFade {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            &.\@bounce {
-                transform: translateY(0);
-                opacity: 1;
-
-                @include bounce-animation($duration: 1s, $offset: 2rem, $repetition-amount: 1);
-            }
-        }
-
-        // Shaking animation
-        &.shaking .modal-dialog .modal-content.active {
-            @include shake-animation($repetition-amount: 1);
-        }
     }
 
     // Centered modal's styles
@@ -122,12 +103,6 @@
             // Modal footer's styles
             .modal-footer {
                 padding: $base-padding;
-            }
-
-            &.\@slideInFade, &.\@bounce {
-                // Hide it by default
-                transform: translateY(-100%);
-                opacity: 0;
             }
         }
     }
