@@ -4,6 +4,11 @@
     @include base-border-style();
     border-color: $color;
 
+    // Check if the color is light
+    @if ($color == map-get($theme-color-palette, 'light')) {
+        border-color: generate-shade($color, 20, 'darken');
+    }
+
     // Divider color
     .divider {
         background-color: rgba(map-get($theme-color-palette, "dark"), 0.7)
