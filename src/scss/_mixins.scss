@@ -25,22 +25,28 @@
 @mixin bounce-animation($duration: 2s, $offset: 1rem, $repetition-amount: infinite) {
     @keyframes bounce {
         0% {
+            opacity: 0;
             transform: translateY(-100%);
         }
         20% {
             transform: translateY(0);
+            opacity: 1;
         }
         40% {
             transform: translateY(-#{$offset});
+            opacity: 1;
         }
         60% {
             transform: translateY(0);
+            opacity: 1;
         }
         80% {
             transform: translateY(-#{$offset/2});
+            opacity: 1;
         }
         100% {
             transform: translateY(0);
+            opacity: 1;
         }
     }
 
