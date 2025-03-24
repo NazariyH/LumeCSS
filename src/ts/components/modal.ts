@@ -48,13 +48,13 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
         }
     }
 
-    const modalShake = (modalObject: HTMLElement): void => {
-        /* Add a 'shaking' class to the modal object for a 2 second */
+    const modalShake = (modalContent: HTMLElement): void => {
+        /* Add a 'shaking' class to the modal content object for a 2 second */
 
-        modalObject.classList.add('shaking');
+        modalContent.classList.add('shaking');
 
         // Remove shaking class after 2 seconds
-        setTimeout((): void => modalObject.classList.remove('shaking'), 2000);
+        setTimeout((): void => modalContent.classList.remove('shaking'), 2000);
     }
 
 
@@ -74,6 +74,9 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
         // Ensure the modalObject exists
         if (!modalObject) return;
 
+        // Get the modal content object
+        const modalContent: HTMLElement | null = modalObject.querySelector('.modal-content');
+
         // Add an event listener to the modalObject
         modalObject.addEventListener('click', (e: MouseEvent): void => {
 
@@ -90,8 +93,11 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
                     // Fire the deactivateModal function
                     deactivateModal(modalObject);
                 } else {
+                    // Make sure the modal content exists (is not null)
+                    if (!modalContent) return;
+
                     // Fire the modalShakeFunction
-                    modalShake(modalObject);
+                    modalShake(modalContent);
                 }
             }
         });
