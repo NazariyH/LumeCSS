@@ -9,4 +9,5 @@ import './components/alert'; // Import alert scripts
 import './components/toast'; // Import toast scripts
 import './components/modal'; // Import modal scripts
 import './components/offcanvas'; // Import offcanvas scripts
+import './components/breadcrumb'; // Import breadcrumb scripts
 import './components/navbar'; // Import navbar scripts
