@@ -75,7 +75,7 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
         if (!modalObject) return;
 
         // Get the modal content object
-        const modalContent: HTMLElement | null = modalObject.querySelector('.modal-content');
+        const modalDialog: HTMLElement | null = modalObject.querySelector('.modal-dialog');
 
         // Add an event listener to the modalObject
         modalObject.addEventListener('click', (e: MouseEvent): void => {
@@ -93,11 +93,11 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
                     // Fire the deactivateModal function
                     deactivateModal(modalObject);
                 } else {
-                    // Make sure the modal content exists (is not null)
-                    if (!modalContent) return;
+                    // Make sure the modal dialog exists (is not null)
+                    if (!modalDialog) return;
 
                     // Fire the modalShakeFunction
-                    modalShake(modalContent);
+                    modalShake(modalDialog);
                 }
             }
         });
