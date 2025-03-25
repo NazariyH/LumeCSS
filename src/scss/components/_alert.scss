@@ -27,9 +27,7 @@
     @include alert-color();
 
     // Alert heading style
-    .alert-heading {
-        font-size: $base-heading-font-size;
-    }
+    // I removed it so far
 
     // Divider styles
     .divider {
