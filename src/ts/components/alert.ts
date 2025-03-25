@@ -7,7 +7,7 @@ const alertElementsArray: HTMLElement[] = Array.from(alertElements);
 // Iterate over each element int the alertElementsArray
 alertElementsArray.forEach((alert: HTMLElement): void => {
     // Retrieve the removal button or null if it does not exist
-    const removalButton: HTMLElement | null = alert.querySelector('button[data-bs-remove="alert"]');
+    const removalButton: HTMLElement | null = alert.querySelector('button[data-remove="alert"]');
 
     // Make sure the removal button exists (not null)
     if (!removalButton) return;

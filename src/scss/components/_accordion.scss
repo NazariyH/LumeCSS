@@ -84,7 +84,7 @@
 
 
 // Accordion styles for the dark theme
-.accordion[data-bs-theme="dark"] {
+.accordion[data-theme="dark"] {
     .accordion-item {
         @extend .dark-theme-accordion;
     }

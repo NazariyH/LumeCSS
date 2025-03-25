@@ -1,5 +1,5 @@
-// Get all elements with the attribute data-bs-toggle="modal"
-const modalTriggers: NodeListOf<HTMLElement> = document.querySelectorAll('[data-bs-toggle="modal"]');
+// Get all elements with the attribute data-toggle="modal"
+const modalTriggers: NodeListOf<HTMLElement> = document.querySelectorAll('[data-toggle="modal"]');
 
 // Convert the NodeList to an array
 const modalTriggersArray: HTMLElement[] = Array.from(modalTriggers);
@@ -69,7 +69,7 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
         e.preventDefault();
 
         // Get the target id (Modal id)
-        const targetId: string | null = element.getAttribute('data-bs-target');
+        const targetId: string | null = element.getAttribute('data-target');
 
         // Ensure the targetId is not null
         if (!targetId) return;
@@ -95,7 +95,7 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
 
                 /* Checked whether the modalObject is allowed to
                 be deactivated by clicking on an empty place */
-                if (modalObject.getAttribute('data-bs-backdrop') !== 'static') {
+                if (modalObject.getAttribute('data-backdrop') !== 'static') {
                     // Fire the deactivateModal function
                     deactivateModal(modalObject);
                 } else {
@@ -110,7 +110,7 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
 
 
         // Get all elements that can deactivate the modal
-        const modalDeactivateElements: NodeListOf<HTMLElement> = modalObject.querySelectorAll('[data-bs-dismiss="modal"]');
+        const modalDeactivateElements: NodeListOf<HTMLElement> = modalObject.querySelectorAll('[data-dismiss="modal"]');
 
         // Convert the NodeList to an array
         const modalDeactivateElementsArray: HTMLElement[] = Array.from(modalDeactivateElements);

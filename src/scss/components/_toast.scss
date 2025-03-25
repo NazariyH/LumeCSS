@@ -186,6 +186,6 @@
 
 
 // Apply styles for the dark toast theme
-.toast[data-bs-theme="dark"] {
+.toast[data-theme="dark"] {
     @extend .dark-theme-toast;
 }

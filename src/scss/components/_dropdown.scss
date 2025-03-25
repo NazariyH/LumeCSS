@@ -129,7 +129,7 @@
 }
 
 
-.dropdown[data-bs-theme="dark"] {
+.dropdown[data-theme="dark"] {
     .dropdown-menu {
         @extend .dark-theme-dropdown;
     }

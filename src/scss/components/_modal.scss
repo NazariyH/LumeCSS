@@ -115,7 +115,7 @@
 
 
 // Apply styles for dark mode
-.modal[data-bs-theme="dark"] {
+.modal[data-theme="dark"] {
     .modal-dialog .modal-content {
         @extend .dark-theme-modal;
     }

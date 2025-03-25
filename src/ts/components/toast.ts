@@ -7,7 +7,7 @@ const toastElementsArray: HTMLElement[] = Array.from(toastElements);
 // Iterate over each toast in the toastElementsArray
 toastElementsArray.forEach((toast: HTMLElement): void => {
     // Get the toast removal button or null
-    const toastRemovalBtn: HTMLElement | null = toast.querySelector('button[data-bs-remove="toast"]');
+    const toastRemovalBtn: HTMLElement | null = toast.querySelector('button[data-remove="toast"]');
 
     // Make sure the removal button exists
     if (!toastRemovalBtn) return;
