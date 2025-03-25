@@ -62,8 +62,8 @@
         transform-origin: center;
 
         width: 1.25rem;
-        height: 0.1rem;
-        background-color: generate-shade($dark, 40, 'lighten');
+        height: 0.15rem;
+        background-color: $close-btn-color;
     }
 
     &::before {
@@ -92,7 +92,7 @@
         width: 7px;
         height: 2px;
 
-        background-color: $dark;
+        background-color: $close-btn-color;
     }
 
     &.btn-arrow-light {
