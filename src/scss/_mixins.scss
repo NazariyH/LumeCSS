@@ -153,6 +153,29 @@
 }
 
 
+// Placeholder glowing animation
+@mixin glowing-background($color: $placeholder-color, $duration: 2.5s) {
+    background: linear-gradient(90deg, $color 25%, lighten($color, 35%) 50%, $color 75%);
+    background-size: 200% 100%;
+    animation: glowing $duration infinite ease-in-out;
+
+    @keyframes glowing {
+        0% {
+            background-position: 200% 0;
+            opacity: 1;
+        }
+        50% {
+            background-position: 100% 0;
+            opacity: 0.8;
+        }
+        100% {
+            background-position: 0 0;
+            opacity: 1;
+        }
+    }
+}
+
+
 // Base border style
 @mixin base-border-style() {
     border-radius: $base-border-radius;
