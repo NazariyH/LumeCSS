@@ -7,6 +7,10 @@
         margin-left: 0 !important;
         margin-right: 0 !important;
         border-radius: 0 !important; /* Remove border-radius for all elements */
+
+        &.input-group-text, .input-group-text {
+            width: auto;
+        }
     }
 
     & > *:first-child {
