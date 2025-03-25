@@ -29,7 +29,7 @@
         // Card header
         .card-header {
             padding: 0 $base-padding;
-            padding-bottom: $base-padding;
+            margin: $base-margin 0;
 
             // Card title
             .card-title {
@@ -48,6 +48,7 @@
             padding: 0 $base-padding;
         }
 
+        // Image overlay styles
         &.card-img-overlay {
             position: absolute;
             top: 0;
