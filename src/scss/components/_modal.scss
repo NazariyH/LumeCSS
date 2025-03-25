@@ -13,11 +13,6 @@
 .light-theme-modal {
     background-color: $light;
     color: $dark;
-
-    .btn-close::after,
-    .btn-close::before {
-        background-color: $dark !important;
-    }
 }
 
 

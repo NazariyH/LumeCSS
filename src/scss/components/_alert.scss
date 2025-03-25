@@ -14,14 +14,6 @@
         background-color: rgba($dark, 0.7)
     }
 
-    // Btn close, btn arrow colors
-    .btn-close::after,
-    .btn-close::before,
-    .btn-arrow::after,
-    .btn-arrow::before {
-        background-color: rgba($dark, 0.7)
-    }
-
     // Background color
     background-color: generate-shade($color, 80, 'lighten');
 }
