@@ -45,6 +45,14 @@ $grid-gaps: (
 }
 
 
+// Base column styles
+@for $i from 1 through $grid_columns {
+    .col-#{$i} {
+        @include grid-column($i);
+    }
+}
+
+
 // col classes
 @include xs {
     @for $i from 1 through $grid_columns {
