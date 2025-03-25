@@ -8,6 +8,14 @@
     border-width: $base-border-sickness / 2;
     border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
 
+
+    // Card image styles
+    .card-img {
+        &.placeholder {
+            width: 100%;
+        }
+    }
+
     // Card content wrap
     .card-content {
         padding: $base-padding 0;
@@ -49,13 +57,4 @@
             overflow-y: auto;
         }
     }
-
-    //&.card-horizontal {
-    //    display: flex;
-    //
-    //    // Card image
-    //    .card-img {
-    //        width: 20px;
-    //    }
-    //}
 }
