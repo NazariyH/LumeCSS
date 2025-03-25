@@ -104,6 +104,16 @@
             .modal-footer {
                 padding: $base-padding;
             }
+
+            // Hide modal by default
+            transform: translateY(-100%);
+            opacity: 0;
+
+            // Show modal when it is active
+            &.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     }
 }
