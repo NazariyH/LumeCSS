@@ -1,3 +1,15 @@
+@mixin tooltip-color($color) {
+    // Defines the tooltip colors
+    &::after {
+        background-color: $color;
+        color: get-contrast-color($color);
+    }
+    &::before {
+        border-top-color: $color;
+        border-bottom-color: $color;
+    }
+}
+
 // Base tooltip styles
 *[data-tooltip="tooltip"] {
     position: relative;
@@ -29,11 +41,6 @@
         width: auto;
         height: auto;
 
-        // Default color
-        background: $dark;
-        color: $light;
-
-
         // Default position
         bottom: calc(100% + 14px);
         left: 50%;
@@ -55,13 +62,16 @@
         // Default color
         border-left: 7px solid transparent;
         border-right: 7px solid transparent;
-        border-top: 14px solid $dark;
+        border-top: 14px solid transparent;
 
         // Default position
         bottom: 100%;
         left: 50%;
         transform: translateX(-50%);
     }
+
+    // Include a mixin with the default colors
+    @include tooltip-color($dark);
 
     &:hover {
         &::after {
@@ -138,6 +148,83 @@
             bottom: auto !important;
             right: auto !important;
             transform: translate(0, -50%) rotate(90deg) !important;
+        }
+    }
+}
+
+
+
+// Iterate over each key-val in the $theme-color-palette
+@each $key, $val in $theme-color-palette {
+    // Generate color classes for each tooltip
+    .tooltip-#{$key} {
+        @include tooltip-color($val);
+    }
+
+    // Iterate over each state in the $state-selectors
+    @each $state in $state-selectors {
+        // Create classes for each state
+        .#{$state}\:tooltip-#{$key}:#{$state} {
+            @include tooltip-color($val);
+        }
+    }
+
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+            // Create classes for each breakpoint value
+            // Generate color classes for each tooltip
+            .#{$bp_key}\:tooltip-#{$key} {
+                @include tooltip-color($val);
+            }
+
+            // Iterate over each state in the $state-selectors
+            @each $state in $state-selectors {
+                // Create classes for each state
+                .#{$bp_key}\:#{$state}\:tooltip-#{$key}:#{$state} {
+                    @include tooltip-color($val);
+                }
+            }
+        }
+    }
+}
+
+@each $key, $val in $base-color-palette {
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+        // Generate color classes for each tooltip
+        .tooltip-#{$key}-#{$i * 100} {
+            @include tooltip-color($shade);
+        }
+
+        // Iterate over each state in the $state-selectors
+        @each $state in $state-selectors {
+            // Create classes for each state
+            .#{$state}\:tooltip-#{$key}-#{$i * 100}:#{$state} {
+                @include tooltip-color($shade);
+            }
+        }
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                // Create classes for each breakpoint value
+                // Generate color classes for each tooltip
+                .#{$bp_key}\:tooltip-#{$key}-#{$i * 100} {
+                    @include tooltip-color($shade);
+                }
+
+                // Iterate over each state in the $state-selectors
+                @each $state in $state-selectors {
+                    // Create classes for each state
+                    .#{$bp_key}\:#{$state}\:tooltip-#{$key}-#{$i * 100}:#{$state} {
+                        @include tooltip-color($shade);
+                    }
+                }
+            }
         }
     }
 }
