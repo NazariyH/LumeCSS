@@ -6,7 +6,7 @@
     &.disabled,
     &:disabled {
         &::after, &::before {
-            display: none !important;
+            display: none !important; /* Hide the tooltip pseudo-elements */
         }
     }
 
