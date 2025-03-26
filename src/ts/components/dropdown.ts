@@ -22,10 +22,6 @@ dropdownElementsArray.forEach((element: HTMLElement):void => {
 
     // Check if the toggle button and dropdown menu exist
     if (dropdownToggleBtn && dropdownMenu) {
-        // Make sure that the button is not disabled
-        if (dropdownToggleBtn.classList.contains('disabled') || dropdownToggleBtn.disabled) return;
-
-
         /* Get the button attribute 'data-dropdown-trigger'.
          * It indicates how the dropdown will be collapsed.
          * The value can be either 'click' or 'hover-click'.
@@ -62,6 +58,9 @@ dropdownElementsArray.forEach((element: HTMLElement):void => {
         // Add the eventListeners to the toggle button
         dropdownToggleBtn.addEventListener('click', (e: MouseEvent):void => {
             e.preventDefault();
+
+            // Make sure that the button is not disabled
+            if (dropdownToggleBtn.classList.contains('disabled') || dropdownToggleBtn.disabled) return;
 
             // Check if the dropdown is already collapsed
             if (element.classList.contains('collapsed')) {
@@ -100,10 +99,8 @@ dropdownElementsArray.forEach((element: HTMLElement):void => {
                 if (element.classList.contains('collapsed')) return;
 
 
-                // Check if it is allowed to open multiple dropdowns
-                if (closePrevious) {
-                    closeCollapsedDropdowns();
-                }
+                // Make sure that the button is not disabled
+                if (dropdownToggleBtn.classList.contains('disabled') || dropdownToggleBtn.disabled) return;
 
 
                 // Show the dropdown menu
