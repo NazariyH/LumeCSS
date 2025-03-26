@@ -7,12 +7,6 @@ const modalTriggersArray: HTMLElement[] = Array.from(modalTriggers);
 // Iterate over each item in the modalElementsArray to give it an eventListener
 modalTriggersArray.forEach((element: HTMLElement): void => {
 
-    // Check if the element is a button, input, or other element with the 'disabled' property
-    if (element instanceof HTMLButtonElement || element instanceof HTMLInputElement || element instanceof HTMLSelectElement) {
-        // Make sure that the button is not disabled
-        if (element.classList.contains('disabled') || element.disabled) return;
-    }
-
     const activateModal = (modalObject: HTMLElement): void => {
         /* Activate the modal object if it's not activated */
 
@@ -73,6 +67,12 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
     // Give an event listener to each button
     element.addEventListener('click', (e: MouseEvent): void => {
         e.preventDefault();
+
+        // Check if the element is a button, input, or other element with the 'disabled' property
+        if (element instanceof HTMLButtonElement || element instanceof HTMLInputElement || element instanceof HTMLSelectElement) {
+            // Make sure that the button is not disabled
+            if (element.classList.contains('disabled') || element.disabled) return;
+        }
 
         // Get the target id (Modal id)
         const targetId: string | null = element.getAttribute('data-target');
