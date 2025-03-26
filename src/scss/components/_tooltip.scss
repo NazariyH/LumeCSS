@@ -2,6 +2,14 @@
 *[data-tooltip="tooltip"] {
     position: relative;
 
+    // Hide the tooltips if they are applied to the disabled object
+    &.disabled,
+    &:disabled {
+        &::after, &::before {
+            display: none !important;
+        }
+    }
+
     // Tooltip block styles
     &::after {
         content: '';
