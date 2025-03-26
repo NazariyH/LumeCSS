@@ -15,13 +15,17 @@ dropdownElementsArray.forEach((element: HTMLElement):void => {
     const closePrevious: boolean = element ? element.getAttribute('data-close-previous') === 'true' : false;
 
     // Get the dropdown-toggle button
-    const dropdownToggleBtn: HTMLElement | null = element.querySelector('.dropdown-toggle');
+    const dropdownToggleBtn = element.querySelector('.dropdown-toggle') as HTMLButtonElement;
 
     // Get the dropdown menu or null
     const dropdownMenu: HTMLElement | null = element.querySelector('.dropdown-menu');
 
     // Check if the toggle button and dropdown menu exist
     if (dropdownToggleBtn && dropdownMenu) {
+        // Make sure that the button is not disabled
+        if (dropdownToggleBtn.classList.contains('disabled') || dropdownToggleBtn.disabled) return;
+
+
         /* Get the button attribute 'data-dropdown-trigger'.
          * It indicates how the dropdown will be collapsed.
          * The value can be either 'click' or 'hover-click'.
