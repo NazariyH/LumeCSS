@@ -24,6 +24,13 @@
         background-color: get-hover-color($color);
         border: 0.1rem solid get-hover-color($color);
     }
+
+    // Colors for the disabled buttons
+    &.disabled,
+    &:disabled {
+        background-color: $color;
+        border: 0.1rem solid $color;
+    }
 }
 
 @mixin btn-outline-color($color) {
@@ -35,6 +42,13 @@
     &:hover {
         background-color: $color;
         color: get-contrast-color($color);
+    }
+
+    // Colors for the disabled buttons
+    &.disabled,
+    &:disabled {
+        background-color: transparent;
+        color: $color;
     }
 }
 
@@ -204,4 +218,13 @@
             }
         }
     }
+}
+
+
+
+button.disabled,
+button:disabled
+a.disabled,{
+    cursor: default;
+    opacity: .6;
 }
