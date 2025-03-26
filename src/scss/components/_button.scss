@@ -47,6 +47,7 @@
     // Colors for the disabled buttons
     &.disabled,
     &:disabled {
+        display: none !important;
         background-color: transparent;
         color: $color;
     }
@@ -223,8 +224,8 @@
 
 
 button.disabled,
-button:disabled
-a.disabled,{
+button:disabled,
+a.disabled {
     cursor: default;
     opacity: .6;
 }
