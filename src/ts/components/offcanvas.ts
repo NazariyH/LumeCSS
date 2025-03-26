@@ -10,6 +10,12 @@ const offcavasElementsArray: HTMLElement[] = Array.from(document.querySelectorAl
 
 // Iterate over each button in the triggerOffcanvasButtonsArray and add an event listener for each one
 triggerOffcanvasButtonsArray.forEach((btn: HTMLElement):void => {
+    // Check if the element is a button, input, or other element with the 'disabled' property
+    if (btn instanceof HTMLButtonElement || btn instanceof HTMLInputElement || btn instanceof HTMLSelectElement) {
+        // Make sure that the button is not disabled
+        if (btn.classList.contains('disabled') || btn.disabled) return;
+    }
+
     // Get the data-target attribute of the button or null if it does not exist
     const btnTarget: string | null = btn.getAttribute('data-target'); // data-target contains an ID of the canvas object
 
