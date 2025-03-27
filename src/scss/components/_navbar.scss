@@ -1,3 +1,36 @@
+// Base styles for navbar light theme
+.light-theme-navbar {
+    background: $light;
+
+    * {
+        color: $dark;
+    }
+
+    // Base nav items hover effect
+    .navbar-menu .nav-item:hover,
+    .navbar-menu .nav-item .nav-link:hover,
+    .navbar-brand {
+        color: generate-shade($dark, 30, "lighten");
+    }
+}
+
+// Base dark theme mode styles for navbar
+.dark-theme-navbar {
+    background: $dark;
+
+    * {
+        color: $light;
+    }
+
+    // Base nav items hover effect
+    .navbar-menu .nav-item:hover,
+    .navbar-menu .nav-item .nav-link:hover,
+    .navbar-brand {
+        color: generate-shade($light, 30, "darken");
+    }
+}
+
+
 .navbar {
     position: relative;
     width: 100%;
@@ -6,80 +39,49 @@
     justify-content: space-between;
     align-items: center;
 
-    padding: $base-padding $base-padding*4;
-    background-color: map-get($theme-color-palette, 'light');
+    transition: color $base-transition-time ease;
 
+
+    padding: $base-padding $base-padding*4;
+
+    // Extend light theme by default
+    @extend .light-theme-navbar;
+
+    // Navbar main link (it could be logo)
     .navbar-brand {
         font-size: 22px;
         font-weight: bold;
         cursor: pointer;
-        transition: color $base-transition-time ease;
-        color: map-get($theme-color-palette, "dark");
-
-        &:hover {
-            color: generate-shade(map-get($base-color-palette, "gray"), 20, "darken");
-        }
     }
 
+    // Menu list
     .navbar-menu {
         display: flex;
         align-items: center;
         margin-left: $base-margin;
 
+        // Menu item (e.g. link, button)
         .nav-item {
             margin: 0 $base-margin;
+        }
 
-            .nav-link {
-                color: map-get($theme-color-palette, "dark");
-                transition: color $base-transition-time ease;
-
-                &:hover {
-                    color: generate-shade(map-get($base-color-palette, "gray"), 20, "darken");
-                }
-            }
+        // Navbar dropdown
+        .dropdown .dropdown-toggle {
+            padding: 0;
+            margin: 0;
         }
     }
 
     div {
         display: flex;
+        align-items: center;
     }
 }
 
 
-.disabled {
-    cursor: default !important;
-
-    color: generate-shade(map-get($base-color-palette, "gray"), 20, "lighten") !important;
-    &:hover {
-        color: generate-shade(map-get($base-color-palette, "gray"), 20, "lighten") !important;
-    }
+// Nav styles for dark theme
+.navbar[data-theme="dark"] {
+    @extend .dark-theme-navbar;
 }
 
-
-.navbar[data-bs-theme="dark"] {
-    background-color: map-get($theme-color-palette, 'dark');
-    .navbar-brand {
-        color: map-get($theme-color-palette, "light");
-        &:hover {
-            color: generate-shade(map-get($base-color-palette, "gray"), 60, "lighten");
-        }
-    }
-
-    .nav-item {
-        .nav-link {
-            color: map-get($theme-color-palette, "light");
-
-            &:hover {
-                color: generate-shade(map-get($base-color-palette, "gray"), 60, "lighten");
-            }
-        }
-    }
-
-    .disabled {
-        color: generate-shade(map-get($base-color-palette, "gray"), 10, "darken") !important;
-        &:hover {
-            color: generate-shade(map-get($base-color-palette, "gray"), 10, "darken") !important;
-        }
-    }
-}
 
