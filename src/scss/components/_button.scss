@@ -47,7 +47,6 @@
     // Colors for the disabled buttons
     &.disabled,
     &:disabled {
-        display: none !important;
         background-color: transparent;
         color: $color;
     }
