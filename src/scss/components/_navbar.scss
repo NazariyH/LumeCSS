@@ -38,12 +38,20 @@
     .navbar-toggle .navbar-toggle-line {
         background-color: $light;
     }
+
+    // Btn arrow button
+    .btn-arrow {
+        &::before, &::after {
+            background-color: $light;
+        }
+    }
 }
 
 
 .navbar {
     position: relative;
     width: 100%;
+    height: $navbar-height;
 
     display: flex;
     justify-content: space-between;
@@ -72,9 +80,15 @@
 
         // Menu item (e.g. link, button)
         .nav-item,
+        .nav-item .nav-link,
+        .dropdown .dropdown-toggle {
+            font-size: $nav-link;
+            opacity: 0.9;
+        }
+
+        .nav-item,
         .dropdown .dropdown-toggle {
             margin: 0 $base-margin;
-            font-size: 16px;
         }
 
         // Navbar dropdown
@@ -152,6 +166,22 @@
 
             }
         }
+    }
+
+    // Styles for the navbar collapse
+    .navbar-collapse {
+        position: absolute;
+        top: $navbar-height;
+        right: 0;
+        height: 100vh;
+        background: red;
+        padding: $base-padding;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+
     }
 }
 
