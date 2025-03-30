@@ -105,8 +105,9 @@ input[type="month"], input[type="week"], input[type="time"], select,
 textarea {
     background-color: $light;
     color: $dark;
-    padding: $base-padding/1.5 $base-padding;
+    padding: $base-padding/2 $base-padding;
     border-radius: $base-border-radius;
+    font-size: 14px;
 
     border: $base-border-sickness/2 solid $input-border-color;
 
