@@ -17,6 +17,11 @@
     .navbar-toggle .navbar-toggle-line {
         background-color: $dark;
     }
+
+    // Styles for the navbar collapse
+    .navbar-collapse {
+        background-color: $light;
+    }
 }
 
 // Base dark theme mode styles for navbar
@@ -45,11 +50,17 @@
             background-color: $light;
         }
     }
+
+    // Styles for the navbar collapse
+    .navbar-collapse {
+        background-color: $dark;
+    }
 }
 
 
 .navbar {
     position: relative;
+    z-index: 10;
     width: 100%;
     height: $navbar-height;
 
@@ -59,8 +70,7 @@
 
     transition: color $base-transition-time ease;
 
-
-    padding: $base-padding $base-padding*4;
+    padding: $base-padding $base-padding*2;
 
     // Extend light theme by default
     @extend .light-theme-navbar;
@@ -76,7 +86,7 @@
     .navbar-menu {
         display: flex;
         align-items: center;
-        margin-left: $base-margin;
+        margin: 0 $base-margin;
 
         // Menu item (e.g. link, button)
         .nav-item,
@@ -100,7 +110,7 @@
 
     // Input groupt styles
     .input-group {
-        height: 45px;
+        height: 40px;
 
         * {
             height: 100%;
@@ -171,17 +181,99 @@
     // Styles for the navbar collapse
     .navbar-collapse {
         position: absolute;
-        top: $navbar-height;
-        right: 0;
-        height: 100vh;
-        background: red;
-        padding: $base-padding;
+        z-index: -1;
+        top: $navbar-height !important;
+        min-width: 300px;
+        padding: 0 $base-padding * 2 $base-padding * 2 $base-padding * 2;
+        transition: all $base-transition-time ease;
+
+        // Hide it  by default
+        right: -100%;
+
+        // Show it when it contains the 'collapsed' class
+        &.collapsed {
+            right: 0;
+        }
 
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: start;
 
+
+        // Menu list
+        .navbar-collapse-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            width: 100%;
+
+            // Nav item styles
+            .nav-item {
+                margin: $base-margin 0;
+            }
+        }
+
+
+        // Input group styles for the navbar-collapse
+        .input-group {
+            width: 100%;
+
+            & > * {
+                width: 100%;
+            }
+
+            button, .btn {
+                width: auto;
+            }
+        }
+
+        // Navbar position styles
+        &.navbar-collapse-right {
+            left: auto;
+            right: -100%;
+
+            // Show it when it contains the 'collapsed' class
+            &.collapsed {
+                right: 0;
+            }
+        }
+
+        &.navbar-collapse-left {
+            right: auto;
+            left: -100%;
+
+            // Show it when it contains the 'collapsed' class
+            &.collapsed {
+                left: 0;
+            }
+        }
+
+        &.navbar-collapse-full {
+            width: 100%;
+            right: auto;
+            left: 0;
+            top: -100vh !important;
+
+            // Show it when it contains the 'collapsed' class
+            &.collapsed {
+                top: $navbar-height !important;
+                left: 0;
+                right: auto;
+            }
+        }
+    }
+
+    // Styles for the sticky navbar
+    &.navbar-sticky {
+        position: sticky;
+        top: 0;
+
+        .navbar-collapse {
+            position: fixed;
+            height: calc(100vh - #{$navbar-height}) !important;
+            overflow-x: scroll;
+        }
     }
 }
 
