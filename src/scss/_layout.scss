@@ -23,16 +23,33 @@ $layout-displays: none, block, flex, inline, inline-block;
 // Iterate over each display property in the $layout-displays
 @each $val in $layout-displays {
     // Create classes for each CSS display property
-    .#{$val} {
-        display: $val !important;
+
+    // Check if the display value is none
+    @if ($val == none) {
+        .hidden {
+            display: none !important;
+        }
+    } @else {
+        .#{$val} {
+            display: $val !important;
+        }
     }
+
 
     // Iterate over each bp_key-bp_val mapping pair in the $breakpoints
     @each $bp_key, $bp_val in $breakpoints {
         @media (min-width: $bp_val) {
             // Generate classes for each breakpoint
-            .#{$bp_key}\:#{$val} {
-                display: $val !important;
+
+            // Check if the display value is none
+            @if ($val == none) {
+                .#{$bp_key}\:hidden {
+                    display: none !important;
+                }
+            } @else {
+                .#{$bp_key}\:#{$val} {
+                    display: $val !important;
+                }
             }
         }
     }
