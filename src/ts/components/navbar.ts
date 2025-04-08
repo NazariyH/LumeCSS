@@ -28,6 +28,7 @@ navbarElementsArray.forEach((navbar: HTMLElement): void => {
     });
 
 
+    // Check if the navbarCollapse object does not have the data-backdrop="static" attribute
     if (navbarCollapse.getAttribute('data-backdrop') !== 'static') {
         // Add an EventListener to the document object
         document.addEventListener('click', (event: MouseEvent): void => {
@@ -42,7 +43,17 @@ navbarElementsArray.forEach((navbar: HTMLElement): void => {
             }
         });
     }
+
+    // Add a 'resize' event listener to the navbarObject to hide the navbarCollapse object
+    window.addEventListener('resize', (): void => {
+        // Check if the navbarCollapse is collapsed
+        if (!navbarCollapse.classList.contains('collapsed')) return;
+
+        // Hide the navbarCollapse object
+        hideAdaptiveMenu(navbarToggleBtn, navbarCollapse);
+    });
 });
+
 
 
 function collapseAdaptiveMenu(btn: HTMLElement, navbar: HTMLElement):void {
