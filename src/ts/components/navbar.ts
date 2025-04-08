@@ -26,8 +26,23 @@ navbarElementsArray.forEach((navbar: HTMLElement): void => {
             collapseAdaptiveMenu(navbarToggleBtn, navbarCollapse);
         }
     });
-});
 
+
+    if (navbarCollapse.getAttribute('data-backdrop') !== 'static') {
+        // Add an EventListener to the document object
+        document.addEventListener('click', (event: MouseEvent): void => {
+
+            // Check if the clicked target is outside the navbar element
+            if (!navbar.contains(event.target as HTMLElement)) {
+
+                // Check if the navbarCollapse has the 'collapsed' class
+                if (navbarCollapse.classList.contains('collapsed')) {
+                    hideAdaptiveMenu(navbarToggleBtn, navbarCollapse); // Hide the navbarCollapse object
+                }
+            }
+        });
+    }
+});
 
 
 function collapseAdaptiveMenu(btn: HTMLElement, navbar: HTMLElement):void {
