@@ -967,7 +967,7 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
         // Check if the $key value is equal to 'default' to make the prefix shorter
         @if $key =='default' {
             .#{$prefix} {
-                #{$property}: #{$val};
+                #{$property}: #{$val} !important;
             }
 
             // Check if the property can have states
@@ -1015,12 +1015,12 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
                 // Apply the rule for expanded properties or the regular property
                 @if $expanded-properties !=$property {
                     @each $expanded-property in $expanded-properties {
-                        #{$expanded-property}: #{$val};
+                        #{$expanded-property}: #{$val} !important;
                     }
                 }
 
                 @else {
-                    #{$property}: #{$val};
+                    #{$property}: #{$val} !important;
                 }
             }
 
@@ -1033,12 +1033,12 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
                     // Apply the rule for expanded properties or the regular property
                     @if $expanded-properties !=$property {
                         @each $expanded-property in $expanded-properties {
-                            #{$expanded-property}: -#{$val};
+                            #{$expanded-property}: -#{$val} !important;
                         }
                     }
 
                     @else {
-                        #{$property}: -#{$val};
+                        #{$property}: -#{$val} !important;
                     }
                 }
             }
@@ -1056,12 +1056,12 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
                         // Apply the rule for expanded properties or the regular property
                         @if $expanded-properties !=$property {
                             @each $expanded-property in $expanded-properties {
-                                #{$expanded-property}: #{$val};
+                                #{$expanded-property}: #{$val} !important;
                             }
                         }
 
                         @else {
-                            #{$property}: #{$val};
+                            #{$property}: #{$val} !important;
                         }
                     }
 
@@ -1075,12 +1075,12 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
                             // Apply the rule for expanded properties or the regular property
                             @if $expanded-properties !=$property {
                                 @each $expanded-property in $expanded-properties {
-                                    #{$expanded-property}: -#{$val};
+                                    #{$expanded-property}: -#{$val} !important;
                                 }
                             }
 
                             @else {
-                                #{$property}: -#{$val};
+                                #{$property}: -#{$val} !important;
                             }
                         }
                     }
