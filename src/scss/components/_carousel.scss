@@ -1,0 +1,253 @@
+// Light theme carousel styles
+.light-theme-carousel {
+    .carousel-inner *, .carousel-inner a {
+        color: $dark;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        span {
+            &::before, &::after {
+                background-color: generate-shade($dark, 20, 'lighten');
+            }
+        }
+
+        &:hover {
+            span.circle {
+                &::before, &::after {
+                    background-color: $dark;
+                }
+            }
+        }
+    }
+
+    .carousel-indicators {
+        &.circle span {
+            background-color: generate-shade($dark, 20, 'lighten');
+            border: $base-border-sickness solid generate-shade($dark, 20, 'lighten');
+
+            &.active {
+                background-color: generate-shade($dark, 35, 'lighten');
+                transform: scale(1.2);
+            }
+        }
+
+        &.line span {
+            background-color: generate-shade($dark, 20, 'lighten');
+
+            &.active {
+                background-color: $dark;
+            }
+        }
+    }
+}
+
+// Dark theme carousel styles
+.dark-theme-carousel {
+    .carousel-inner *, .carousel-inner a {
+        color: $light;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        span {
+            &::before, &::after {
+                background-color: $light;
+            }
+        }
+
+        &:hover {
+            span {
+                &::before, &::after {
+                    background-color: generate-shade($light, 10, 'darken');
+                }
+            }
+        }
+    }
+
+    .carousel-indicators {
+        &.circle span {
+            background-color: $light;
+            border: $base-border-sickness solid $light;
+
+
+            &.active {
+                background-color: generate-shade($light, 40, 'darken');
+                transform: scale(1.2);
+            }
+        }
+
+        &.line span {
+            background-color: $light;
+
+            &.active {
+                background-color: generate-shade($light, 40, 'darken');
+            }
+        }
+    }
+}
+
+// Base carousel styles
+.carousel {
+    position: relative;
+    overflow: hidden;
+
+    // Default dimensions
+    width: 740px;
+    height: 420px;
+
+    @extend .light-theme-carousel;
+
+    // Styles for the fade carousel
+    &.carousel-fade .carousel-inner {
+        display: block;
+        background-color: $light;
+
+        .carousel-item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all $base-transition-time * 2 ease;
+            opacity: 0;
+            z-index: 0;
+
+            &.active {
+                opacity: 1;
+                z-index: 1;
+            }
+        }
+    }
+
+    // Carousel-inner styles
+    .carousel-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        transition: all $base-transition-time * 2 ease-in-out;
+
+        // Classes for the disabled transition
+        &.disabled-transition {
+            transition: none !important;
+        }
+
+        // Carousel-item styles
+        .carousel-item  {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+            scroll-snap-align: start;
+            padding: 10%;
+
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100%;
+            max-height: 100%;
+
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+
+
+            // Carousel image styles
+            .carousel-img {
+                display: none;
+            }
+
+        }
+    }
+
+    // Carousel control button styles
+    .carousel-control-prev,
+    .carousel-control-next {
+        position: absolute;
+        z-index: 3;
+        height: 100%;
+        width: 10%;
+        cursor: pointer;
+
+        // Carousel control button arrow
+        span {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            height: 15px;
+
+            &::after,
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                transition: background-color $base-transition-time ease;
+            }
+
+            &::before {
+                top: 0;
+                transform: rotate(45deg);
+            }
+
+            &::after {
+                bottom: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+
+    .carousel-control-prev {
+        left: 0;
+        transform: scaleX(-1);
+    }
+
+    .carousel-control-next {
+        right: 0;
+    }
+
+
+    // Carousel indicators wrapper styles
+    .carousel-indicators {
+        position: absolute;
+        z-index: 4;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10%;
+        display: flex;
+
+        // Carousel indicator button styles
+        span {
+            display: inline-block;
+            margin: 0 $base-margin / 2;
+            cursor: pointer;
+            transition: all $base-transition-time ease;
+        }
+
+        &.circle span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        &.line span {
+            width: 27px;
+            height: 3px;
+
+            &.active {
+                transform: translateY(-3px);
+
+            }
+        }
+    }
+}
+
+// Apply dark theme
+.carousel[data-theme="dark"] {
+    @extend .dark-theme-carousel;
+}
