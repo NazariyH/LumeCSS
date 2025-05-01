@@ -2,6 +2,10 @@
 const carouselArray: HTMLElement[] = Array.from(document.querySelectorAll('.carousel'));
 
 
+// Declare the startPosition and endPosition variables used for the touch-enabled carousel
+let startPosition: number = 0;
+let endPosition: number = 0;
+
 // Iterate of each carousel in the carouselArray
 carouselArray.forEach((carousel: HTMLElement): void => {
     // Get an array of the carousel items
@@ -398,6 +402,109 @@ function addEventListenersToNavigationButtons(
     }
 
 
+    // Handle the movement of the touch-enabled carousel
+    carousel.addEventListener('touchstart', (event: TouchEvent): void => {
+        event.preventDefault();
+
+        // Make sure the carouselIsMoving variable is false
+        if (carouselIsMoving) return;
+
+        // Store the horizontal position where the touch started
+        const touch: Touch = event.touches[0];
+        startPosition = touch.clientX;
+    });
+
+    carousel.addEventListener('touchend', (event: TouchEvent): void => {
+        event.preventDefault();
+
+        // Make sure the carouselIsMoving variable is false
+        if (carouselIsMoving) return;
+
+        // Store the horizontal position where the touch started
+        const touch: Touch = event.changedTouches[0];
+        endPosition = touch.clientX;
+
+        // Define the swipeDirection variable
+        const swipeDirection: 'forward' | 'backward' | null = calculateTouchDirection(
+            carousel.offsetWidth/3,
+            startPosition,
+            endPosition
+        );
+
+        // Make sure the swipeDirection is not null
+        if (!swipeDirection) return;
+
+        // Call the updateCarouselCurrentIndex function
+        const { previousIndex: prev, currentIndex: next } = updateCarouselCurrentIndex(
+            carouselItemsArray, swipeDirection, null
+        );
+
+        // Retrieve the carousel previousIndex and nextIndex
+        previousIndex = prev;
+        nextIndex = next;
+
+        // Fire the handleCarouselMovement function
+        manageCarouselMovement(
+            carousel,
+            carouselItemsArray,
+            previousIndex,
+            nextIndex,
+            swipeDirection,
+        );
+    });
+
+
+    // Handle the movement of the mouse-enabled carousel
+    carousel.addEventListener('mousedown', (event: MouseEvent): void => {
+        event.preventDefault();
+
+        // Make sure the carouselIsMoving variable is false
+        if (carouselIsMoving) return;
+
+        // Store the horizontal position where the mouse click started
+        startPosition = event.clientX;
+
+        const onMouseUp: (event: MouseEvent) => void = (event: MouseEvent): void => {
+            // Store the horizontal position where the mouse was released
+            endPosition = event.clientX;
+
+            // Define the swipeDirection variable
+            const swipeDirection: 'forward' | 'backward' | null = calculateTouchDirection(
+                carousel.offsetWidth/3,
+                startPosition,
+                endPosition
+            );
+
+            // Make sure the swipeDirection is not null
+            if (!swipeDirection) return;
+
+            // Call the updateCarouselCurrentIndex function
+            const { previousIndex: prev, currentIndex: next } = updateCarouselCurrentIndex(
+                carouselItemsArray, swipeDirection, null
+            );
+
+            // Retrieve the carousel previousIndex and nextIndex
+            previousIndex = prev;
+            nextIndex = next;
+
+            // Fire the handleCarouselMovement function
+            manageCarouselMovement(
+                carousel,
+                carouselItemsArray,
+                previousIndex,
+                nextIndex,
+                swipeDirection,
+            );
+
+            // Remove the mouseup listener
+            document.removeEventListener('mouseup', onMouseUp);
+        };
+
+        // Attach mouseup event to the document
+        document.addEventListener('mouseup', onMouseUp);
+    });
+
+
     // Retrieve the 'data-carousel-move-interval' attribute value from the carousel element, or return null if it doesn't exist
     const carouselMoveInterval: number | null = carousel.hasAttribute('data-carousel-move-interval')
         ? parseInt(carousel.getAttribute('data-carousel-move-interval')!)
@@ -431,15 +538,27 @@ function addEventListenersToNavigationButtons(
             updateCarouselIsMoving();
         }, carouselMoveInterval);
 
-        // Clear the carouselMovingInterval if the user hovers over the carousel.
+        // Clear the carouselMovingInterval if the user hovers over the carousel or touch it.
         carousel.addEventListener('mouseenter', (event: MouseEvent): void => {
             // Assign true to the isHovering variable
             isHovering = true;
         });
 
-        // Restore the carouselMovingInterval if the user's cursor leaves the carousel block
+        carousel.addEventListener('touchstart', (event: TouchEvent): void => {
+            // Assign true to the isHovering variable
+            isHovering = true;
+        });
+
+        // Restore the carouselMovingInterval if the user's cursor leaves the carousel block or untouch it
         carousel.addEventListener('mouseleave', (event: MouseEvent): void => {
             // Assign false to the isHovering varialble after carouselMoveInterval milliseconds
+            setTimeout((): void => {
+                isHovering = false;
+            }, carouselMoveInterval);
+        });
+
+        carousel.addEventListener('touchend', (event: TouchEvent): void => {
+            // Assign false to the isHovering variable after carouselMoveInterval milliseconds
             setTimeout((): void => {
                 isHovering = false;
             }, carouselMoveInterval);
@@ -451,8 +570,8 @@ function addEventListenersToNavigationButtons(
 function manageCarouselMovement(
     carousel: HTMLElement,
     carouselItemsArray: HTMLElement[],
-    previousIndex: number,
-    nextIndex: number,
+    previousIndex: number | null,
+    nextIndex: number | null,
     carouselMovementDirection: 'forward' | 'backward'
 ): void {
     /* The function manages the carousel movement based on the provided
@@ -465,6 +584,10 @@ function manageCarouselMovement(
     *   - nextIndex: Next carousel's items position
     *   - carouselMovementDirection: It specifies the carousel movement direction
     * */
+
+
+    // Make sure the previousIndex and nextIndex are not null
+    if (previousIndex == null || nextIndex == null) return;
 
     // Call the updateCarouselItemActiveClass function
     updateCarouselItemActiveClass(carouselItemsArray, previousIndex, nextIndex);
@@ -832,4 +955,31 @@ function appendCarouselItemBeforeCurrent(
     currentItem.classList.add('temporary-item');
 
     carouselInner.appendChild(currentItem);
+}
+
+
+function calculateTouchDirection(
+    carouselWrapperWidth: number,
+    startPosition: number,
+    endPosition: number
+): 'forward' | 'backward' | null {
+    /* The function is responsible for returning 'forward' or 'backward' after calculating the touch movement
+    *
+    * Attributes:
+    *   - carouselWrapperWidth: The width of the carousel wrapper element divided by three, used to check whether
+    *     the difference between the start position and the end position exceeds this value.
+    *   - startPosition: The initial position of the touch, as obtained by the touchstart event listener
+    *   - endPosition: Final position of the touch, captured when the touchend event is triggered
+    * */
+
+    /* Determine swipe direction based on how far the user swiped.
+    If the horizontal swipe distance exceeds half the width of the carousel,
+    return 'forward' for a left swipe or 'backward' for a right swipe. */
+    if (startPosition - endPosition > carouselWrapperWidth) {
+        return 'forward';
+    } else if (endPosition - startPosition > carouselWrapperWidth) {
+        return 'backward';
+    }
+
+    return null;
 }
