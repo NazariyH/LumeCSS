@@ -1,0 +1,280 @@
+
+// Fade and slide from bottom to top
+.scroll-fade-up {
+    @include scroll-animation-styles;
+
+    transform: translateY($scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Fade and slide from top to bottom
+.scroll-fade-down {
+    @include scroll-animation-styles;
+
+    transform: translateY(-$scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Fade and slide from left to right
+.scroll-fade-right {
+    @include scroll-animation-styles;
+
+    transform: translateX(-$scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Fade and slide from right to left
+.scroll-fade-left {
+    @include scroll-animation-styles;
+
+    transform: translateX($scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+// Fade and slide from bottom-left to top-right
+.scroll-fade-up-right {
+    @include scroll-animation-styles;
+
+    transform: translate(-$scroll-animation-offset, $scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+// Fade and slide from bottom-right to top-left
+.scroll-fade-up-left {
+    @include scroll-animation-styles;
+
+    transform: translate($scroll-animation-offset, $scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+// Fade and slide from top-left to bottom-right
+.scroll-fade-down-right {
+    @include scroll-animation-styles;
+
+    transform: translate(-$scroll-animation-offset, -$scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+// Fade and slide from top-right to bottom-left
+.scroll-fade-down-left {
+    @include scroll-animation-styles;
+
+    transform: translate($scroll-animation-offset, -$scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+}
+
+
+
+// Flip scroll animation styles
+.scroll-flip-left {
+    @include scroll-animation-styles;
+
+    transform: rotateY(180deg);
+
+    &.in-view {
+        transform: rotateY(0);
+    }
+}
+
+.scroll-flip-right {
+    @include scroll-animation-styles;
+
+    transform: rotateY(-180deg);
+
+    &.in-view {
+        transform: rotateY(0);
+    }
+}
+
+.scroll-flip-up {
+    @include scroll-animation-styles;
+
+    transform: rotateX(180deg);
+
+    &.in-view {
+        transform: rotateX(0);
+    }
+}
+
+.scroll-flip-down {
+    @include scroll-animation-styles;
+
+    transform: rotateX(-180deg);
+
+    &.in-view {
+        transform: rotateX(0);
+    }
+}
+
+// Zoom-in scroll animation styles
+.scroll-zoom-in {
+    @include scroll-animation-styles;
+
+    transform: scale(0.4);
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.scroll-zoom-in-up {
+    @include scroll-animation-styles;
+
+    transform: scale(0.4) translateY($scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.scroll-zoom-in-down {
+    @include scroll-animation-styles;
+
+    transform: scale(0.4) translateY(-$scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.scroll-zoom-in-left {
+    @include scroll-animation-styles;
+
+    transform: scale(0.4) translateX($scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+    }
+}
+
+.scroll-zoom-in-right {
+    @include scroll-animation-styles;
+
+    transform: scale(0.4) translateX(-$scroll-animation-offset);
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+    }
+}
+
+// Zoom-out scroll animation styles
+.scroll-zoom-out {
+    @include scroll-animation-styles;
+
+    transform: scale(1.5);
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.scroll-zoom-out-up {
+    @include scroll-animation-styles;
+
+    transform: scale(1.5) translateY($scroll-animation-offset / 1.5);
+    transform-origin: top;
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.scroll-zoom-out-down {
+    @include scroll-animation-styles;
+
+    transform: scale(1.5) translateY(-$scroll-animation-offset / 1.5);
+    transform-origin: bottom;
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.scroll-zoom-out-left {
+    @include scroll-animation-styles;
+
+    transform: scale(1.5) translateX($scroll-animation-offset / 1.5);
+    transform-origin: left;
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+    }
+}
+
+.scroll-zoom-out-right {
+    @include scroll-animation-styles;
+
+    transform: scale(1.5) translateX(-$scroll-animation-offset / 1.5);
+    transform-origin: right;
+    opacity: 0;
+
+    &.in-view {
+        transform: scale(1) translateX(0);
+        opacity: 1;
+    }
+}
+
+body {
+    perspective: 1000px;
+}
