@@ -8,14 +8,14 @@
     .carousel-control-prev {
         span {
             &::before, &::after {
-                background-color: generate-shade($dark, 20, 'lighten');
+                background-color: generate-shade($dark, 10, 'lighten');
             }
         }
 
         &:hover {
-            span.circle {
+            span {
                 &::before, &::after {
-                    background-color: $dark;
+                    background-color: generate-shade($dark, 25, 'lighten');
                 }
             }
         }
@@ -23,20 +23,21 @@
 
     .carousel-indicators {
         &.circle span {
-            background-color: generate-shade($dark, 20, 'lighten');
-            border: $base-border-sickness solid generate-shade($dark, 20, 'lighten');
+            background-color: generate-shade($dark, 10, 'lighten');
+            border: $base-border-sickness solid generate-shade($dark, 10, 'lighten');
 
             &.active {
-                background-color: generate-shade($dark, 35, 'lighten');
+                background-color: generate-shade($dark, 25, 'lighten');
+                border-color: generate-shade($dark, 25, 'lighten');
                 transform: scale(1.2);
             }
         }
 
         &.line span {
-            background-color: generate-shade($dark, 20, 'lighten');
+            background-color: generate-shade($dark, 10, 'lighten');
 
             &.active {
-                background-color: $dark;
+                background-color: generate-shade($dark, 25, 'lighten');
             }
         }
     }
@@ -72,7 +73,8 @@
 
 
             &.active {
-                background-color: generate-shade($light, 40, 'darken');
+                background-color: generate-shade($light, 30, 'darken');
+                border-color: generate-shade($light, 30, 'darken');
                 transform: scale(1.2);
             }
         }
@@ -81,7 +83,7 @@
             background-color: $light;
 
             &.active {
-                background-color: generate-shade($light, 40, 'darken');
+                background-color: generate-shade($light, 30, 'darken');
             }
         }
     }
