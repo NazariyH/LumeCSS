@@ -195,3 +195,10 @@
         color: get-contrast-color($color);
     }
 }
+
+// Base styles for the scroll animation
+@mixin scroll-animation-styles {
+    transition: all $base-transition-time * 3 ease;
+    backface-visibility: hidden;
+    will-change: transform;
+}
