@@ -12,7 +12,7 @@
         transition: background-color $base-transition-time ease;
 
         &:hover {
-            background-color: generate-shade($dark, 10, "lighten");
+            background-color: generate-shade($dark, 30, "lighten");
         }
     }
 }
@@ -31,7 +31,7 @@
         transition: background-color $base-transition-time ease;
 
         &:hover {
-            background-color: generate-shade($light, 10, "darken");
+            background-color: generate-shade($light, 20, "darken");
         }
     }
 }
