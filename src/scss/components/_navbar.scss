@@ -9,8 +9,13 @@
     // Base nav items hover effect
     .navbar-menu .nav-item:hover,
     .navbar-menu .nav-item .nav-link:hover,
-    .navbar-brand:hover {
+    .navbar-brand:hover,
+    .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
         color: generate-shade($dark, 30, "lighten");
+
+        .btn-arrow::after, .btn-arrow::before {
+            background-color: generate-shade($dark, 30, "lighten");
+        }
     }
 
     // Navbar toggle line styles
@@ -35,8 +40,13 @@
     // Base nav items hover effect
     .navbar-menu .nav-item:hover,
     .navbar-menu .nav-item .nav-link:hover,
-    .navbar-brand:hover {
-        color: generate-shade($light, 30, "darken");
+    .navbar-brand:hover,
+    .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
+        color: generate-shade($light, 20, "darken");
+
+        .btn-arrow::after, .btn-arrow::before {
+            background-color: generate-shade($light, 20, "darken");
+        }
     }
 
     // Navbar toggle line styles
@@ -77,6 +87,7 @@
 
     // Navbar main link (it could be logo)
     .navbar-brand {
+        transition: all $base-transition-time ease;
         font-size: 22px;
         font-weight: bold;
         cursor: pointer;
@@ -91,6 +102,7 @@
         // Menu item (e.g. link, button)
         .nav-item .nav-link,
         .dropdown .dropdown-toggle {
+            transition: all $base-transition-time ease;
             font-size: $nav-link;
             opacity: 0.9;
         }
