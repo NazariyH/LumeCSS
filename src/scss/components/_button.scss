@@ -11,7 +11,9 @@
     font-size: $font-size;
     padding: $btn-size $btn-size * 2;
     border-radius: $base-border-radius;
-    transition: all $base-transition-time ease-in-out;
+
+    // The transition would be rewritten when user adds the scroll animation to the buttons
+    transition: background-color $base-transition-time ease-in-out;
 }
 
 @mixin btn-color($color) {
