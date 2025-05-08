@@ -42,13 +42,13 @@ modalTriggersArray.forEach((element: HTMLElement): void => {
 
             // Check if the modalContent exists
             if (modalContent) {
-                // Remove an active class to the modal content object
+                // Remove an active class from the modal content object
                 modalContent.classList.remove('active');
 
-                // Remove an active class to the modalObject after 0.3 seconds
+                // Remove an active class from the modalObject after 0.3 seconds
                 setTimeout((): void => modalObject.classList.remove('active'), 300);
             } else {
-                // Remove an active class to the modalObject
+                // Remove an active class from the modalObject
                 modalObject.classList.remove('active');
             }
         }
