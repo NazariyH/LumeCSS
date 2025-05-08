@@ -146,8 +146,8 @@
         .carousel-item  {
             display: flex;
             flex-direction: column;
-            justify-content: end;
-            align-items: center;
+            justify-content: start;
+            align-items: start;
             scroll-snap-align: start;
             padding: 10%;
 
