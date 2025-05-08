@@ -134,7 +134,7 @@ function hideOffcanvas(offcanvas: HTMLElement, allowScrolling: boolean):void {
     /* The function hides the offcanvas object by removing the 'show' class
     *
     * Attributes:
-    * - 'offcanvas': The HTML object that is supposed to be hidden
+    * - offcanvas: The HTML object that is supposed to be hidden
     * */
 
     // Get the offcanvas content block or null if it does not exist
@@ -143,10 +143,12 @@ function hideOffcanvas(offcanvas: HTMLElement, allowScrolling: boolean):void {
     // Hide the offcanvasContent object if it exists, by removing the 'show' class
     if (offcanvasContent) {
         offcanvasContent.classList.remove('show');
-    }
 
-    // Hide the offcanvas object after 300ms
-    setTimeout(():void => offcanvas.classList.remove('show'), 300);
+        // Hide the offcanvas object after 300ms
+        setTimeout(():void => offcanvas.classList.remove('show'), 300);
+    } else {
+        offcanvas.classList.remove('show');
+    }
 
     // Check whether the user is allowed to scroll
     if (allowScrolling) return;
