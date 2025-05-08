@@ -12,4 +12,5 @@ import './components/offcanvas'; // Import offcanvas scripts
 import './components/breadcrumb'; // Import breadcrumb scripts
 import './components/carousel'; // Import carousel scripts
 import './components/navbar'; // Import navbar scripts
+import './components/smooth-scroll'; // Import smooth scroll component for the navbar
 import './components/scroll-animation'; // Import scroll animation scripts
