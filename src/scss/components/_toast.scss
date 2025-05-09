@@ -1,40 +1,45 @@
 // Toast styles for dark theme
-.dark-theme-toast {
-    background-color: $dark;
-    color: $light;
+@mixin dark-theme-toast {
+    .toast,
+    &.toast {
+        background-color: $dark;
+        color: $light;
 
-    // Toast header styles
-    .toast-header {
-        // Toast close button
-        .btn-close::after,
-        .btn-close::before {
-            background-color: $light !important;
-        }
+        // Toast header styles
+        .toast-header {
+            // Toast close button
+            .btn-close::after,
+            .btn-close::before {
+                background-color: $light !important;
+            }
 
-        // Toast date text
-        .toast-date {
-            color: generate-shade($light, 30, 'darken');
+            // Toast date text
+            .toast-date {
+                color: generate-shade($light, 30, 'darken');
+            }
         }
     }
-
 }
 
 // Toast styles for light theme
-.light-theme-toast {
-    background-color: $light;
-    color: $dark;
+@mixin light-theme-toast {
+    .toast,
+    &.toast {
+        background-color: $light;
+        color: $dark;
 
-    // Toast header styles
-    .toast-header {
-        // Close button
-        .btn-close::after,
-        .btn-close::before {
-            background-color: $dark !important;
-        }
+        // Toast header styles
+        .toast-header {
+            // Close button
+            .btn-close::after,
+            .btn-close::before {
+                background-color: $dark !important;
+            }
 
-        // Toast date text
-        .toast-date {
-            color: generate-shade($dark, 30, 'lighten');
+            // Toast date text
+            .toast-date {
+                color: generate-shade($dark, 30, 'lighten');
+            }
         }
     }
 }
@@ -55,7 +60,7 @@
     min-width: 200px;
     max-width: 400px;
 
-    @extend .light-theme-toast;
+    @include light-theme-toast;
     @include base-border-style();
 
 
@@ -186,7 +191,19 @@
 }
 
 
-// Apply styles for the dark toast theme
+// Apply different theme styles
+body[data-theme="dark"] {
+    @include dark-theme-toast;
+}
+
+body[data-theme="light"] {
+    @include light-theme-toast;
+}
+
 .toast[data-theme="dark"] {
-    @extend .dark-theme-toast;
+    @include dark-theme-toast;
+}
+
+.toast[data-theme="light"] {
+    @include light-theme-toast;
 }

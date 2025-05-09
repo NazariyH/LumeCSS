@@ -1,61 +1,67 @@
 // Pagination styles for dark theme
-.dark-theme-pagination {
-    background-color: $dark;
+@mixin dark-theme-pagination {
+    .pagination,
+    &.pagination {
+        background-color: $dark;
 
-    // Dropdown item hover
-    .page-item {
-        // Add hover for the page item
-        &:hover {
-            background-color: generate-shade($dark, 10, "lighten");
-        }
-
-        // Link styles for the dark theme mode
-        .page-link {
-            color: $light;
-        }
-
-        // Disabled item page styles
-        &.disabled {
-            $disabled-color-dark-theme: generate-shade($disabled-color, 50, 'darken');
-
-            background-color: $disabled-color-dark-theme !important;
-            color: $light !important;
-
-            a, .page-link {
-                color: $light !important;
+        // Dropdown item hover
+        .page-item {
+            // Add hover for the page item
+            &:hover {
+                background-color: generate-shade($dark, 10, "lighten");
             }
 
+            // Link styles for the dark theme mode
+            .page-link {
+                color: $light;
+            }
 
-            &:hover {
+            // Disabled item page styles
+            &.disabled {
+                $disabled-color-dark-theme: generate-shade($disabled-color, 50, 'darken');
+
                 background-color: $disabled-color-dark-theme !important;
+                color: $light !important;
+
+                a, .page-link {
+                    color: $light !important;
+                }
+
+
+                &:hover {
+                    background-color: $disabled-color-dark-theme !important;
+                }
             }
         }
     }
 }
 
 // Pagination styles for light theme
-.light-theme-pagination {
-    background-color: $light;
+@mixin light-theme-pagination {
+    .pagination,
+    &.pagination {
+        background-color: $light;
 
-    // Dropdown item hover
-    .page-item {
-        // Add hover for the page item
-        &:hover {
-            background-color: generate-shade($light, 10, "darken");
-        }
-
-        // Disabled item page styles
-        &.disabled {
-            background-color: $disabled-color !important;
-            color: $dark !important;
-
-            a, .page-link {
-                color: $dark !important;
+        // Dropdown item hover
+        .page-item {
+            // Add hover for the page item
+            &:hover {
+                background-color: generate-shade($light, 10, "darken");
             }
 
-
-            &:hover {
+            // Disabled item page styles
+            &.disabled {
                 background-color: $disabled-color !important;
+                color: $dark !important;
+
+                a, .page-link {
+                    color: $dark !important;
+                }
+
+
+                &:hover {
+                    background-color: $disabled-color !important;
+                }
             }
         }
     }
@@ -68,7 +74,7 @@
     align-items: center;
     overflow: hidden;
 
-    @extend .light-theme-pagination;
+    @include light-theme-pagination;
     @include base-border-style;
 
     // Pagination item styles
@@ -104,7 +110,19 @@
 }
 
 
-// Apply styles for the dark mode
+// Apply different theme styles
+body[data-theme="dark"] {
+    @include dark-theme-pagination;
+}
+
+body[data-theme="light"] {
+    @include light-theme-pagination;
+}
+
 .pagination[data-theme="dark"] {
-    @extend .dark-theme-pagination;
+    @include dark-theme-pagination;
+}
+
+.pagination[data-theme="light"] {
+    @include light-theme-pagination;
 }

@@ -1,5 +1,5 @@
 // Dropdown styles for dark theme
-.dark-theme-dropdown {
+@mixin dark-theme-dropdown {
     background-color: $dark;
     color: $light;
 
@@ -18,7 +18,7 @@
 }
 
 // Dropdown styles for light theme
-.light-theme-dropdown {
+@mixin light-theme-dropdown {
     background-color: $light;
     color: $dark;
 
@@ -113,7 +113,7 @@
         visibility: hidden;
 
         border-radius: $base-border-radius;
-        @extend .light-theme-dropdown;
+        @include light-theme-dropdown;
         @include base-border-style;
 
         // Dropdown menu item styles
@@ -129,8 +129,27 @@
 }
 
 
+// Apply dropdown themes
+body[data-theme="dark"] {
+    .dropdown-menu {
+        @include dark-theme-dropdown;
+    }
+}
+
+body[data-theme="light"] {
+    .dropdown-menu {
+        @include light-theme-dropdown;
+    }
+}
+
 .dropdown[data-theme="dark"] {
     .dropdown-menu {
-        @extend .dark-theme-dropdown;
+        @include dark-theme-dropdown;
+    }
+}
+
+.dropdown[data-theme="light"] {
+    .dropdown-menu {
+        @include light-theme-dropdown;
     }
 }

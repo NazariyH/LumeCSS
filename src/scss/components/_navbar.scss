@@ -1,69 +1,75 @@
 // Base styles for navbar light theme
-.light-theme-navbar {
-    background: $light;
+@mixin light-theme-navbar {
+    .navbar,
+    &.navbar {
+        background: $light;
 
-    * {
-        color: $dark;
-    }
-
-    // Base nav items hover effect
-    .navbar-menu .nav-item:hover,
-    .navbar-menu .nav-item .nav-link:hover,
-    .navbar-brand:hover,
-    .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
-        color: generate-shade($dark, 30, "lighten");
-
-        .btn-arrow::after, .btn-arrow::before {
-            background-color: generate-shade($dark, 30, "lighten");
+        * {
+            color: $dark;
         }
-    }
 
-    // Navbar toggle line styles
-    .navbar-toggle .navbar-toggle-line {
-        background-color: $dark;
-    }
+        // Base nav items hover effect
+        .navbar-menu .nav-item:hover,
+        .navbar-menu .nav-item .nav-link:hover,
+        .navbar-brand:hover,
+        .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
+            color: generate-shade($dark, 30, "lighten");
 
-    // Styles for the navbar collapse
-    .navbar-collapse {
-        background-color: $light;
+            .btn-arrow::after, .btn-arrow::before {
+                background-color: generate-shade($dark, 30, "lighten");
+            }
+        }
+
+        // Navbar toggle line styles
+        .navbar-toggle .navbar-toggle-line {
+            background-color: $dark;
+        }
+
+        // Styles for the navbar collapse
+        .navbar-collapse {
+            background-color: $light;
+        }
     }
 }
 
 // Base dark theme mode styles for navbar
-.dark-theme-navbar {
-    background: $dark;
+@mixin dark-theme-navbar {
+    .navbar,
+    &.navbar {
+        background: $dark;
 
-    * {
-        color: $light;
-    }
-
-    // Base nav items hover effect
-    .navbar-menu .nav-item:hover,
-    .navbar-menu .nav-item .nav-link:hover,
-    .navbar-brand:hover,
-    .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
-        color: generate-shade($light, 20, "darken");
-
-        .btn-arrow::after, .btn-arrow::before {
-            background-color: generate-shade($light, 20, "darken");
+        * {
+            color: $light;
         }
-    }
 
-    // Navbar toggle line styles
-    .navbar-toggle .navbar-toggle-line {
-        background-color: $light;
-    }
+        // Base nav items hover effect
+        .navbar-menu .nav-item:hover,
+        .navbar-menu .nav-item .nav-link:hover,
+        .navbar-brand:hover,
+        .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
+            color: generate-shade($light, 20, "darken");
 
-    // Btn arrow button
-    .btn-arrow {
-        &::before, &::after {
+            .btn-arrow::after, .btn-arrow::before {
+                background-color: generate-shade($light, 20, "darken");
+            }
+        }
+
+        // Navbar toggle line styles
+        .navbar-toggle .navbar-toggle-line {
             background-color: $light;
         }
-    }
 
-    // Styles for the navbar collapse
-    .navbar-collapse {
-        background-color: $dark;
+        // Btn arrow button
+        .btn-arrow {
+            &::before, &::after {
+                background-color: $light;
+            }
+        }
+
+        // Styles for the navbar collapse
+        .navbar-collapse {
+            background-color: $dark;
+        }
     }
 }
 
@@ -82,8 +88,8 @@
 
     padding: $base-padding $base-padding*2;
 
-    // Extend light theme by default
-    @extend .light-theme-navbar;
+    // Apply light theme as a default theme
+    @include light-theme-navbar;
 
     // Navbar main link (it could be logo)
     .navbar-brand {
@@ -289,9 +295,20 @@
 }
 
 
-// Nav styles for dark theme
-.navbar[data-theme="dark"] {
-    @extend .dark-theme-navbar;
+// Apply styles for different themes
+body[data-theme="dark"] {
+    @include dark-theme-navbar;
 }
 
+body[data-theme="light"] {
+    @include light-theme-navbar;
+}
+
+.navbar[data-theme="dark"] {
+    @include dark-theme-navbar;
+}
+
+.navbar[data-theme="light"] {
+    @include light-theme-navbar;
+}
 

@@ -1,22 +1,42 @@
 // List group styles for dark theme
-.dark-theme-list-group {
-    background-color: $dark;
-    color: $light;
+@mixin dark-theme-list-group {
+    .list-group,
+    &.list-group{
+        background-color: $dark;
+        color: $light;
+    }
 
     // List action item styles
     .list-group-item-action:hover {
         background-color: generate-shade($dark, 10, "lighten");
     }
+
+    .btn-close::after,
+    .btn-close::before,
+    .btn-arrow::after,
+    .btn-arrow::before {
+        background-color: $light !important;
+    }
 }
 
 // List group styles for light theme
-.light-theme-list-group {
-    background-color: $light;
-    color: $dark;
+@mixin light-theme-list-group {
+    .list-group,
+    &.list-group{
+        background-color: $light;
+        color: $dark;
+    }
 
     // List action item styles
     .list-group-item-action:hover {
         background-color: generate-shade($light, 10, "darken");
+    }
+
+    .btn-close::after,
+    .btn-close::before,
+    .btn-arrow::after,
+    .btn-arrow::before {
+        background-color: $dark !important;
     }
 }
 
@@ -26,7 +46,7 @@
     display: inline-block;
     overflow: hidden;
 
-    @extend .light-theme-list-group;
+    @include light-theme-list-group;
     @include base-border-style();
 
     // List group item styles
@@ -82,6 +102,19 @@
 }
 
 
+// Apply list-group themes
+body[data-theme="dark"] {
+    @include dark-theme-list-group;
+}
+
+body[data-theme="light"] {
+    @include light-theme-list-group;
+}
+
 .list-group[data-theme="dark"] {
-    @extend .dark-theme-list-group;
+    @include dark-theme-list-group;
+}
+
+.list-group[data-theme="light"] {
+    @include light-theme-list-group;
 }

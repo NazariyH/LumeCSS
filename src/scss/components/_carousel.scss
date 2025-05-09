@@ -1,5 +1,5 @@
 // Light theme carousel styles
-.light-theme-carousel {
+@mixin light-theme-carousel {
     .carousel-inner *, .carousel-inner a {
         color: $dark;
     }
@@ -44,7 +44,7 @@
 }
 
 // Dark theme carousel styles
-.dark-theme-carousel {
+@mixin dark-theme-carousel {
     .carousel-inner *, .carousel-inner a {
         color: $light;
     }
@@ -98,7 +98,7 @@
     width: 740px;
     height: 420px;
 
-    @extend .light-theme-carousel;
+    @include light-theme-carousel;
 
     // Styles for the fade carousel
     &.carousel-fade  {
@@ -252,7 +252,19 @@
     }
 }
 
-// Apply dark theme
+// Apply carousel themes
+body[data-theme="dark"] {
+    @include dark-theme-carousel;
+}
+
+body[data-theme="light"] {
+    @include light-theme-carousel;
+}
+
 .carousel[data-theme="dark"] {
-    @extend .dark-theme-carousel;
+    @include dark-theme-carousel;
+}
+
+.carousel[data-theme="light"] {
+    @include light-theme-carousel;
 }
