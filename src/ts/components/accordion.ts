@@ -26,7 +26,7 @@ accordionElements.forEach((accordionObj: HTMLElement):void => {
             // Add an event listener to each headerObj
             headerObj.addEventListener('click', (e: MouseEvent): void => {
                 // Get the parent element
-                const accordionItemElement: HTMLElement | null = (e.target as HTMLElement).parentElement;
+                const accordionItemElement: HTMLElement | null = (e.target as HTMLElement).closest('.accordion-item');
 
                 // Declare the accordionCollapseElement variable
                 let accordionCollapseElement: HTMLElement | null = null;
