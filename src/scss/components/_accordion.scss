@@ -56,6 +56,11 @@
             .accordion-title {
                 font-size: 20px;
             }
+
+            // Apply the cursor pointer to all inner tags
+            *, & {
+                cursor: pointer !important;
+            }
         }
 
         // Accordion collapse styles
