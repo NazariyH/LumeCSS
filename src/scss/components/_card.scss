@@ -1,3 +1,21 @@
+// Card styles for dark theme
+@mixin dark-theme-card {
+    .card,
+    &.card {
+        background-color: $dark;
+        color: $light;
+    }
+}
+
+// Card styles for light theme
+@mixin light-theme-card {
+    .card,
+    &.card {
+        background-color: $light;
+        color: $dark;
+    }
+}
+
 // Base card styles
 .card {
     position: relative;
@@ -8,6 +26,9 @@
     border-width: $base-border-sickness / 2;
     border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
 
+
+    // Apply card light theme as a default one
+    @include light-theme-card;
 
     // Card image styles
     .card-img {
@@ -58,4 +79,22 @@
             overflow-y: auto;
         }
     }
+}
+
+
+// Apply different card themes
+body[data-theme="dark"] {
+    @include dark-theme-card;
+}
+
+body[data-theme="light"] {
+    @include light-theme-card;
+}
+
+.card[data-theme="dark"] {
+    @include dark-theme-card;
+}
+
+.card[data-theme="light"] {
+    @include light-theme-card;
 }
