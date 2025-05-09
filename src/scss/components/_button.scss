@@ -13,7 +13,7 @@
     border-radius: $base-border-radius;
 
     // The transition would be rewritten when user adds the scroll animation to the buttons
-    transition: background-color $base-transition-time ease-in-out;
+    transition: all $base-transition-time ease-in-out;
 }
 
 @mixin btn-color($color) {
