@@ -188,11 +188,18 @@
 @mixin active-object-color() {
     $color: $primary;
 
-    background-color: $color;
-    color: get-contrast-color($color);
+    background-color: $color !important;
+    color: get-contrast-color($color) !important;
 
     a {
-        color: get-contrast-color($color);
+        color: get-contrast-color($color) !important;
+    }
+
+    .btn-arrow::after,
+    .btn-arrow::before,
+    .btn-close::after,
+    .btn-arrow::before {
+        background-color: get-contrast-color($color) !important;
     }
 }
 
