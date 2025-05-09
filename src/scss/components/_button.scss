@@ -11,6 +11,8 @@
     font-size: $font-size;
     padding: $btn-size $btn-size * 2;
     border-radius: $base-border-radius;
+
+    // The transition would be rewritten when user adds the scroll animation to the buttons
     transition: all $base-transition-time ease-in-out;
 }
 
@@ -28,8 +30,8 @@
     // Colors for the disabled buttons
     &.disabled,
     &:disabled {
-        background-color: $color;
-        border: 0.1rem solid $color;
+        background-color: $color !important;
+        border: 0.1rem solid $color !important;
     }
 }
 
@@ -47,8 +49,9 @@
     // Colors for the disabled buttons
     &.disabled,
     &:disabled {
-        background-color: transparent;
-        color: $color;
+        background-color: transparent !important;
+        border: $base-border-sickness solid $color !important;
+        color: $color !important;
     }
 }
 
@@ -226,5 +229,5 @@ button.disabled,
 button:disabled,
 a.disabled {
     cursor: default;
-    opacity: .6;
+    opacity: .6 !important;
 }

@@ -888,8 +888,8 @@ function appendCarouselItemAfterCurrent(
     // Append the current carousel item to the end of the carousel-inner object
     const currentItem = carouselItemsArray[previousIndex].cloneNode(true) as HTMLElement;
 
-    // Add the display block CSS property to the currentItem
-    currentItem.style.display = 'block';
+    // Add the display flex CSS property to the currentItem
+    currentItem.style.display = 'flex';
 
     // Add the 'temporary-item' class to the currentItem
     currentItem.classList.add('temporary-item');
@@ -901,8 +901,8 @@ function appendCarouselItemAfterCurrent(
     // Append the next carousel item after the currentItem
     const nextItem = carouselItemsArray[nextIndex].cloneNode(true) as HTMLElement;
 
-    // Add the display block CSS property to the nextItem
-    nextItem.style.display = 'block';
+    // Add the display flex CSS property to the nextItem
+    nextItem.style.display = 'flex';
 
     // Add the 'temporary-item' class to the nextItem
     nextItem.classList.add('temporary-item');
@@ -936,8 +936,8 @@ function appendCarouselItemBeforeCurrent(
     // Append the next carousel item to the end of the carousel-inner object
     const nextItem = carouselItemsArray[nextIndex].cloneNode(true) as HTMLElement;
 
-    // Add the display block CSS property to the nextItem
-    nextItem.style.display = 'block';
+    // Add the display flex CSS property to the nextItem
+    nextItem.style.display = 'flex';
 
     // Add the 'temporary-item' class to the nextItem
     nextItem.classList.add('temporary-item');
@@ -948,8 +948,8 @@ function appendCarouselItemBeforeCurrent(
     // Append the current carousel item after the nextItem
     const currentItem = carouselItemsArray[previousIndex].cloneNode(true) as HTMLElement;
 
-    // Add the display block CSS property to the currentItem
-    currentItem.style.display = 'block';
+    // Add the display flex CSS property to the currentItem
+    currentItem.style.display = 'flex';
 
     // Add the 'temporary-item' class to the currentItem
     currentItem.classList.add('temporary-item');

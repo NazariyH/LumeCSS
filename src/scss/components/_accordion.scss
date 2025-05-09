@@ -1,5 +1,5 @@
 // Accordion styles for dark theme
-.dark-theme-accordion {
+@mixin dark-theme-accordion {
     background-color: $dark;
     color: $light;
 
@@ -10,7 +10,7 @@
 }
 
 // Accordion styles for light theme
-.light-theme-accordion {
+@mixin light-theme-accordion {
     background-color: $light;
     color: $dark;
 
@@ -41,8 +41,8 @@
             border-width: 0 !important;
         }
 
-        // Extend light theme styles by default
-        @extend .light-theme-accordion;
+        // Include light theme styles by default
+        @include light-theme-accordion;
 
         // Accordion header styles
         .accordion-header {
@@ -55,6 +55,11 @@
             // Accordion title styles
             .accordion-title {
                 font-size: 20px;
+            }
+
+            // Apply the cursor pointer to all inner tags
+            *, & {
+                cursor: pointer !important;
             }
         }
 
@@ -83,9 +88,27 @@
 }
 
 
-// Accordion styles for the dark theme
+// Accordion styles for different themes
+body[data-theme="dark"] {
+    .accordion-item {
+        @include dark-theme-accordion;
+    }
+}
+
+body[data-theme="light"] {
+    .accordion-item {
+        @include light-theme-accordion;
+    }
+}
+
 .accordion[data-theme="dark"] {
     .accordion-item {
-        @extend .dark-theme-accordion;
+        @include dark-theme-accordion;
+    }
+}
+
+.accordion[data-theme="light"] {
+    .accordion-item {
+        @include light-theme-accordion;
     }
 }

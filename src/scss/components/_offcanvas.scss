@@ -1,22 +1,26 @@
 // Offcanvas styles for dark theme
-.dark-theme-offcanvas {
-    background-color: $dark;
-    color: $light;
+@mixin dark-theme-offcanvas {
+    .offcanvas-content  {
+        background-color: $dark;
+        color: $light;
 
-    .btn-close::after,
-    .btn-close::before {
-        background-color: $light !important;
+        .btn-close::after,
+        .btn-close::before {
+            background-color: $light !important;
+        }
     }
 }
 
 // Offcanvas styles for light theme
-.light-theme-offcanvas {
-    background-color: $light;
-    color: $dark;
+@mixin light-theme-offcanvas {
+    .offcanvas-content {
+        background-color: $light;
+        color: $dark;
 
-    .btn-close::after,
-    .btn-close::before {
-        background-color: $dark !important;
+        .btn-close::after,
+        .btn-close::before {
+            background-color: $dark !important;
+        }
     }
 }
 
@@ -30,10 +34,13 @@
     width: 100%;
     height: 100%;
     background-color: transparent;
-    transition: background-color $base-transition-time ease;
+    transition: all $base-transition-time ease;
 
     // Hidden by default
     visibility: hidden;
+
+    // Apply light theme as a default theme
+    @include light-theme-offcanvas;
 
     // Offcanvas content styles
     .offcanvas-content {
@@ -42,8 +49,6 @@
         height: 100vh;
         margin: 0 $base-margin 0 0;
         transition: all $base-transition-time ease-out;
-
-        @extend .light-theme-offcanvas;
 
         // Offcanvas header styles
         .offcanvas-header {
@@ -138,9 +143,19 @@
 }
 
 
-// Apply styles for the dark theme mode
+// Apply different theme styles
+body[data-theme="dark"] {
+    @include dark-theme-offcanvas;
+}
+
+body[data-theme="light"] {
+    @include light-theme-offcanvas;
+}
+
 .offcanvas[data-theme="dark"] {
-    .offcanvas-content {
-        @extend .dark-theme-offcanvas;
-    }
+    @include dark-theme-offcanvas;
+}
+
+.offcanvas[data-theme="light"] {
+    @include light-theme-offcanvas;
 }

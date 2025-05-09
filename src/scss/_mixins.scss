@@ -188,17 +188,27 @@
 @mixin active-object-color() {
     $color: $primary;
 
-    background-color: $color;
-    color: get-contrast-color($color);
+    background-color: $color !important;
+    color: get-contrast-color($color) !important;
 
     a {
-        color: get-contrast-color($color);
+        color: get-contrast-color($color) !important;
+    }
+
+    .btn-arrow::after,
+    .btn-arrow::before,
+    .btn-close::after,
+    .btn-arrow::before {
+        background-color: get-contrast-color($color) !important;
     }
 }
 
 // Base styles for the scroll animation
 @mixin scroll-animation-styles {
-    transition: all $base-transition-time * 3 ease;
+    transition: transform $base-transition-time * 3 ease,
+                opacity $base-transition-time * 3 ease,
+                background-color $base-transition-time ease-in-out;
+
     backface-visibility: hidden;
     will-change: transform;
 }

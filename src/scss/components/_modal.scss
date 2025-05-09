@@ -1,18 +1,31 @@
 // Modal styles for dark theme
-.dark-theme-modal {
-    background-color: $dark;
-    color: $light;
+@mixin dark-theme-modal {
+    .modal-content {
+        background-color: $dark;
+        color: $light;
+    }
 
-    .btn-close::after,
-    .btn-close::before {
-        background-color: $light !important;
+    .modal-dialog {
+        .btn-close::after,
+        .btn-close::before {
+            background-color: $light !important;
+        }
     }
 }
 
 // Modal styles for light theme
-.light-theme-modal {
-    background-color: $light;
-    color: $dark;
+@mixin light-theme-modal {
+    .modal-content {
+        background-color: $light;
+        color: $dark;
+    }
+
+    .modal-dialog {
+        .btn-close::after,
+        .btn-close::before {
+            background-color: $dark !important;
+        }
+    }
 }
 
 
@@ -30,6 +43,9 @@
 
     // Hide the modal by default
     display: none;
+
+    // Apply light theme as a default theme
+    @include light-theme-modal;
 
     // Show it when the 'active' class is given
     &.active {
@@ -67,8 +83,6 @@
             border-style: solid;
             border-width: $base-border-sickness / 2;
             border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
-
-            @extend .light-theme-modal;
 
             // Modal header's styles
             .modal-header {
@@ -114,9 +128,19 @@
 }
 
 
-// Apply styles for dark mode
+// Apply modal theme styles
+body[data-theme="dark"] {
+    @include dark-theme-modal;
+}
+
+body[data-theme="light"] {
+    @include light-theme-modal;
+}
+
 .modal[data-theme="dark"] {
-    .modal-dialog .modal-content {
-        @extend .dark-theme-modal;
-    }
+    @include dark-theme-modal;
+}
+
+.modal[data-theme="light"] {
+    @include light-theme-modal;
 }

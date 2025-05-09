@@ -4,6 +4,7 @@
     border-radius: $base-border-radius;
     background-color: $dark;
     color: get-contrast-color($dark);
+    transition: all $base-transition-time ease-in-out;
 }
 
 
