@@ -89,6 +89,10 @@
     // Apply light theme as a default theme
     @include light-theme-navbar;
 
+    & > * {
+        z-index: 15;
+    }
+
     // Navbar main link (it could be logo)
     .navbar-brand {
         transition: all $base-transition-time ease;
@@ -196,7 +200,7 @@
     // Styles for the navbar collapse
     .navbar-collapse {
         position: absolute;
-        z-index: 10;
+        z-index: 5 !important;
         top: $navbar-height !important;
         min-width: 300px;
         padding: 0 $base-padding * 2 $base-padding * 2 $base-padding * 2;
