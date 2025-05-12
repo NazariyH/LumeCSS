@@ -11,12 +11,11 @@
         // Base nav items hover effect
         .navbar-menu .nav-item:hover,
         .navbar-menu .nav-item .nav-link:hover,
-        .navbar-brand:hover,
-        .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
+        .navbar-brand:hover {
             color: generate-shade($dark, 30, "lighten");
 
             .btn-arrow::after, .btn-arrow::before {
-                background-color: generate-shade($dark, 30, "lighten");
+                background-color: generate-shade($dark, 30, "lighten") !important;
             }
         }
 
@@ -45,12 +44,11 @@
         // Base nav items hover effect
         .navbar-menu .nav-item:hover,
         .navbar-menu .nav-item .nav-link:hover,
-        .navbar-brand:hover,
-        .navbar-menu .nav-item .dropdown .dropdown-toggle:hover {
+        .navbar-brand:hover {
             color: generate-shade($light, 20, "darken");
 
             .btn-arrow::after, .btn-arrow::before {
-                background-color: generate-shade($light, 20, "darken");
+                background-color: generate-shade($light, 20, "darken") !important;
             }
         }
 

@@ -108,6 +108,7 @@
         left: 0;
         overflow: hidden;
         transition: all $base-transition-time ease;
+        padding-bottom: $base-padding;
 
         // Hide it by default
         visibility: hidden;
@@ -118,12 +119,16 @@
 
         // Dropdown menu item styles
         .dropdown-item {
-            padding: $base-padding;
+            padding: $base-padding $base-padding 0 $base-padding;
 
             // Give nowrap to the link
             a {
                 white-space: nowrap;
             }
+        }
+
+        .divider {
+            margin-top: $base-padding;
         }
     }
 }
