@@ -19,13 +19,11 @@ $spinner-styles: dashed, dotted, double;
         // Generate spinner classes for each border-sickness value
         .spinner-#{$key} {
             @include spinner($val);
-            @include spinner-animation();
         }
 
         // Generate spinner classes for each spinner style
         .spinner-#{$key}-#{$style} {
             @include spinner($val, $style);
-            @include spinner-animation();
         }
 
         // Iterate over each bp_key-bp_val pair in the $breakpoints
@@ -34,12 +32,10 @@ $spinner-styles: dashed, dotted, double;
             @media (min-width: $bp_val) {
                 .#{$bp_key}\:spinner-#{$key} {
                     @include spinner($val);
-                    @include spinner-animation();
                 }
 
                 .#{$bp_key}\:spinner-#{$key}-#{$style} {
                     @include spinner($val, $style);
-                    @include spinner-animation();
                 }
             }
         }
