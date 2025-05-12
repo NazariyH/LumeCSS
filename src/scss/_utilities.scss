@@ -153,6 +153,30 @@ $utilities: (
         "values":  map-merge($dimensions-values, ("screen": 100vh))
     ),
 
+    // Size
+    "size": (
+        "prefix": "size",
+        "states": true,
+        "breakpoints": true,
+        "values": map-merge($dimensions-values, ("screen": 100vw))
+    ),
+
+    // Max size
+    "max-size": (
+        "prefix": "max-size",
+        "states": true,
+        "breakpoints": true,
+        "values": map-merge($dimensions-values, ("screen": 100vw))
+    ),
+
+    // Min size
+    "min-size": (
+        "prefix": "min-size",
+        "states": true,
+        "breakpoints": true,
+        "values": map-merge($dimensions-values, ("screen": 100vw))
+    ),
+
     // Opacity
     "opacity": (
         "prefix": 'o',
@@ -917,6 +941,18 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
 @function get-shorthand-property($property) {
     @if $property == "padding-x" {
         @return ("padding-left", "padding-right");
+    }
+
+    @else if $property == "size" {
+        @return ("width", "height");
+    }
+
+    @else if $property == "max-size" {
+        @return ("max-width", "max-height");
+    }
+
+    @else if $property == "min-size" {
+        @return ("min-width", "min-height");
     }
 
     @else if $property == "padding-y" {
