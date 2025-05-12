@@ -55,89 +55,17 @@
 
 // Mixin for the spin animation
 @mixin spinner-animation($duration: 1s, $timing: linear, $repetition-amount: infinite) {
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
     // Create animation for spinner
     animation: spin $duration $timing $repetition-amount;
 }
 
 // Mixin for the fade animation
 @mixin fade-animation($duration: 1s, $timing: linear, $repetition-amount: infinite) {
-    @keyframes fade {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
     animation: fade $duration $timing $repetition-amount;
 }
 
 // Mixin for the slide effect
 @mixin slide-animation($duration: 300ms, $timing: ease-out, $direction: 'right') {
-    // Define the direction-specific keyframes
-    @keyframes slide-right {
-        from {
-            translate: 100%;
-            opacity: 0;
-        }
-        to {
-            translate: 0;
-            opacity: 1;
-        }
-    }
-
-    @keyframes slide-left {
-        from {
-            translate: -100%;
-            opacity: 0;
-        }
-        to {
-            translate: 0;
-            opacity: 1;
-        }
-    }
-
-    @keyframes slide-up {
-        from {
-            translate: 0 -100%;
-            opacity: 0;
-        }
-        to {
-            translate: 0 0;
-            opacity: 1;
-        }
-    }
-
-    @keyframes slide-down {
-        from {
-            translate: 0 100%;
-            opacity: 0;
-        }
-        to {
-            translate: 0 0;
-            opacity: 1;
-        }
-    }
-
-    @keyframes slide-static {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
     // Apply the correct keyframe animation based on the direction
     @if $direction == 'right' {
         animation: slide-right $duration $timing 1;
@@ -152,29 +80,12 @@
     }
 }
 
-
 // Placeholder glowing animation
 @mixin glowing-background($duration: 2.5s) {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 75%);
     background-size: 200% 100%;
     animation: glowing $duration infinite ease-in-out;
-
-    @keyframes glowing {
-        0% {
-            background-position: 200% 0;
-            opacity: 1;
-        }
-        50% {
-            background-position: 100% 0;
-            opacity: 0.8;
-        }
-        100% {
-            background-position: 0 0;
-            opacity: 1;
-        }
-    }
 }
-
 
 // Base border style
 @mixin base-border-style() {
@@ -211,4 +122,92 @@
 
     backface-visibility: hidden;
     will-change: transform;
+}
+
+
+// Keyframes
+@keyframes glowing {
+    0% {
+        background-position: 200% 0;
+        opacity: 1;
+    }
+    50% {
+        background-position: 100% 0;
+        opacity: 0.8;
+    }
+    100% {
+        background-position: 0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-right {
+    from {
+        translate: 100%;
+        opacity: 0;
+    }
+    to {
+        translate: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-left {
+    from {
+        translate: -100%;
+        opacity: 0;
+    }
+    to {
+        translate: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        translate: 0 -100%;
+        opacity: 0;
+    }
+    to {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        translate: 0 100%;
+        opacity: 0;
+    }
+    to {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slide-static {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
