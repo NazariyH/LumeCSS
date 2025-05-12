@@ -10,13 +10,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development --open",
+    "purge": "NODE_ENV=production webpack --mode production",
     "watch": "webpack --watch"
   },
   "author": "nazariy.holovach2007@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "css-loader": "^7.1.2",
     "mini-css-extract-plugin": "^2.9.2",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
     "sass": "^1.85.1",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",

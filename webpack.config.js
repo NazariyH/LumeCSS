@@ -2,48 +2,46 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: './src/ts/index.ts', // Entry file (TypeScript)
+    entry: './src/ts/index.ts',
     output: {
-        filename: 'lume.js',  // Output JS file
+        filename: 'lume.js',
         path: path.resolve(__dirname, 'dist'),
-        library: 'LumeCSS',   // Export the library
+        library: 'LumeCSS',
         libraryTarget: 'umd',
-        globalObject: 'this', // For compatibility with both browser and Node.js environments
+        globalObject: 'this',
     },
     resolve: {
-        extensions: ['.ts', '.js', '.scss'], // File types to resolve
+        extensions: ['.ts', '.js', '.scss'],
     },
     module: {
         rules: [
-            // TypeScript loader
             {
                 test: /\.ts$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
-            // SCSS loader
             {
                 test: /\.scss$/,
                 use: [
-                    MiniCssExtractPlugin.loader, // Extract CSS to file
-                    'css-loader', // Interprets CSS
-                    'sass-loader', // Converts SCSS to CSS
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',  // <- Add this
+                    'sass-loader',
                 ],
             },
-            // SVG handling rule
             {
                 test: /\.svg$/,
-                type: 'asset/resource', // For Webpack 5+ (this replaces file-loader)
+                type: 'asset/resource',
                 generator: {
-                    filename: 'assets/icons/[name][hash][ext][query]', // Custom output path for SVGs
+                    filename: 'assets/icons/[name][hash][ext][query]',
                 },
             },
         ],
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: 'lume.css', // Output CSS file
+            filename: 'lume.css',
         }),
     ],
-    mode: 'production',  // Set to 'development' for dev builds
+    mode: 'production',
 };
