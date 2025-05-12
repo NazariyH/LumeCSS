@@ -2,7 +2,13 @@
   "name": "lumecss",
   "version": "1.0.0",
   "description": "LumeCss is a modern, lightweight, and flexible CSS library designed for building fast and responsive user interfaces. Built with SCSS and TypeScript, LumeCss provides utility-first classes, customizable themes, and reusable components to speed up your development process.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "style": "dist/style.css",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "directories": {
     "doc": "docs"
   },
@@ -13,8 +19,23 @@
     "purge": "NODE_ENV=production webpack --mode production",
     "watch": "webpack --watch"
   },
-  "author": "nazariy.holovach2007@gmail.com",
+  "keywords": [
+    "css",
+    "scss",
+    "typescript",
+    "ui-library",
+    "responsive",
+    "utility-first",
+    "icons",
+    "components",
+    "lumecss"
+  ],
+  "author": "Nazariy Holovach <nazariy.holovach2007@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NazariyH/LumeCSS"
+  },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "css-loader": "^7.1.2",
