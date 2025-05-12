@@ -12,9 +12,32 @@
     .placeholder,
     &.placeholder-btn,
     .placeholder-btn {
+        position: relative;
         border: none;
         cursor: wait;
         @include glowing-background($placeholder-color);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            background-color: $placeholder-color;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            @include glowing-background();
+        }
     }
 
     .placeholder-btn,
@@ -41,14 +64,18 @@
             // Placeholder class with glowing background for base colors
             .placeholder-#{$key}-#{$i * 100},
             &.placeholder-#{$key}-#{$i * 100} {
-                @include glowing-background($shade);
+                &::before {
+                    background-color: $shade;
+                }
             }
 
             // Generate states (hover, focus, etc.)
             @each $state in $state-selectors {
                 .#{$state}\:placeholder-#{$key}-#{$i * 100}:#{$state},
                 &.#{$state}\:placeholder-#{$key}-#{$i * 100}:#{$state} {
-                    @include glowing-background($shade);
+                    &::before {
+                        background-color: $shade;
+                    }
                 }
             }
 
@@ -57,14 +84,18 @@
                 @media (min-width: $bp_val) {
                     .#{$bp_key}\:placeholder-#{$key}-#{$i * 100},
                     &.#{$bp_key}\:placeholder-#{$key}-#{$i * 100} {
-                        @include glowing-background($shade);
+                        &::before {
+                            background-color: $shade;
+                        }
                     }
 
                     // Generate states with breakpoints
                     @each $state in $state-selectors {
                         .#{$bp_key}\:#{$state}\:placeholder-#{$key}-#{$i * 100}:#{$state},
                         &.#{$bp_key}\:#{$state}\:placeholder-#{$key}-#{$i * 100}:#{$state} {
-                            @include glowing-background($shade);
+                            &::before {
+                                background-color: $shade;
+                            }
                         }
                     }
                 }
@@ -77,14 +108,18 @@
         // Placeholder class with glowing background for theme colors
         .placeholder-#{$key},
         &.placeholder-#{$key} {
-            @include glowing-background($val);
+            &::before {
+                background-color: $val;
+            }
         }
 
         // Generate states for theme colors
         @each $state in $state-selectors {
             .#{$state}\:placeholder-#{$key}:#{$state},
             &.#{$state}\:placeholder-#{$key}:#{$state} {
-                @include glowing-background($val);
+                &::before {
+                    background-color: $val;
+                }
             }
         }
 
@@ -93,14 +128,18 @@
             @media (min-width: $bp_val) {
                 .#{$bp_key}\:placeholder-#{$key},
                 &.#{$bp_key}\:placeholder-#{$key} {
-                    @include glowing-background($val);
+                    &::before {
+                        background-color: $val;
+                    }
                 }
 
                 // Generate states with breakpoints for theme colors
                 @each $state in $state-selectors {
                     .#{$bp_key}\:#{$state}\:placeholder-#{$key}:#{$state},
                     &.#{$bp_key}\:#{$state}\:placeholder-#{$key}:#{$state} {
-                        @include glowing-background($val);
+                        &::before {
+                            background-color: $val;
+                        }
                     }
                 }
             }
