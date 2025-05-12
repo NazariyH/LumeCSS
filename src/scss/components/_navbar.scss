@@ -93,12 +93,23 @@
         z-index: 15;
     }
 
+    & > div {
+        position:  relative;
+        height: 100%;
+    }
+
     // Navbar main link (it could be logo)
     .navbar-brand {
         transition: all $base-transition-time ease;
         font-size: 22px;
         font-weight: bold;
         cursor: pointer;
+
+        // Navbrand logo styles
+        img,
+        &img {
+            height: 4rem;
+        }
     }
 
     // Menu list
@@ -110,6 +121,8 @@
         // Menu item (e.g. link, button)
         .nav-item .nav-link,
         .dropdown .dropdown-toggle {
+            cursor: pointer;
+            text-decoration: nonde;
             transition: all $base-transition-time ease;
             font-size: $nav-link;
             opacity: 0.9;
