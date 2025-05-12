@@ -4,11 +4,27 @@ module.exports = {
     plugins: [
         purgecss({
             content: [
-                './index.html',
-                './src/**/*.{html,ts,tsx,js,jsx}'
+                './index.html'
             ],
-            safelist: ['safelist-class'], // Optional: classes to always keep
+            safelist: [
+                'safelist-class',  // Add any classes you want to keep
+                'active',
+                'collapsed',
+                'show',
+                'in-view',
+                'removing',
+                '@slideInFadeRight',
+                '@slideInFadeLeft',
+                '@slideInFadeUp',
+                '@slideInFadeDown',
+                '@fade',
+                '@bounce',
+            ],
             defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+
+            // Remove the keyframes option to allow purging keyframes
+            keyframes: false,  // Now unused keyframes will be purged
+            fontFace: true,    // Keep font-face rules
         }),
     ],
 };
