@@ -122,7 +122,6 @@ textarea {
 @each $key, $val in $base-color-palette {
     // Generate color classes for all shades
     @for $i from 1 through 9 {
-        // Generate spinner classes for each color shade
 
         // Define color shade
         $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
