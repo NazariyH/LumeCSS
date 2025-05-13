@@ -8,7 +8,7 @@
     .modal-dialog {
         .btn-close::after,
         .btn-close::before {
-            background-color: $light !important;
+            background-color: $light;
         }
     }
 }
@@ -23,7 +23,7 @@
     .modal-dialog {
         .btn-close::after,
         .btn-close::before {
-            background-color: $dark !important;
+            background-color: $dark;
         }
     }
 }
