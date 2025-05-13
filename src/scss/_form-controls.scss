@@ -2,6 +2,7 @@
 
 // Mixin to style the thumb color
 @mixin thumb-color($thumb-color) {
+
     // Style the thumb (the handle)
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
@@ -30,6 +31,7 @@
 
 // Mixin to style the track color
 @mixin track-color($track-color) {
+
     // Style the track (the background)
     &::-webkit-slider-runnable-track {
         background-color: $track-color !important;
@@ -81,6 +83,7 @@ input[type="radio"] {
     border-width: $base-border-sickness/2;
     border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
 }
+
 input[type="radio"]:checked::after {
     content: "";
     position: absolute;
@@ -92,16 +95,26 @@ input[type="radio"]:checked::after {
     border-radius: 50%;
     background-color: $light;
 }
+
 /* Change color when the radio button is checked */
 input[type="radio"]:checked {
     background-color: $primary;
 }
 
 // Base input style
-input[type="text"], input[type="email"], input[type="password"],
-input[type="tel"], input[type="search"], input[type="url"],
-input[type="number"], input[type="date"], input[type="datetime-local"],
-input[type="month"], input[type="week"], input[type="time"], select,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="search"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+select,
 textarea {
     background-color: $light;
     color: $dark;
@@ -120,11 +133,12 @@ textarea {
 
 // Iterate over each $key-val in $base-color-palette
 @each $key, $val in $base-color-palette {
+
     // Generate color classes for all shades
     @for $i from 1 through 9 {
 
         // Define color shade
-        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+        $shade: if($i <=4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
 
 
         .form-control-#{$key}-#{$i * 100}:focus {
@@ -148,6 +162,10 @@ textarea {
             @include thumb-color($shade);
         }
 
+        .caret-#{$key}-#{$i * 100} {
+            caret-color: $shade !important;
+        }
+
         // Iterate over each $state in $state-selectors
         @each $state in $state-selectors {
             .#{$state}\:accent-#{$key}-#{$i * 100}:#{$state} {
@@ -160,6 +178,10 @@ textarea {
 
             .#{$state}\:thumb-#{$key}-#{$i * 100}:#{$state} {
                 @include thumb-color($shade);
+            }
+
+            .#{$state}\:caret-#{$key}-#{$i * 100}:#{$state} {
+                caret-color: $shade !important;
             }
         }
 
@@ -187,6 +209,10 @@ textarea {
                     @include thumb-color($shade);
                 }
 
+                .#{$bp_key}\:caret-#{$key}-#{$i * 100} {
+                    caret-color: $shade !important;
+                }
+
                 // Iterate over each $state in $state-selectors
                 @each $state in $state-selectors {
                     .#{$bp_key}\:#{$state}\:accent-#{$key}-#{$i * 100}:#{$state} {
@@ -199,6 +225,10 @@ textarea {
 
                     .#{$bp_key}\:#{$state}\:thumb-#{$key}-#{$i * 100}:#{$state} {
                         @include thumb-color($shade);
+                    }
+
+                    .#{$bp_key}\:#{$state}\:caret-#{$key}-#{$i * 100}:#{$state} {
+                        caret-color: $shade !important;
                     }
                 }
             }
@@ -230,6 +260,10 @@ textarea {
         @include thumb-color($val);
     }
 
+    .caret-#{$key} {
+        caret-color: $val !important;
+    }
+
     // Iterate over each $state in $state-selectors
     @each $state in $state-selectors {
         .#{$state}\:accent-#{$key}:#{$state} {
@@ -242,6 +276,10 @@ textarea {
 
         .#{$state}\:thumb-#{$key}:#{$state} {
             @include thumb-color($val);
+        }
+
+        .#{$state}\:caret-#{$key}:#{$state} {
+            caret-color: $val !important;
         }
     }
 
@@ -269,6 +307,10 @@ textarea {
                 @include thumb-color($val);
             }
 
+            .#{$bp_key}\:caret-#{$key} {
+                caret-color: $val !important;
+            }
+
             // Iterate over each $state in $state-selectors
             @each $state in $state-selectors {
                 .#{$bp_key}\:#{$state}\:accent-#{$key}:#{$state} {
@@ -281,6 +323,10 @@ textarea {
 
                 .#{$bp_key}\:#{$state}\:thumb-#{$key}:#{$state} {
                     @include thumb-color($val);
+                }
+
+                .#{$bp_key}\:#{$state}\:caret-#{$key}:#{$state} {
+                    caret-color: $val !important;
                 }
             }
         }
@@ -301,6 +347,3 @@ textarea {
 .form-control-none {
     @include form-box-shadow($color: transparent);
 }
-
-
-
