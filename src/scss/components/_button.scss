@@ -260,7 +260,7 @@
 
         &::after,
         &::before {
-            background-color: $val;
+            background-color: $val !important;
         }
     }
 
@@ -275,7 +275,7 @@
 
                 &::after,
                 &::before {
-                    background-color: $val;
+                    background-color: $val !important;
                 }
             }
         }
@@ -297,7 +297,7 @@
 
             &::after,
             &::before {
-                background-color: $shade;
+                background-color: $shade !important;
             }
         }
 
@@ -310,7 +310,7 @@
 
                     &::after,
                     &::before {
-                        background-color: $shade;
+                        background-color: $shade !important;
                     }
                 }
             }
