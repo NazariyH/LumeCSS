@@ -20,7 +20,7 @@ module.exports = {
                 '@fade',
                 '@bounce',
             ],
-            defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+            defaultExtractor: content => content.match(/[A-Za-z0-9-_:\/.]+/g) || [],
 
             // Remove the keyframes option to allow purging keyframes
             keyframes: false,  // Now unused keyframes will be purged
