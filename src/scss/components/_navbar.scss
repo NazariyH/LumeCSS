@@ -9,10 +9,10 @@
         }
 
         // Base nav items hover effect
-        .navbar-menu .nav-item:hover,
-        .navbar-menu .nav-item .nav-link:hover,
+        .nav-item:hover,
+        .nav-item .nav-link:hover,
         .navbar-brand:hover {
-            color: generate-shade($dark, 30, "lighten");
+            opacity: 0.9;
 
             .btn-arrow::after, .btn-arrow::before {
                 background-color: generate-shade($dark, 30, "lighten") !important;
@@ -42,10 +42,10 @@
         }
 
         // Base nav items hover effect
-        .navbar-menu .nav-item:hover,
-        .navbar-menu .nav-item .nav-link:hover,
+        .nav-item:hover,
+        .nav-item .nav-link:hover,
         .navbar-brand:hover {
-            color: generate-shade($light, 20, "darken");
+            opacity: 0.9;
 
             .btn-arrow::after, .btn-arrow::before {
                 background-color: generate-shade($light, 20, "darken") !important;
@@ -82,7 +82,7 @@
     justify-content: space-between;
     align-items: center;
 
-    transition: color $base-transition-time ease;
+    transition: all $base-transition-time ease;
 
     padding: $base-padding $base-padding*2;
 
@@ -119,10 +119,10 @@
         margin: 0 $base-margin;
 
         // Menu item (e.g. link, button)
-        .nav-item .nav-link,
-        .dropdown .dropdown-toggle {
-            cursor: pointer;
-            text-decoration: nonde;
+        .nav-link,
+        .dropdown-toggle {
+            cursor: pointer !important;
+            text-decoration: none;
             transition: all $base-transition-time ease;
             font-size: $nav-link;
             opacity: 0.9;
@@ -214,6 +214,7 @@
     .navbar-collapse {
         position: absolute;
         z-index: 5 !important;
+        height: unset;
         top: $navbar-height !important;
         min-width: 300px;
         padding: 0 $base-padding * 2 $base-padding * 2 $base-padding * 2;
