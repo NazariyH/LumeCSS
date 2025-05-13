@@ -1,7 +1,5 @@
-@mixin btn(
-    $btn-size: nth(map-get($btn-sizes, 'md'), 1),
-    $font-size: 14px
-) {
+@mixin btn($btn-size: nth(map-get($btn-sizes, 'md'), 1),
+    $font-size: 14px) {
     // Define base styles for a button
     cursor: pointer;
     display: inline-block;
@@ -71,7 +69,15 @@
     cursor: pointer;
     transition: all $base-transition-time / 3 ease-in-out;
 
-    &::before, &::after {
+    &:hover {
+        &::after,
+        &::before {
+            opacity: 0.9;
+        }
+    }
+
+    &::before,
+    &::after {
         content: '';
         position: absolute;
         top: 50%;
@@ -86,6 +92,7 @@
     &::before {
         transform: translate(-50%, -50%) rotate(45deg);
     }
+
     &::after {
         transform: translate(-50%, -50%) rotate(-45deg);
     }
@@ -98,8 +105,16 @@
     height: 1rem;
     cursor: pointer;
 
+    &:hover {
+        &::after,
+        &::before {
+            opacity: 0.9;
+        }
+    }
+
     // Not active arrow button styles
-    &::after, &::before {
+    &::after,
+    &::before {
         content: "";
         position: absolute;
         top: 50%;
@@ -113,7 +128,9 @@
     }
 
     &.btn-arrow-light {
-        &::after, &::before {
+
+        &::after,
+        &::before {
             background-color: $light;
         }
     }
@@ -122,6 +139,7 @@
         left: 0;
         transform: rotate(45deg);
     }
+
     &::after {
         right: 0;
         transform: rotate(-45deg);
@@ -131,14 +149,18 @@
     &.active::before {
         transform: rotate(-45deg);
     }
+
     &.active::after {
         transform: rotate(45deg);
     }
 }
 
 
+
+
 // Iterate over each key-val pair in the $btn-sizes
 @each $key, $val in $btn-sizes {
+
     // Generate classes for each btn size
     .btn-#{$key} {
         @include btn(nth($val, 1), nth($val, 2));
@@ -148,6 +170,7 @@
     // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
     @each $bp_key, $bp_val in $breakpoints {
         @media (min-width: $bp_val) {
+
             // Generate breakpoint classes for each btn size
             .#{$bp_key}\:btn-#{$key} {
                 @include btn(nth($val, 1), nth($val, 2));
@@ -160,6 +183,7 @@
 
 // Iterate over each key-val pair in the $theme-color-palette map
 @each $key, $val in $theme-color-palette {
+
     // Create classes for theme buttons
     .btn-#{$key} {
         @include btn-color($val);
@@ -174,6 +198,7 @@
     // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
     @each $bp_key, $bp_val in $breakpoints {
         @media (min-width: $bp_val) {
+
             // Create classes for classic buttons
             .#{$bp_key}\:btn-#{$key} {
                 @include btn-color($val);
@@ -190,10 +215,11 @@
 
 // Iterate over each key-val pair in the $base-color-palette map
 @each $key, $val in $base-color-palette {
+
     // Generate color classes for all shades
     @for $i from 1 through 9 {
         // Define color shade
-        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+        $shade: if($i <=4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
 
 
         // Create classes for classic buttons
@@ -209,6 +235,7 @@
         // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
         @each $bp_key, $bp_val in $breakpoints {
             @media (min-width: $bp_val) {
+
                 // Create classes for classic buttons
                 .#{$bp_key}\:btn-#{$key}-#{$i*100} {
                     @include btn-color($shade);
@@ -223,6 +250,73 @@
     }
 }
 
+
+// Iterate over each key-val pair in the $theme-color-palette map
+@each $key, $val in $theme-color-palette {
+
+    // Create classes for theme buttons
+    .btn-close-#{$key},
+    .btn-arrow-#{$key} {
+
+        &::after,
+        &::before {
+            background-color: $val;
+        }
+    }
+
+
+    // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+    @each $bp_key, $bp_val in $breakpoints {
+        @media (min-width: $bp_val) {
+
+            // Create classes for classic buttons
+            .#{$bp_key}\:btn-close-#{$key},
+            .#{$bp_key}\:btn-arrow-#{$key} {
+
+                &::after,
+                &::before {
+                    background-color: $val;
+                }
+            }
+        }
+    }
+}
+
+// Iterate over each key-val pair in the $base-color-palette map
+@each $key, $val in $base-color-palette {
+
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <=4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+
+        // Create classes for theme buttons
+        .btn-close-#{$key}-#{$i*100},
+        .btn-arrow-#{$key}-#{$i*100} {
+
+            &::after,
+            &::before {
+                background-color: $shade;
+            }
+        }
+
+        // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
+        @each $bp_key, $bp_val in $breakpoints {
+            @media (min-width: $bp_val) {
+                // Create classes for theme buttons
+                .#{$bp_key}\:btn-close-#{$key}-#{$i*100},
+                .#{$bp_key}\:btn-arrow-#{$key}-#{$i*100} {
+
+                    &::after,
+                    &::before {
+                        background-color: $shade;
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 button.disabled,
