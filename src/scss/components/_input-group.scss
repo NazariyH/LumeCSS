@@ -35,6 +35,20 @@
         border-style: solid;
         border-width: $base-border-sickness / 2;
         border-color: generate-shade(map-get($base-color-palette, "gray"), 30, 'lighten');
+
+        // Password toggle button style
+        &.toggle-password {
+            &.show-password {
+                .icon {
+                    background-image: url(#{map-get($icons, 'eye')}) !important;
+                }
+            }
+            &.hide-password {
+                .icon {
+                    background-image: url(#{map-get($icons, 'eye-slash')}) !important;
+                }
+            }
+        }
     }
 }
 
