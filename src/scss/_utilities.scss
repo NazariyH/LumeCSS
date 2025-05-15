@@ -980,7 +980,7 @@ $transition-timing-function_values: linear, ease-in, ease-out, ease-in-out, ease
     }
 
     @else if $property == "border-right-radius" {
-        @return ("border-end-start-radius", "border-end-end-radius");
+        @return ("border-start-end-radius", "border-end-end-radius");
     }
 
     @else {
