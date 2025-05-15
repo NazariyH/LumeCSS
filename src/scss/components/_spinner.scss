@@ -50,7 +50,7 @@ $spinner-styles: dashed, dotted, double;
         // Generate spinner classes for each color shade
 
         // Define color shade
-        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+        $shade: if($i <= 4, generate-shade($val, 50-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
 
 
         .spinner-#{$key}-#{$i * 100} {

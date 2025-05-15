@@ -14,7 +14,7 @@
         // Generate color classes for all shades
         @for $i from 1 through 9 {
             // Define color shade
-            $shade: if($i <= 4, generate-shade($color_val, 100-$i*10, 'lighten'), generate-shade($color_val, $i*10-40, 'darken'));
+            $shade: if($i <= 4, generate-shade($color_val, 50-$i*10, 'lighten'), generate-shade($color_val, $i*10-40, 'darken'));
 
             // Generate box-shadow classes
             .shadow-#{$key}-#{$color_key}-#{$i * 100} {

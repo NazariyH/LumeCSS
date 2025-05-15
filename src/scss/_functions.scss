@@ -40,7 +40,11 @@
 
     // Check if the direction is 'lighten', apply the lighten function
     @if $direction == 'lighten' {
-        @return mix(white, $color, $percentage);
+        @if $percentage * 2 < 100 {
+            @return mix(white, $color, $percentage * 2);
+        }
+        
+        @return mix(white, $color, 90);
     }
 
     // Check if the direction is 'darken', apply the darken function

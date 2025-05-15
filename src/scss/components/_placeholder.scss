@@ -57,7 +57,7 @@
         @for $i from 1 through 9 {
             $shade: if(
                 $i <= 4,
-                generate-shade($val, 100 - $i * 10, 'lighten'),
+                generate-shade($val, 50 - $i * 10, 'lighten'),
                 generate-shade($val, $i * 10 - 40, 'darken')
             );
 

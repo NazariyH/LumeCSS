@@ -13,7 +13,7 @@
     // Generate color classes for all shades
     @for $i from 1 through 9 {
         // Define color shade
-        $shade: if($i <= 4, generate-shade($val, 100-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+        $shade: if($i <= 4, generate-shade($val, 50-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
 
         // Generate badge styles for different colors
         .badge-#{$key}-#{$i*100} {
