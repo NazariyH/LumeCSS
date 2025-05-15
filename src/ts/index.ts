@@ -14,3 +14,4 @@ import './components/carousel'; // Import carousel scripts
 import './components/navbar'; // Import navbar scripts
 import './components/smooth-scroll'; // Import smooth scroll component for the navbar
 import './components/scroll-animation'; // Import scroll animation scripts
+import './components/password-toggle'; // Import password toggle component
