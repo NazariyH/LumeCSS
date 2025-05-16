@@ -1,6 +1,6 @@
 // Declare an array containing the scroll animation classes
 const animationClasses: string[] = [
-    'scroll-fade-up', 'scroll-fade-down', 'scroll-fade-left', 'scroll-fade-right',
+    'scroll-fade', 'scroll-fade-up', 'scroll-fade-down', 'scroll-fade-left', 'scroll-fade-right',
     'scroll-fade-up-right', 'scroll-fade-up-left', 'scroll-fade-down-right', 'scroll-fade-down-left',
     'scroll-flip-left', 'scroll-flip-right', 'scroll-flip-up', 'scroll-flip-down',
     'scroll-zoom-in', 'scroll-zoom-in-up', 'scroll-zoom-in-down', 'scroll-zoom-in-left', 'scroll-zoom-in-right',

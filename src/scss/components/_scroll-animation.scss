@@ -1,5 +1,12 @@
-
 // Fade and slide from bottom to top
+.scroll-fade {
+    opacity: 0;
+
+    &.in-view {
+        opacity: 1;
+    }
+}
+
 .scroll-fade-up {
     @include scroll-animation-styles;
 
