@@ -181,6 +181,7 @@ $border-outline-styles: (
 // Border radii
 $base-border-radius:        0.35rem !default;
 $border-radius-values: (
+    '0': 0rem,
     'none': 0rem,
     'default': $base-border-radius,
     'xs': 0.25rem,
