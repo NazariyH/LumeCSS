@@ -8,7 +8,7 @@ themeToggleBtnsArray.forEach((btn: HTMLElement): void => {
         event.preventDefault();
 
         // Get the body's data-theme attribute
-        const theme: string | null = document.body.getAttribute('data-theme') ?? null
+        const theme: string | null = document.body.getAttribute('data-theme') ?? null;
 
         if (theme === 'light' || theme === null) {
             // Call the setDarkTheme function
