@@ -6,6 +6,14 @@
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
+body,
+body[data-theme="light"] {
+    background-color: $light;
+} 
+
+body[data-theme="dark"] {
+    background-color: $dark;
+} 
 
 .image-fluid {
     width: 100%;
