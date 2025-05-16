@@ -370,6 +370,13 @@ $switcher-dimension-map: (
 );
 
 
+// Theme button and switcher size
+$theme-btn-size:            2.5rem;;
+$theme-switcher-width:      5rem;
+$theme-switcher-height:     2.5rem;
+$theme-switcher-padding:    2px;
+
+
 // Icon sizes map (width & height for each size)
 $base-icon-size: 2rem;
 $icon-sizes: (
@@ -387,7 +394,9 @@ $icons: (
     "info": "../assets/icons/info.svg",
     "warning": "../assets/icons/warning.svg",
     "eye": "../assets/icons/eye.svg",
-    "eye-slash": '../assets/icons/eye-slash.svg'
+    "eye-slash": "../assets/icons/eye-slash.svg",
+    "sun": "../assets/icons/sun.svg",
+    "moon": "../assets/icons/moon.svg"
 );
 
 
