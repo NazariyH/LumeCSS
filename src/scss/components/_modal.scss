@@ -129,11 +129,13 @@
 
 
 // Apply modal theme styles
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     @include dark-theme-modal;
 }
 
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     @include light-theme-modal;
 }
 

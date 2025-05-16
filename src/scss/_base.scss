@@ -7,11 +7,13 @@
 }
 
 body,
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     background-color: $light;
 } 
 
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     background-color: $dark;
 } 
 

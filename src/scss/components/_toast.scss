@@ -192,11 +192,13 @@
 
 
 // Apply different theme styles
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     @include dark-theme-toast;
 }
 
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     @include light-theme-toast;
 }
 

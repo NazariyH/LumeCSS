@@ -69,7 +69,8 @@
 
 
 body,
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     // Theme button styles for light theme
     .toggle-theme.theme-btn {
         background-color: $dark;
@@ -113,7 +114,8 @@ body[data-theme="light"] {
     }
 }
 
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     // Theme button styles for dark theme
     .toggle-theme.theme-btn {
         background-color: $light;

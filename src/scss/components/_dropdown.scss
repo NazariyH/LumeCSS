@@ -135,13 +135,15 @@
 
 
 // Apply dropdown themes
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     .dropdown-menu {
         @include dark-theme-dropdown;
     }
 }
 
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     .dropdown-menu {
         @include light-theme-dropdown;
     }

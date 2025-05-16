@@ -89,13 +89,15 @@
 
 
 // Accordion styles for different themes
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     .accordion-item {
         @include dark-theme-accordion;
     }
 }
 
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     .accordion-item {
         @include light-theme-accordion;
     }

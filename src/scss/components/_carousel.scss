@@ -253,11 +253,13 @@
 }
 
 // Apply carousel themes
-body[data-theme="dark"] {
+body[data-theme="dark"],
+.theme-dark {
     @include dark-theme-carousel;
 }
 
-body[data-theme="light"] {
+body[data-theme="light"],
+.theme-light {
     @include light-theme-carousel;
 }
 
