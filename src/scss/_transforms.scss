@@ -155,7 +155,7 @@ $transform-origin-positions: (
 
             // Generate classes for each property with negative value
             .-#{$prefix}-#{$key} {
-                transform: #{$property}(#{$val});
+                transform: #{$property}(-#{$val});
             }
 
             // Iterate over each state in $states
@@ -166,7 +166,7 @@ $transform-origin-positions: (
                 }
 
                 .-#{$state}\:#{$prefix}-#{$key}:#{$state} {
-                    transform: #{$property}(#{$val}) !important;
+                    transform: #{$property}(-#{$val}) !important;
                 }
             }
 
@@ -184,7 +184,7 @@ $transform-origin-positions: (
 
                     // Generate classes for each property with negative value
                     .#{$bp_key}\:-#{$prefix}-#{$key} {
-                        transform: #{$property}(#{$val});
+                        transform: #{$property}(-#{$val});
                     }
 
                     // Iterate over each state in $states
@@ -195,7 +195,7 @@ $transform-origin-positions: (
                         }
 
                         .#{$bp_key}\:#{$state}\:-#{$prefix}-#{$key}:#{$state} {
-                            transform: #{$property}(#{$val}) !important;
+                            transform: #{$property}(-#{$val}) !important;
                         }
                     }
                 }
