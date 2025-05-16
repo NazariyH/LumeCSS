@@ -1,6 +1,6 @@
 // Light theme carousel styles
 @mixin light-theme-carousel {
-    .carousel-inner *, .carousel-inner a {
+    .carousel-title, .carousel-body {
         color: $dark;
     }
 
@@ -45,7 +45,7 @@
 
 // Dark theme carousel styles
 @mixin dark-theme-carousel {
-    .carousel-inner *, .carousel-inner a {
+    .carousel-title, .carousel-body {
         color: $light;
     }
 
