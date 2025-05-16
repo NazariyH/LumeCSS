@@ -26,7 +26,7 @@
     &::after {
         content: '';
         position: absolute;
-        z-index: 1;
+        z-index: 3;
 
         border-radius: $base-border-radius;
         padding: $base-padding;
@@ -36,8 +36,8 @@
         display: none;
 
         // Default dimensions
-        max-width: 100%;
-        min-width: 200px;
+        // max-width: 100%;
+        min-width: 5px;
         width: auto;
         height: auto;
 
@@ -51,7 +51,7 @@
     &::before {
         content: '';
         position: absolute;
-        z-index: 2;
+        z-index: 4;
 
         width: 0;
         height: 0;
@@ -96,7 +96,7 @@
             left: 50% !important;
             bottom: 100% !important;
             right: auto !important;
-            transform: translate(-50%, 0) !important;
+            transform: translate(-50%, -1%) !important;
         }
     }
 
@@ -113,7 +113,7 @@
             left: 50% !important;
             bottom: auto !important;
             right: auto !important;
-            transform: translate(-50%, 0) rotate(180deg) !important;
+            transform: translate(-50%, 1%) rotate(180deg) !important;
         }
     }
 
@@ -130,7 +130,7 @@
             left: auto !important;
             bottom: auto !important;
             right: 100% !important;
-            transform: translate(0, -50%) rotate(-90deg) !important;
+            transform: translate(-1%, -50%) rotate(-90deg) !important;
         }
     }
 
@@ -147,7 +147,7 @@
             left: 100% !important;
             bottom: auto !important;
             right: auto !important;
-            transform: translate(0, -50%) rotate(90deg) !important;
+            transform: translate(1%, -50%) rotate(90deg) !important;
         }
     }
 }
