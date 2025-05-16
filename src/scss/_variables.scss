@@ -9,7 +9,7 @@ $info:              #11CAF0 !default;
 $light:             #F8F9FA !default;
 $dark:              #212529 !default;
 $magenta:           #D5008F !default;
-$lime-green:        #A4FF00 !default;
+$lime:              #A4FF00 !default;
 $sky:               #7CC8E5 !default;
 $amber:             #FFB84C !default;
 $mint-green:        #A8E6CF !default;
@@ -37,6 +37,23 @@ $base-color-palette: (
     "pink": #ffc0cb,
     "brown": #964B00,
     "gray": #808080,
+    "black": #000000,
+    "white": #ffffff,
+    "cyan": #00ffff,
+    "teal": #008080,
+    "navy": #000080,
+    "indigo": #4b0082,
+    "beige": #f5f5dc,
+    "coral": #ff7f50,
+    "salmon": #fa8072,
+    "gold": #ffd700,
+    "silver": #c0c0c0,
+    "peach": #ffcc99,
+    "lavender": #e6e6fa,
+    "mint": #98ff98,
+    "tan": #d2b48c,
+    "charcoal": #36454f,
+    "plum": #8e4585
 ) !default;
 
 
@@ -51,7 +68,7 @@ $theme-color-palette: (
     "info": $info,
     "light": $light,
     "dark": $dark,
-    "lime-green": $lime-green,
+    "lime": $lime,
     "magenta": $magenta,
     "sky": $sky,
     "amber": $amber,
@@ -388,9 +405,9 @@ $switcher-dimension-map: (
 
 
 // Theme button and switcher size
-$theme-btn-size:            2.5rem;;
-$theme-switcher-width:      5rem;
-$theme-switcher-height:     2.5rem;
+$theme-btn-size:            2rem;;
+$theme-switcher-width:      4rem;
+$theme-switcher-height:     2rem;
 $theme-switcher-padding:    2px;
 
 
