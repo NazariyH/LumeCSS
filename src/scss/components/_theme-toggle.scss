@@ -1,0 +1,169 @@
+.toggle-theme {
+    // Base theme button styles
+    &.theme-btn  {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: $theme-btn-size;
+        height: $theme-btn-size;
+        border-radius: 50%;
+        padding: $base-padding / 2;
+        transition: all $base-transition-time ease;
+        cursor: pointer;
+
+        .icon {
+            width: $theme-btn-size/2;
+            height: $theme-btn-size/2;
+        }
+
+        &.rotate {
+            animation: rotate 300ms 1;
+        }
+    }
+
+
+    // Base theme switcher styles
+    &.theme-switcher {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: relative;
+        width: $theme-switcher-width;
+        height: $theme-switcher-height;
+        padding: $theme-switcher-padding;
+        overflow: hidden;
+        border-radius: $theme-switcher-height;
+        cursor: pointer;
+
+        .icon {
+            z-index: 4;
+            width: $theme-switcher-height/2;
+            height: $theme-switcher-height/2;
+
+            &:first-child {
+                transform: translateX(calc(50% - $theme-switcher-padding));
+                background-image: url(#{map-get($icons, 'sun')}) !important;
+            }
+
+            &:last-child {
+                transform: translateX(calc(-50% + $theme-switcher-padding));
+                background-image: url(#{map-get($icons, 'moon')}) !important;
+            }
+        }
+
+        &::before {
+            content: '';
+
+            position: absolute;
+            z-index: 3;
+            width: calc($theme-switcher-height - $theme-switcher-padding * 2);
+            height: calc($theme-switcher-height - $theme-switcher-padding * 2);
+            border-radius: 50%;
+            transition: all $base-transition-time ease;
+        }
+    }
+}
+
+
+
+body,
+body[data-theme="light"] {
+    // Theme button styles for light theme
+    .toggle-theme.theme-btn {
+        background-color: $dark;
+
+        &:hover {
+            background-color: generate-shade($dark, 10, 'lighten');
+        }
+
+        .icon {
+            background-image: url(#{map-get($icons, 'moon')}) !important;
+            filter: brightness(0) saturate(100%) invert(93%) sepia(6%) saturate(732%) hue-rotate(183deg) 
+                    brightness(111%) contrast(97%);
+        }
+    }
+
+    // Theme switcher styles for light theme
+    .toggle-theme.theme-switcher {
+        background-color: $dark;
+
+        &::before {
+            background-color: $light;
+        }
+
+        &:hover &::before {
+            background-color: generate-shade($light, 10, 'darken');
+        }
+
+        &::before {
+            left: $theme-switcher-padding;
+        }
+
+        .icon:first-child {
+            filter: brightness(0) saturate(100%) invert(12%) sepia(12%) saturate(540%) 
+                    hue-rotate(169deg) brightness(99%) contrast(94%);
+        }
+
+        .icon:last-child {
+            filter: brightness(0) saturate(100%) invert(93%) sepia(6%) saturate(732%) hue-rotate(183deg) 
+                    brightness(111%) contrast(97%);
+        }
+    }
+}
+
+body[data-theme="dark"] {
+    // Theme button styles for dark theme
+    .toggle-theme.theme-btn {
+        background-color: $light;
+
+        &:hover {
+            background-color: generate-shade($light, 10, 'darken');
+        }
+
+        .icon {
+            background-image: url(#{map-get($icons, 'sun')}) !important;
+            filter: brightness(0) saturate(100%) invert(12%) sepia(12%) saturate(540%) 
+                    hue-rotate(169deg) brightness(99%) contrast(94%);
+        }
+    }
+
+    // Theme switcher styles for dark theme
+    .toggle-theme.theme-switcher {
+        background-color: $light;
+
+        &::before {
+            background-color: $dark;
+        }
+
+        &:hover &::before {
+            background-color: generate-shade($dark, 10, 'lighten');
+        }
+
+        &::before {
+            left: calc($theme-switcher-width - $theme-switcher-height + $theme-switcher-padding);
+        }
+
+        .icon:first-child {
+            filter: brightness(0) saturate(100%) invert(12%) sepia(12%) saturate(540%) 
+                    hue-rotate(169deg) brightness(99%) contrast(94%);
+        }
+
+        .icon:last-child {
+            filter: brightness(0) saturate(100%) invert(93%) sepia(6%) saturate(732%) hue-rotate(183deg) 
+                    brightness(111%) contrast(97%);
+        }
+    }
+}
+
+
+// Rotate animation for the theme button
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
