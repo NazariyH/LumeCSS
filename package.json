@@ -1,6 +1,6 @@
 {
   "name": "lumecss",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "LumeCss is a modern, lightweight, and flexible CSS library designed for building fast and responsive user interfaces. Built with SCSS and TypeScript, LumeCss provides utility-first classes, customizable themes, and reusable components to speed up your development process.",
   "main": "dist/index.js",
   "style": "dist/style.css",
@@ -9,14 +9,12 @@
     "src",
     "LICENSE",
     "README.md",
-    "postcss.config.cjs",
-    "scripts"
+    "postcss.config.cjs"
   ],
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "postinstall": "node ./scripts/addDependencies.js && node ./scripts/addCommands.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development --open",
