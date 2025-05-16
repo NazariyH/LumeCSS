@@ -261,6 +261,14 @@ $utilities: (
         "values": $border-radius-values
     ),
 
+    // Line height
+    "line-height": (
+        "prefix": "lh",
+        "states": false,
+        "breakpoints": true,
+        "values": $line-height-values
+    ),
+
     // Font sizes
     "font-size": (
         "prefix": "text",

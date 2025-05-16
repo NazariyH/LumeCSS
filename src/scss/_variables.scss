@@ -208,6 +208,18 @@ $box-shadow-offsets: (
 ) !default;
 
 
+// Line height
+$line-height-values: (
+    "xs": 1.2,
+    "sm": 1.4,
+    "md": 1.6,
+    "lg": 1.8,
+    "xl": 2,
+    "xxl": 2.4,
+    "none": 1,
+);
+
+
 // Font sizes
 $nav-link:         16px !default;
 $font-size-values: (
