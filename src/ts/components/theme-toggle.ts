@@ -31,6 +31,10 @@ function setDarkTheme (btn: HTMLElement): void {
     // Set the 'dark' value to the body's data-theme attribute
     document.body.setAttribute('data-theme', 'dark');
 
+    // Replace the 'theme-light' class with the 'theme-dark' class
+    document.body.classList.remove('theme-light')
+    document.body.classList.add('theme-dark')
+
     // Give the 'rotate' class to the button for a while
     btn.classList.add('rotate')
 
@@ -47,6 +51,10 @@ function setLightTheme (btn: HTMLElement): void {
 
     // Set the 'light' value to the body's data-theme attribute
     document.body.setAttribute('data-theme', 'light');
+
+    // Replace the 'theme-dark' class with the 'theme-light' class
+    document.body.classList.remove('theme-dark')
+    document.body.classList.add('theme-light')
 
     // Give the 'rotate' class to the button for a while
     btn.classList.add('rotate')
