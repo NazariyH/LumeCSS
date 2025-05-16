@@ -9,7 +9,7 @@ let endPosition: number = 0;
 // Iterate of each carousel in the carouselArray
 carouselArray.forEach((carousel: HTMLElement): void => {
     // Get an array of the carousel items
-    const carouselItemsArray: HTMLElement[] = Array.from(document.querySelectorAll('.carousel-item'));
+    const carouselItemsArray: HTMLElement[] = Array.from(carousel.querySelectorAll('.carousel-item'));
 
     /* Define the isFadeCarousel variable, which can be either true or false,
     and specifies whether the carousel uses a fade effect */
