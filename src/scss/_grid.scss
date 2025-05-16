@@ -2,7 +2,7 @@
 
 // Default grid values
 $grid_columns: 12;
-$container_width: 1280px;
+$container_width: 1400px;
 $grid-gaps: (
     "0": 0,
     "1": 10px,
@@ -13,7 +13,7 @@ $grid-gaps: (
 // Base layout classes
 .container {
     width: 100%;
-    max-width: map-get($breakpoints, "xl");
+    max-width: $container_width;
     margin: 0 auto;
     padding: 0 20px;
     box-sizing: border-box;
