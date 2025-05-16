@@ -1,6 +1,6 @@
 {
   "name": "lumecss",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "LumeCss is a modern, lightweight, and flexible CSS library designed for building fast and responsive user interfaces. Built with SCSS and TypeScript, LumeCss provides utility-first classes, customizable themes, and reusable components to speed up your development process.",
   "main": "dist/index.js",
   "style": "dist/style.css",
