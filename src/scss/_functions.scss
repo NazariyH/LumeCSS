@@ -6,7 +6,7 @@
     $lightness: lightness($bg-color);
 
     // Check if the background color is lime-green or yellow and return dark color
-    @if $bg-color == $lime-green or $bg-color == map-get($base-color-palette, "yellow") {
+    @if $bg-color == map-get($base-color-palette, "yellow") {
         @return $dark;
     }
 
