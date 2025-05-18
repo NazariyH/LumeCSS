@@ -1,0 +1,175 @@
+.ping {
+    position: relative;
+    z-index: 2;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+
+        animation: ping 1s cubic-bezier(0,0,.2,1)infinite;
+    }
+
+}
+
+
+// Iterate over each key-val pair in the $base-color-palette
+@each $key, $val in $base-color-palette {
+
+    // Generate color classes for all shades
+    @for $i from 1 through 9 {
+        // Define color shade
+        $shade: if($i <=4, generate-shade($val, 50-$i*10, 'lighten'), generate-shade($val, $i*10-40, 'darken'));
+
+        .ping-#{$key}-#{$i * 100} {
+            &::before {
+                background-color: transparentize($shade, 0.5);
+            }
+        }
+
+        // Iterate over each $state in the $state-selectors
+        @each $state in $state-selectors {
+
+            // Generate classes for each state value
+            .#{$state}\:ping-#{$key}-#{$i * 100}:#{$state} {
+                &::before {
+                    background-color: transparentize($shade, 0.5);
+                }
+            }
+        }
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+            @media(min-width: $bp_val) {
+                .#{$bp_key}\:ping-#{$key}-#{$i * 100} {
+                    &::before {
+                        background-color: transparentize($shade, 0.5);
+                    }
+                }
+
+                // Iterate over each $state in the $state-selectors
+                @each $state in $state-selectors {
+
+                    // Generate classes for each state value
+                    .#{$bp_key}\:#{$state}\:ping-#{$key}-#{$i * 100}:#{$state} {
+                        &::before {
+                            background-color: transparentize($shade, 0.5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Theme colors */
+// Iterate over each key-val pair in the $theme-color-palette
+@each $key, $val in $theme-color-palette {
+
+    // Generate classes for each theme color
+    .ping-#{$key} {
+        &::before {
+            background-color: transparentize($val, 0.5);
+        }
+    }
+
+    // Iterate over each state in the $state-selectors
+    @each $state in $state-selectors {
+
+        // Generate theme color classes for each state
+        .#{$state}\:ping-#{$key}:#{$state} {
+            &::before {
+                background-color: transparentize($val, 0.5);
+            }
+        }
+    }
+
+
+    // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media(min-width: $bp_val) {
+
+            // Generate classes for each theme color
+            .#{$bp_key}\:ping-#{$key} {
+                &::before {
+                    background-color: transparentize($val, 0.5);
+                }
+            }
+
+
+            // Iterate over each state in the $state-selectors
+            @each $state in $state-selectors {
+
+                // Generate theme color classes for each state
+                .#{$bp_key}\:#{$state}\:ping-#{$key}:#{$state} {
+                    &::before {
+                        background-color: transparentize($val, 0.5);
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Iterate over each key-val pair in the $border-radius-values
+@each $key, $val in $border-radius-values {
+
+    // Generate classes for each value
+    .ping-rounded-#{$key} {
+        &::before {
+            border-radius: $val;
+        }
+    }
+
+    // Iterate over each state in the $state-selectors
+    @each $state in $state-selectors {
+
+        // Generate theme color classes for each state
+        .#{$state}\:ping-rounded-#{$key}:#{$state} {
+            &::before {
+                border-radius: $val;
+            }
+        }
+    }
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+    @each $bp_key, $bp_val in $breakpoints {
+        @media(min-width: $bp_val) {
+
+            // Generate classes for each theme color
+            .#{$bp_key}\:ping-rounded-#{$key} {
+                &::before {
+                    border-radius: $val;
+                }
+            }
+
+
+            // Iterate over each state in the $state-selectors
+            @each $state in $state-selectors {
+
+                // Generate theme color classes for each state
+                .#{$bp_key}\:#{$state}\:ping-rounded-#{$key}:#{$state} {
+                    &::before {
+                        border-radius: $val;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@keyframes ping {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+
+    80%,
+    100% {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
