@@ -1,6 +1,6 @@
 {
   "name": "lumecss",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "LumeCss is a modern, lightweight, and flexible CSS library designed for building fast and responsive user interfaces. Built with SCSS and TypeScript, LumeCss provides utility-first classes, customizable themes, and reusable components to speed up your development process.",
   "main": "dist/index.js",
   "style": "dist/style.css",
@@ -9,17 +9,22 @@
     "src",
     "LICENSE",
     "README.md",
-    "postcss.config.cjs"
+    "postcss.config.cjs",
+    "scripts"
   ],
   "directories": {
     "doc": "docs"
+  },
+  "bin": {
+    "lumecss": "./scripts/lumecss-build.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "dev": "webpack serve --mode development --open",
     "purge": "postcss dist/lume.css --config postcss.config.cjs -o dist/lume.css",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "lumecss:build": "lumecss build --output ./test/css"
   },
   "keywords": [
     "css",
@@ -38,15 +43,19 @@
     "type": "git",
     "url": "https://github.com/NazariyH/LumeCSS"
   },
-  "devDependencies": {
+  "dependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
-    "css-loader": "^7.1.2",
-    "mini-css-extract-plugin": "^2.9.2",
     "ncp": "^2.0.0",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
-    "postcss-preset-env": "^10.1.6",
     "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^10.1.6",
+    "sharp": "^0.34.1",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
     "sass": "^1.85.1",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
