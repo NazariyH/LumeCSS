@@ -1,0 +1,114 @@
+$filter-utils: (
+    "blur": (
+        "prefix": "blur",
+        "states": true,
+        "breakpoints": true,
+        "values": $blur-map 
+    ),
+    "brightness": (
+        "prefix": "brightness",
+        "states": true,
+        "breakpoints": true,
+        "values": $brightness-map 
+    ),
+    "contrast": (
+        "prefix": "contrast",
+        "states": true,
+        "breakpoints": true,
+        "values": $brightness-map 
+    ),
+    "grayscale": (
+        "prefix": "grayscale",
+        "states": true,
+        "breakpoints": true,
+        "values": $opacity-map 
+    ),
+    "hue-rotate": (
+        "prefix": "hue-rotate",
+        "states": true,
+        "breakpoints": true,
+        "values": $rotate-degrees 
+    ),
+    "invert": (
+        "prefix": "invert",
+        "states": true,
+        "breakpoints": true,
+        "values": $invert-map 
+    ),
+    "saturate": (
+        "prefix": "saturate",
+        "states": true,
+        "breakpoints": true,
+        "values": $saturate-map 
+    ),
+    "sepia": (
+        "prefix": "sepia",
+        "states": true,
+        "breakpoints": true,
+        "values": $opacity-map
+    ),
+);
+
+
+// Iterate over each property-map pair in the $filter-utils
+@each $property, $map in $filter-utils {
+    $prefix: map-get($map, "prefix"); // Extract the property prefix name
+    $values: map-get($map, "values"); // Extract the property values
+
+    // Iterate over each key-val pair in the $values map
+    @each $key, $val in $values {
+
+        // Generate classes for each property
+        .#{$prefix}-#{$key} {
+            filter: #{$property}(#{$val});
+        }
+
+        .backdrop-#{$prefix}-#{$key} {
+            backdrop-filter: #{$property}(#{$val});
+        }
+
+        // Iterate over each state in $states
+        @each $state in $state-selectors {
+
+            // Generate classes for each state
+            .#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                filter: #{$property}(#{$val}) !important;
+            }
+
+            .#{$state}\:backdrop-#{$prefix}-#{$key}:#{$state} {
+                backdrop-filter: #{$property}(#{$val}) !important;
+            }
+        }
+
+        // Iterate over each bp_key-bp_val pair in the $breakpoints
+        @each $bp_key, $bp_val in $breakpoints {
+
+            // Generate media queries for screens with a minimum screen of $bp_val
+            @media (min-width: $bp_val) {
+                // Generate classes for each breakpoint value
+
+                // Generate classes for each property
+                .#{$bp_key}\:#{$prefix}-#{$key} {
+                    filter: #{$property}(#{$val});
+                }
+
+                .#{$bp_key}\:backdrop-#{$prefix}-#{$key} {
+                    backdrop-filter: #{$property}(#{$val});
+                }
+
+                // Iterate over each state in $states
+                @each $state in $state-selectors {
+
+                    // Generate classes for each state
+                    .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                        filter: #{$property}(#{$val}) !important;
+                    }
+
+                    .#{$bp_key}\:#{$state}\:backdrop-#{$prefix}-#{$key}:#{$state} {
+                        backdrop-filter: #{$property}(#{$val}) !important;
+                    }
+                }
+            }
+        }
+    }
+}
