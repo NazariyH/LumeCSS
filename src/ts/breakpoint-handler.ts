@@ -92,3 +92,6 @@ applyBreakpointClasses();
 
 // Add even listener for window resize to reapply breakpoint classes
 window.addEventListener('resize', applyBreakpointClasses)
+
+
+export { breakpoints };
