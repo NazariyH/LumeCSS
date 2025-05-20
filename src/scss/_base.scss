@@ -11,7 +11,7 @@ body[data-theme="light"],
 .theme-light {
     background-color: $light;
 
-    div {
+    .container {
         background-color: $light;
         color: $dark;
     }
