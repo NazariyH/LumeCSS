@@ -18,3 +18,4 @@ import './components/password-toggle'; // Import password toggle component
 import './components/theme-toggle'; // Import theme-toggle component
 import './components/time-display'; // Import time-display component
 import './components/icon-colors'; // Import icon-colors component
+import './components/color-transparency' // Import color-transparency component
