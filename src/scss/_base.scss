@@ -10,11 +10,21 @@ body,
 body[data-theme="light"],
 .theme-light {
     background-color: $light;
+
+    div {
+        background-color: $light;
+        color: $dark;
+    }
 } 
 
 body[data-theme="dark"],
 .theme-dark {
     background-color: $dark;
+
+    div {
+        background-color: $dark;
+        color: $light;
+    }
 } 
 
 .image-fluid {
