@@ -67,6 +67,15 @@ $filter-utils: (
             backdrop-filter: #{$property}(#{$val});
         }
 
+        // Dark theme classes
+        body[data-theme="dark"]  .dark\:#{$prefix}-#{$key} {
+            filter: #{$property}(#{$val});
+        }
+
+        body[data-theme="dark"]  .dark\:backdrop-#{$prefix}-#{$key} {
+            backdrop-filter: #{$property}(#{$val});
+        }
+
         // Iterate over each state in $states
         @each $state in $state-selectors {
 
@@ -76,6 +85,15 @@ $filter-utils: (
             }
 
             .#{$state}\:backdrop-#{$prefix}-#{$key}:#{$state} {
+                backdrop-filter: #{$property}(#{$val}) !important;
+            }
+
+            // Dark theme classes
+            body[data-theme="dark"] .dark\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                filter: #{$property}(#{$val}) !important;
+            }
+
+            body[data-theme="dark"] .dark\:#{$state}\:backdrop-#{$prefix}-#{$key}:#{$state} {
                 backdrop-filter: #{$property}(#{$val}) !important;
             }
         }
@@ -96,15 +114,33 @@ $filter-utils: (
                     backdrop-filter: #{$property}(#{$val});
                 }
 
+                // Dark theme classes
+                body[data-theme="dark"] .#{$bp_key}\:dark\:#{$prefix}-#{$key} {
+                    filter: #{$property}(#{$val});
+                }
+
+                body[data-theme="dark"] .#{$bp_key}\:dark\:backdrop-#{$prefix}-#{$key} {
+                    backdrop-filter: #{$property}(#{$val});
+                }
+
+
                 // Iterate over each state in $states
                 @each $state in $state-selectors {
-
                     // Generate classes for each state
                     .#{$bp_key}\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
                         filter: #{$property}(#{$val}) !important;
                     }
 
                     .#{$bp_key}\:#{$state}\:backdrop-#{$prefix}-#{$key}:#{$state} {
+                        backdrop-filter: #{$property}(#{$val}) !important;
+                    }
+
+                    // Dark theme classes
+                    body[data-theme="dark"] .#{$bp_key}\:dark\:#{$state}\:#{$prefix}-#{$key}:#{$state} {
+                        filter: #{$property}(#{$val}) !important;
+                    }
+
+                    body[data-theme="dark"] .#{$bp_key}\:dark\:#{$state}\:backdrop-#{$prefix}-#{$key}:#{$state} {
                         backdrop-filter: #{$property}(#{$val}) !important;
                     }
                 }
