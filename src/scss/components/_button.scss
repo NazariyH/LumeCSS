@@ -183,7 +183,6 @@
 
 // Iterate over each key-val pair in the $theme-color-palette map
 @each $key, $val in $theme-color-palette {
-
     // Create classes for theme buttons
     .btn-#{$key} {
         @include btn-color($val);
@@ -194,11 +193,18 @@
         @include btn-outline-color($val);
     }
 
+    // Generate button classes for dark theme
+    body[data-theme="dark"] .dark\:btn-#{$key} {
+        @include btn-color($val);
+    }
+
+    body[data-theme="dark"] .dark\:btn-outline-#{$key} {
+        @include btn-outline-color($val);
+    }
 
     // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
     @each $bp_key, $bp_val in $breakpoints {
         @media (min-width: $bp_val) {
-
             // Create classes for classic buttons
             .#{$bp_key}\:btn-#{$key} {
                 @include btn-color($val);
@@ -206,6 +212,15 @@
 
             // Create classes for outlined buttons
             .#{$bp_key}\:btn-outline-#{$key} {
+                @include btn-outline-color($val);
+            }
+
+            // Generate button classes for dark theme
+            body[data-theme="dark"] .#{$bp_key}\:dark\:btn-#{$key} {
+                @include btn-color($val);
+            }
+
+            body[data-theme="dark"] .#{$bp_key}\:dark\:btn-outline-#{$key} {
                 @include btn-outline-color($val);
             }
         }
@@ -232,10 +247,18 @@
             @include btn-outline-color($val);
         }
 
+        // Generate button classes for dark theme
+        body[data-theme="dark"] .dark\:btn-#{$key}-#{$i*100} {
+            @include btn-color($shade);
+        }
+
+        body[data-theme="dark"] .dark\:btn-outline-#{$key}-#{$i*100} {
+            @include btn-outline-color($val);
+        }
+
         // Iterate over each bp_key-bp_val pair to generate color classes for each breakpoint
         @each $bp_key, $bp_val in $breakpoints {
             @media (min-width: $bp_val) {
-
                 // Create classes for classic buttons
                 .#{$bp_key}\:btn-#{$key}-#{$i*100} {
                     @include btn-color($shade);
@@ -243,6 +266,15 @@
 
                 // Create classes for outlined buttons
                 .#{$bp_key}\:btn-outline-#{$key}-#{$i*100} {
+                    @include btn-outline-color($val);
+                }
+
+                // Generate button classes for dark theme
+                body[data-theme="dark"] .#{$bp_key}\:dark\:btn-#{$key}-#{$i*100} {
+                    @include btn-color($shade);
+                }
+
+                body[data-theme="dark"] .#{$bp_key}\:dark\:btn-outline-#{$key}-#{$i*100} {
                     @include btn-outline-color($val);
                 }
             }
@@ -257,7 +289,15 @@
     // Create classes for theme buttons
     .btn-close-#{$key},
     .btn-arrow-#{$key} {
+        &::after,
+        &::before {
+            background-color: $val !important;
+        }
+    }
 
+    // Generate button classes for dark theme
+    body[data-theme="dark"] .dark\:btn-close-#{$key},
+    body[data-theme="dark"] .dark\:btn-arrow-#{$key} {
         &::after,
         &::before {
             background-color: $val !important;
@@ -272,7 +312,15 @@
             // Create classes for classic buttons
             .#{$bp_key}\:btn-close-#{$key},
             .#{$bp_key}\:btn-arrow-#{$key} {
+                &::after,
+                &::before {
+                    background-color: $val !important;
+                }
+            }
 
+            // Generate button classes for dark theme
+            body[data-theme="dark"] .#{$bp_key}\:dark\:btn-close-#{$key},
+            body[data-theme="dark"] .#{$bp_key}\:dark\:btn-arrow-#{$key} {
                 &::after,
                 &::before {
                     background-color: $val !important;
@@ -294,7 +342,15 @@
         // Create classes for theme buttons
         .btn-close-#{$key}-#{$i*100},
         .btn-arrow-#{$key}-#{$i*100} {
+            &::after,
+            &::before {
+                background-color: $shade !important;
+            }
+        }
 
+        // Generate button classes for dark theme
+        body[data-theme="dark"] .dark\:btn-arrow-#{$key}-#{$i*100} {
+        body[data-theme="dark"] .dark\:btn-close-#{$key}-#{$i*100},
             &::after,
             &::before {
                 background-color: $shade !important;
@@ -307,7 +363,15 @@
                 // Create classes for theme buttons
                 .#{$bp_key}\:btn-close-#{$key}-#{$i*100},
                 .#{$bp_key}\:btn-arrow-#{$key}-#{$i*100} {
+                    &::after,
+                    &::before {
+                        background-color: $shade !important;
+                    }
+                }
 
+                // Generate button classes for dark theme
+                body[data-theme="dark"] .#{$bp_key}\:dark\:btn-close-#{$key}-#{$i*100},
+                body[data-theme="dark"] .#{$bp_key}\:dark\:btn-arrow-#{$key}-#{$i*100} {
                     &::after,
                     &::before {
                         background-color: $shade !important;
