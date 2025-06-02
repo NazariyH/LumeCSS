@@ -1,67 +1,93 @@
 #!/usr/bin/env node
 
+// Core modules
 const fs = require('fs');
 const path = require('path');
 const yargs = require('yargs');
 const { execSync } = require('child_process');
 
-// Parse command-line arguments for output directory
+// Start timer
+const start = Date.now();
+
+// Parse CLI args
 const argv = yargs
   .option('output', {
     alias: 'o',
     description: 'Directory to store the compiled files',
     type: 'string',
-    demandOption: true,  // Make sure output directory is provided
+    demandOption: true,
   })
   .help()
   .argv;
 
-// Get the custom output directory from the arguments
+// Output directory
 const outputDir = argv.output;
 
-// Automatically resolve the path to the installed 'lumecss' package in the user's node_modules
+// Resolve lumecss package path
 let lumecssPath;
 try {
   lumecssPath = path.dirname(require.resolve('lumecss/package.json'));
 } catch (err) {
-  console.error('Error: Could not find "lumecss" package. Please make sure it is installed.');
+  console.error('Error: Could not find "lumecss" package. Please install it.');
   process.exit(1);
 }
 
-// Ensure the output directory exists
+// Ensure output directory exists
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// 1. Purge the CSS using PostCSS and save it in the output directory
-console.log(`Purging CSS and saving to ${outputDir}/lumecss.min.css...`);
-execSync(`npx postcss ${lumecssPath}/dist/lume.css --config ${lumecssPath}/postcss.config.cjs -o ${outputDir}/lumecss.min.css`, { stdio: 'inherit' });
+// Process CSS
+const cssOutput = path.join(outputDir, 'lumecss.min.css');
+if (!fs.existsSync(cssOutput)) {
+  try {
+    execSync(`npx postcss ${lumecssPath}/dist/lume.css --config ${lumecssPath}/postcss.config.cjs -o ${cssOutput}`, {
+      stdio: 'ignore',
+    });
+  } catch (err) {
+    console.error('Error during CSS compilation:', err.message);
+    process.exit(1);
+  }
+}
 
-// 2. Copy the lume.js to the output directory
-console.log(`Copying lume.js to ${outputDir}/lumecss.min.js...`);
-execSync(`cp ${lumecssPath}/dist/lume.js ${outputDir}/lumecss.min.js`, { stdio: 'inherit' });
+// Copy JS
+const jsOutput = path.join(outputDir, 'lumecss.min.js');
+if (!fs.existsSync(jsOutput)) {
+  try {
+    execSync(`cp ${lumecssPath}/dist/lume.js ${jsOutput}`, {
+      stdio: 'ignore',
+    });
+  } catch (err) {
+    console.error('Error copying JS file:', err.message);
+    process.exit(1);
+  }
+}
 
-// 3. Copy the lumecss icons
-const iconsDir = path.join(outputDir, 'assets', 'icons');
+// Copy icons
 const sourceIconsDir = path.join(lumecssPath, 'dist', 'assets', 'icons');
+const destIconsDir = path.join(outputDir, 'assets', 'icons');
 
-// Ensure the icons directory exists in the output folder
-if (!fs.existsSync(iconsDir)) {
-  fs.mkdirSync(iconsDir, { recursive: true });
+if (!fs.existsSync(destIconsDir)) {
+  fs.mkdirSync(destIconsDir, { recursive: true });
 }
 
-// Copy the icons
-console.log(`Copying icons to ${iconsDir}...`);
-try {
-  const iconFiles = fs.readdirSync(sourceIconsDir);
-  iconFiles.forEach((file) => {
-    const srcPath = path.join(sourceIconsDir, file);
-    const destPath = path.join(iconsDir, file);
-    fs.copyFileSync(srcPath, destPath);
-  });
-} catch (error) {
-  console.error('Error during icon copying:', error.message);
-  process.exit(1);
+const sourceIcons = fs.readdirSync(sourceIconsDir);
+const destIcons = fs.existsSync(destIconsDir) ? fs.readdirSync(destIconsDir) : [];
+
+const iconsNeedCopying = sourceIcons.some(icon => !destIcons.includes(icon));
+if (iconsNeedCopying) {
+  try {
+    sourceIcons.forEach(file => {
+      const srcPath = path.join(sourceIconsDir, file);
+      const destPath = path.join(destIconsDir, file);
+      fs.copyFileSync(srcPath, destPath);
+    });
+  } catch (err) {
+    console.error('Error copying icon files:', err.message);
+    process.exit(1);
+  }
 }
 
-console.log('LumeCSS build completed successfully!');
+// End timer and log minimal success message
+const end = Date.now();
+console.log(`LumeCSS build: ${((end - start) / 1000).toFixed(3)}s`);
