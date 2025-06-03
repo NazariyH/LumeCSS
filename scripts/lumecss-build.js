@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-// Core modules
 const fs = require('fs');
+const fsp = require('fs/promises');
 const path = require('path');
 const yargs = require('yargs');
-const { execSync } = require('child_process');
+const postcss = require('postcss');
 
 // Start timer
 const start = Date.now();
@@ -21,73 +21,66 @@ const argv = yargs
   .argv;
 
 // Output directory
-const outputDir = argv.output;
+const outputDir = path.resolve(argv.output);
 
 // Resolve lumecss package path
 let lumecssPath;
 try {
   lumecssPath = path.dirname(require.resolve('lumecss/package.json'));
-} catch (err) {
+} catch {
   console.error('Error: Could not find "lumecss" package. Please install it.');
   process.exit(1);
 }
 
-// Ensure output directory exists
-if (!fs.existsSync(outputDir)) {
-  fs.mkdirSync(outputDir, { recursive: true });
-}
+// Ensure necessary directories exist
+fs.mkdirSync(outputDir, { recursive: true });
+const iconsDestDir = path.join(outputDir, 'assets', 'icons');
+fs.mkdirSync(iconsDestDir, { recursive: true });
 
-// Process CSS
-const cssOutput = path.join(outputDir, 'lumecss.min.css');
-if (!fs.existsSync(cssOutput)) {
+// Always purge and compile CSS using PostCSS Node API
+(async () => {
   try {
-    execSync(`npx postcss ${lumecssPath}/dist/lume.css --config ${lumecssPath}/postcss.config.cjs -o ${cssOutput}`, {
-      stdio: 'ignore',
+    const cssInputPath = path.join(lumecssPath, 'dist', 'lume.css');
+    const cssOutputPath = path.join(outputDir, 'lumecss.min.css');
+    const cssInput = await fsp.readFile(cssInputPath, 'utf8');
+
+    const postcssConfig = require(path.join(lumecssPath, 'postcss.config.cjs'));
+    const result = await postcss(postcssConfig.plugins).process(cssInput, {
+      from: undefined,
     });
+
+    await fsp.writeFile(cssOutputPath, result.css);
   } catch (err) {
-    console.error('Error during CSS compilation:', err.message);
+    console.error('Error during CSS processing:', err.message);
     process.exit(1);
   }
-}
 
-// Copy JS
-const jsOutput = path.join(outputDir, 'lumecss.min.js');
-if (!fs.existsSync(jsOutput)) {
+  // Copy JS (force overwrite)
   try {
-    execSync(`cp ${lumecssPath}/dist/lume.js ${jsOutput}`, {
-      stdio: 'ignore',
-    });
+    const jsSrc = path.join(lumecssPath, 'dist', 'lume.js');
+    const jsDest = path.join(outputDir, 'lumecss.min.js');
+    fs.copyFileSync(jsSrc, jsDest);
   } catch (err) {
     console.error('Error copying JS file:', err.message);
     process.exit(1);
   }
-}
 
-// Copy icons
-const sourceIconsDir = path.join(lumecssPath, 'dist', 'assets', 'icons');
-const destIconsDir = path.join(outputDir, 'assets', 'icons');
-
-if (!fs.existsSync(destIconsDir)) {
-  fs.mkdirSync(destIconsDir, { recursive: true });
-}
-
-const sourceIcons = fs.readdirSync(sourceIconsDir);
-const destIcons = fs.existsSync(destIconsDir) ? fs.readdirSync(destIconsDir) : [];
-
-const iconsNeedCopying = sourceIcons.some(icon => !destIcons.includes(icon));
-if (iconsNeedCopying) {
+  // Copy icons in parallel
   try {
-    sourceIcons.forEach(file => {
-      const srcPath = path.join(sourceIconsDir, file);
-      const destPath = path.join(destIconsDir, file);
-      fs.copyFileSync(srcPath, destPath);
-    });
+    const iconsSrcDir = path.join(lumecssPath, 'dist', 'assets', 'icons');
+    const iconFiles = await fsp.readdir(iconsSrcDir);
+
+    await Promise.all(iconFiles.map(file => {
+      const src = path.join(iconsSrcDir, file);
+      const dest = path.join(iconsDestDir, file);
+      return fsp.copyFile(src, dest);
+    }));
   } catch (err) {
-    console.error('Error copying icon files:', err.message);
+    console.error('Error copying icons:', err.message);
     process.exit(1);
   }
-}
 
-// End timer and log minimal success message
-const end = Date.now();
-console.log(`LumeCSS build: ${((end - start) / 1000).toFixed(3)}s`);
+  // Done
+  const end = Date.now();
+  console.log(`LumeCSS build: ${((end - start) / 1000).toFixed(3)}s`);
+})();
