@@ -18,10 +18,23 @@ $lavender:          #B497BD !default;
 $pastel-rose:       #F9E1E4 !default;
 $dark-navy:         #1A1A2E !default;
 $tomato:            #FF6347 !default;
-$golden-yellow:     #FFD700 !default;
 $desert-sand:       #C2B280 !default;
+$plum:              #8e4585 !default;
 $disabled-color:    #c8cacb !default;
 $placeholder-color: #858E96 !default;
+$charcoal:          #36454f !default;
+$tan:               #d2b48c !default;
+$mint:              #98ff98 !default;
+$peach:             #ffcc99 !default;
+$gold:              #ffd700 !default;
+$silver:            #c0c0c0 !default;
+$salmon:            #fa8072 !default;
+$coral:             #ff7f50 !default;
+$beige:             #f5f5dc !default;
+$indigo:            #4b0082 !default;
+$navy:              #000080 !default;
+$teal:              #008080 !default;
+$cyan:              #00ffff !default;
 
 $darken-screen-bg-color: rgba($dark, 0.7) !default;
 $close-btn-color:        rgba($dark, 0.7) !default;
@@ -39,21 +52,6 @@ $base-color-palette: (
     "gray": #808080,
     "black": #000000,
     "white": #ffffff,
-    "cyan": #00ffff,
-    "teal": #008080,
-    "navy": #000080,
-    "indigo": #4b0082,
-    "beige": #f5f5dc,
-    "coral": #ff7f50,
-    "salmon": #fa8072,
-    "gold": #ffd700,
-    "silver": #c0c0c0,
-    "peach": #ffcc99,
-    "lavender": #e6e6fa,
-    "mint": #98ff98,
-    "tan": #d2b48c,
-    "charcoal": #36454f,
-    "plum": #8e4585
 ) !default;
 
 
@@ -78,8 +76,22 @@ $theme-color-palette: (
     "pastel-rose": $pastel-rose,
     "dark-navy": $dark-navy,
     "tomato": $tomato,
-    "golden-yellow": $golden-yellow,
     "desert-sand": $desert-sand,
+    "plum": $plum,
+    "charcoal": $charcoal,
+    "tan": $tan,
+    "mint": $mint,
+    "peach": $peach,
+    "gold": $gold,
+    "silver": $silver,
+    "beige": $beige,
+    "coral": $coral,
+    "salmon": $salmon,
+    "cyan": $cyan,
+    "teal": $teal,
+    "navy": $navy,
+    "indigo": $indigo,
+
     "white":  #ffffff,
     "black":  #000000,
     "transparent": transparent,
